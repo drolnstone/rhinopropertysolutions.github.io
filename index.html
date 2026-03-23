@@ -203,40 +203,69 @@
   function scrollToTop() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
+  
+// Gallery Marquee
+const marquee = document.querySelector('.gallery-marquee');
+let scrollSpeed = 0.5; // auto-scroll speed
+let isDragging = false;
+let isHovering = false;
+let startX, scrollLeft;
 
-  // Gallery marquee + swipe + expand + pause on hover
-  const marquee = document.querySelector('.gallery-marquee');
-  let scrollSpeed = 0.5;
-  let isDragging = false;
-  let isHovering = false;
+// Duplicate marquee content for seamless infinite loop
+marquee.innerHTML += marquee.innerHTML;
 
-  function autoScroll() {
-    if (!isDragging && !isHovering) {
-      marquee.scrollLeft += scrollSpeed;
-      if (marquee.scrollLeft >= marquee.scrollWidth - marquee.clientWidth) {
-        marquee.scrollLeft = 0;
-      }
+// Auto-scroll function
+function autoScroll() {
+  if (!isDragging && !isHovering) {
+    marquee.scrollLeft += scrollSpeed;
+    // Reset to start seamlessly
+    if (marquee.scrollLeft >= marquee.scrollWidth / 2) {
+      marquee.scrollLeft = 0;
     }
-    requestAnimationFrame(autoScroll);
   }
-  autoScroll();
+  requestAnimationFrame(autoScroll);
+}
+autoScroll();
 
-  // Pause while dragging/swiping
-  marquee.addEventListener('mousedown', () => isDragging = true);
-  marquee.addEventListener('touchstart', () => isDragging = true);
-  marquee.addEventListener('mouseup', () => setTimeout(() => isDragging = false, 200));
-  marquee.addEventListener('touchend', () => setTimeout(() => isDragging = false, 200));
+// Pause while dragging/swiping
+marquee.addEventListener('mousedown', e => {
+  isDragging = true;
+  startX = e.pageX - marquee.offsetLeft;
+  scrollLeft = marquee.scrollLeft;
+});
+marquee.addEventListener('mouseleave', () => isDragging = false);
+marquee.addEventListener('mouseup', () => isDragging = false);
+marquee.addEventListener('mousemove', e => {
+  if(!isDragging) return;
+  const x = e.pageX - marquee.offsetLeft;
+  const walk = (x - startX) * 2; // scroll-fast multiplier
+  marquee.scrollLeft = scrollLeft - walk;
+});
 
-  // Pause on hover (desktop)
-  marquee.addEventListener('mouseenter', () => isHovering = true);
-  marquee.addEventListener('mouseleave', () => isHovering = false);
+// Touch events for mobile
+marquee.addEventListener('touchstart', e => {
+  isDragging = true;
+  startX = e.touches[0].pageX - marquee.offsetLeft;
+  scrollLeft = marquee.scrollLeft;
+});
+marquee.addEventListener('touchend', () => isDragging = false);
+marquee.addEventListener('touchmove', e => {
+  if(!isDragging) return;
+  const x = e.touches[0].pageX - marquee.offsetLeft;
+  const walk = (x - startX) * 2;
+  marquee.scrollLeft = scrollLeft - walk;
+});
 
-  // Expand album on click
-  document.querySelectorAll('.album').forEach(album => {
-    album.addEventListener('click', () => {
-      album.classList.toggle('expanded');
-    });
+// Pause on hover (desktop)
+marquee.addEventListener('mouseenter', () => isHovering = true);
+marquee.addEventListener('mouseleave', () => isHovering = false);
+
+// Expand album on click
+document.querySelectorAll('.album').forEach(album => {
+  album.addEventListener('click', () => {
+    album.classList.toggle('expanded');
   });
+});
 </script>
 
 </body>

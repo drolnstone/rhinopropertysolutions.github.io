@@ -143,5 +143,25 @@
 
 <button onclick="scrollToTop()" id="topBtn" title="Go to top">↑</button>
 
+<script>
+  // Show button when scrolling down
+  window.onscroll = function() {
+    let btn = document.getElementById("topBtn");
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+      btn.style.display = "block";
+    } else {
+      btn.style.display = "none";
+    }
+  };
+
+  // Scroll to top
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+</script>
+
 </body>
 </html>

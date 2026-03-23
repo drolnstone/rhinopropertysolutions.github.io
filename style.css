@@ -126,6 +126,10 @@ select {
   font-size: 14px;
 }
 
+input[type="checkbox"] {
+  margin-right: 8px;
+}
+
 label {
   display: block;
   margin-top: 10px;

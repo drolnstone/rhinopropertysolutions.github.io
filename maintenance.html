@@ -22,6 +22,15 @@
   <p>Please complete the form below. Urgent issues should also be reported via phone 07832017376.</p>
 </section>
 
+<!-- TENANT ADVISORY -->
+<section class="section grey">
+  <p style="font-size: 14px; color: #555; font-style: italic;">
+    <strong>Note to Tenants:</strong> Please submit <em>one form per issue</em>. 
+    If you have multiple issues, submit separate forms for each. 
+    You may send all related media (photos/videos) together via WhatsApp after submitting the form.
+  </p>
+</section>
+
 <!-- FORM -->
 <section class="section grey">
 
@@ -52,7 +61,6 @@
       <option value="23 Helena Street, L9 1BH">23 Helena Street, L9 1BH</option>
       <option value="36 Kipling Street, L20 4QE">36 Kipling Street, L20 4QE</option>
       <option value="9 Scorton Street, L6 4AS">9 Scorton Street, L6 4AS</option>
-
     </select>
 
     <!-- ISSUE TYPE -->
@@ -83,11 +91,11 @@
       then send them via WhatsApp including your name and property address.
     </p>
 
-    <!-- SUBMIT -->
-<div style="display:flex; gap:10px; margin-top:10px;">
-  <button type="submit">Submit Report</button>
-  <button type="reset" style="background:#999;">Clear Form</button>
-</div>
+    <!-- SUBMIT AND RESET -->
+    <div style="display:flex; gap:10px; margin-top:10px;">
+      <button type="submit">Submit Report</button>
+      <button type="reset" style="background:#999;">Clear Form</button>
+    </div>
 
   </form>
 
@@ -109,16 +117,41 @@
   </p>
 </section>
 
-<!-- BACK -->
+<!-- BACK TO HOME -->
 <section class="section">
   <a href="/" class="btn">Back to Home</a>
 </section>
+
+<!-- BACK TO TOP BUTTON -->
+<button onclick="topFunction()" id="topBtn" title="Go to top">&#8679;</button>
 
 <!-- FOOTER -->
 <footer>
   <p>Clean. Fixed. Ready. Always.</p>
   <p>© 2026 Rhino Property Solutions. All rights reserved.</p>
 </footer>
+
+<!-- BACK TO TOP SCRIPT -->
+<script>
+//Get the button
+let topButton = document.getElementById("topBtn");
+
+// When the user scrolls down 100px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+    topButton.classList.add("show");
+  } else {
+    topButton.classList.remove("show");
+  }
+}
+
+// When the user clicks on the button, scroll to the top smoothly
+function topFunction() {
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+</script>
 
 </body>
 </html>

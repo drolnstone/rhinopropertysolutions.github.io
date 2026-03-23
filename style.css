@@ -173,17 +173,21 @@ button[type="reset"]:hover {
 #topBtn {
   display: none;
   position: fixed;
-  bottom: 80px; /* sits above WhatsApp button */
+  bottom: 80px;
   right: 20px;
   z-index: 99;
+
+  width: auto;              /* 🔥 IMPORTANT FIX */
+  padding: 14px 18px;
+
   font-size: 20px;
   border: none;
   outline: none;
   background-color: #2e7d32;
   color: white;
   cursor: pointer;
-  padding: 14px 18px;
   border-radius: 50%;
+
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 

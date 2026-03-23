@@ -176,20 +176,22 @@ button[type="reset"]:hover {
   bottom: 80px; /* sits above WhatsApp button */
   right: 20px;
   z-index: 99;
-  font-size: 18px;
+  font-size: 20px;
   border: none;
   outline: none;
   background-color: #2e7d32;
   color: white;
   cursor: pointer;
-  padding: 12px 16px;
+  padding: 14px 18px;
   border-radius: 50%;
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
 #topBtn:hover {
   background-color: #1b5e20;
+  transform: translateY(-2px);
 }
+
 /* FOOTER */
 footer {
   background: #1b5e20;

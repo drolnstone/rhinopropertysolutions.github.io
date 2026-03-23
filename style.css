@@ -100,10 +100,7 @@ body {
 
 /* Gallery container allows swipe + marquee */
 .gallery-container {
-  overflow-x: auto; /* manual scrolling */
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory; /* snap albums into view */
-  -webkit-overflow-scrolling: touch; /* smooth iOS scrolling */
+  overflow: hidden;  /* hide scrollbar */
   width: 100%;
   position: relative;
   padding: 10px 0;

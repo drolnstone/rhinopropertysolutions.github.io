@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Report Maintenance Issue | Rhino Property Solutions</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<section class="section">
+  <h1>Report a Maintenance Issue</h1>
+  <p>Please complete the form below. Urgent issues should also be reported via phone.</p>
+</section>
+
+<section class="section grey">
+
+  <form action="https://formspree.io/f/xdawvjad" method="POST" enctype="multipart/form-data">
+
+    <!-- Redirect -->
+    <input type="hidden" name="_redirect" value="https://www.rhinopropertysolutions.co.uk/thank-you.html">
+
+    <!-- Email Subject -->
+    <input type="hidden" name="_subject" value="New Maintenance Issue Report">
+
+    <!-- Auto Reply -->
+    <input type="hidden" name="_autoresponse" value="Thank you for reporting the issue. Rhino Property Solutions has received your request and will respond shortly. If this is urgent, please call 07377 634214.">
+
+    <!-- Name -->
+    <input type="text" name="name" placeholder="Full Name" required>
+
+    <!-- Email -->
+    <input type="email" name="email" placeholder="Email Address" required>
+
+    <!-- Phone -->
+    <input type="tel" name="phone" placeholder="Phone Number" required>
+
+    <!-- Property -->
+    <input type="text" name="address" placeholder="Property Address" required>
+
+    <!-- Issue Type -->
+    <select name="issue_type" required>
+      <option value="">Select Issue Type</option>
+      <option>Plumbing</option>
+      <option>Electrical</option>
+      <option>Heating</option>
+      <option>Structural</option>
+      <option>Cleaning</option>
+      <option>Other</option>
+    </select>
+
+    <!-- Priority -->
+    <select name="priority" required>
+      <option value="">Priority Level</option>
+      <option>Low</option>
+      <option>Medium</option>
+      <option>Urgent</option>
+    </select>
+
+    <!-- Description -->
+    <textarea name="message" placeholder="Describe the issue in detail (what, where, when)..." required></textarea>
+
+    <!-- File Upload -->
+    <label>Upload Photo (optional but recommended)</label>
+    <input type="file" name="attachment">
+
+    <!-- Submit -->
+    <button type="submit">Submit Report</button>
+
+  </form>
+
+</section>
+
+<!-- EXTRA INFO -->
+<section class="section">
+  <h2>Important Information</h2>
+  <p>
+    Please ensure all details are accurate. For urgent issues such as leaks,
+    electrical faults, or security concerns, contact us immediately via phone.
+  </p>
+</section>
+
+<footer>
+  <p>Rhino Property Solutions</p>
+</footer>
+
+</body>
+</html>

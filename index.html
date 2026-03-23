@@ -120,7 +120,16 @@
         </div>
       </div>
 
-      <!-- Add more albums here -->
+      <!-- Duplicate albums for seamless loop (optional) -->
+      <div class="album" data-title="Deep Cleaning Projects">
+        <img src="https://via.placeholder.com/300x200" alt="Deep Cleaning">
+        <div class="album-label">Deep Cleaning Projects</div>
+      </div>
+      <div class="album" data-title="Maintenance Works">
+        <img src="https://via.placeholder.com/300x200" alt="Maintenance">
+        <div class="album-label">Maintenance Works</div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -211,6 +220,29 @@
     });
   }
 </script>
+
+const marquee = document.querySelector('.gallery-marquee');
+let scrollSpeed = 0.5; // pixels per frame
+let isDragging = false;
+
+// Auto-scroll marquee
+function autoScroll() {
+  if (!isDragging) {
+    marquee.scrollLeft += scrollSpeed;
+    // Loop back to start when reaching the end
+    if (marquee.scrollLeft >= marquee.scrollWidth - marquee.clientWidth) {
+      marquee.scrollLeft = 0;
+    }
+  }
+  requestAnimationFrame(autoScroll);
+}
+autoScroll();
+
+// Pause scrolling while dragging/swiping
+marquee.addEventListener('mousedown', () => isDragging = true);
+marquee.addEventListener('touchstart', () => isDragging = true);
+marquee.addEventListener('mouseup', () => setTimeout(() => isDragging = false, 200));
+marquee.addEventListener('touchend', () => setTimeout(() => isDragging = false, 200));
 
 // Expand album on click
 document.querySelectorAll('.album').forEach(album => {

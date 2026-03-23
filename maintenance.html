@@ -11,14 +11,16 @@
 
 <body>
 
+<!-- HEADER -->
 <section class="section">
   <h1>Report a Maintenance Issue</h1>
-  <p>Please complete the form below. Urgent issues should also be reported via phone 07377634214.</p>
+  <p>Please complete the form below. Urgent issues should also be reported via phone.</p>
 </section>
 
+<!-- FORM -->
 <section class="section grey">
 
-  <form action="https://formspree.io/f/xdawvjad" method="POST" enctype="multipart/form-data">
+  <form action="https://formspree.io/f/xdawvjad" method="POST">
 
     <!-- Redirect -->
     <input type="hidden" name="_redirect" value="https://www.rhinopropertysolutions.co.uk/thank-you.html">
@@ -27,7 +29,7 @@
     <input type="hidden" name="_subject" value="New Maintenance Issue Report">
 
     <!-- Auto Reply -->
-<input type="hidden" name="_autoresponse" value="Thank you for reporting the issue. Rhino Property Solutions has received your request and will respond shortly. If this is urgent, please call 07377634214.">
+    <input type="hidden" name="_autoresponse" value="Thank you for reporting the issue. Rhino Property Solutions has received your request and will respond shortly. If this is urgent, please call 07377 634214.">
 
     <!-- Name -->
     <input type="text" name="name" placeholder="Full Name" required>
@@ -63,26 +65,36 @@
     <!-- Description -->
     <textarea name="message" placeholder="Describe the issue in detail (what, where, when)..." required></textarea>
 
-    <!-- File Upload -->
-    <label>Upload Media (optional but recommended)</label>
-    <input type="file" name="attachment">
+    <!-- PHOTO INSTRUCTION -->
+    <p style="font-size: 14px; color: #555;">
+      If you have photos or videos of the issue, please submit this form first,
+      then send them via WhatsApp including your name and property address.
+    </p>
 
-    <!-- Submit -->
+    <!-- SUBMIT -->
     <button type="submit">Submit Report</button>
 
   </form>
 
 </section>
 
-<!-- EXTRA INFO -->
+<!-- WHATSAPP BUTTON -->
 <section class="section">
+  <a href="https://wa.me/447377634214" class="btn">
+    Send Photos via WhatsApp
+  </a>
+</section>
+
+<!-- INFO -->
+<section class="section grey">
   <h2>Important Information</h2>
   <p>
     Please ensure all details are accurate. For urgent issues such as leaks,
-    electrical faults, or security concerns, contact us immediately via phone 07377634214.
+    electrical faults, or security concerns, contact us immediately via phone.
   </p>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <p>Rhino Property Solutions</p>
 </footer>

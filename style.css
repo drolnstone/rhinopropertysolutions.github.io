@@ -160,6 +160,25 @@ form button[type="reset"]:hover {
   background: #777;
 }
 
+/* SERVICES CHECKBOX GRID */
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  max-width: 400px;
+  margin: 10px auto;
+  text-align: left;
+}
+
+.services-grid label {
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.services-grid input[type="checkbox"] {
+  margin-right: 8px;
+}
+
 /* WHATSAPP FLOAT */
 .whatsapp {
   position: fixed;
@@ -222,6 +241,7 @@ footer {
     font-size: 2em;
   }
 
+
   .services {
     flex-direction: column;
     align-items: center;
@@ -230,5 +250,11 @@ footer {
   .gallery img {
     width: 90%;
     height: auto;
+  }
+}
+
+@media (max-width: 500px) {
+  .services-grid {
+    grid-template-columns: 1fr;
   }
 }

@@ -264,6 +264,11 @@ footer {
 /* MOBILE FIX FOR CHECKBOX GRID */
 @media (max-width: 500px) {
   .services-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr; /* keep 2 columns */
+    gap: 8px;
+  }
+
+  .services-grid label {
+    font-size: 13px; /* slightly smaller for fit */
   }
 }

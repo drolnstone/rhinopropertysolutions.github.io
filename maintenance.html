@@ -14,7 +14,7 @@
 <!-- HEADER -->
 <section class="section">
   <h1>Report a Maintenance Issue</h1>
-  <p>Please complete the form below. Urgent issues should also be reported via phone.</p>
+  <p>Please complete the form below. Urgent issues should also be reported via phone 07377634214.</p>
 </section>
 
 <!-- FORM -->
@@ -40,10 +40,24 @@
     <!-- Phone -->
     <input type="tel" name="phone" placeholder="Phone Number" required>
 
-    <!-- Property -->
-    <input type="text" name="address" placeholder="Property Address" required>
+    <!-- PROPERTY DROPDOWN -->
+    <select name="property" required>
+      <option value="">Select Property</option>
+      <option value="36 Kipling Street, Bootle, L20 4QE">36 Kipling Street, Bootle, L20 4QE</option>
+      <option value="23 Helena Street, Liverpool, L9 1BH">23 Helena Street, Liverpool, L9 1BH</option>
+      <option value="9 Scorton Street, Liverpool, L6 4AS">9 Scorton Street, Liverpool, L6 4AS</option>
+      <option value="80 Dewsbury Road, Liverpool, L4 2XE">80 Dewsbury Road, Liverpool, L4 2XE</option>
+    </select>
 
-    <!-- Issue Type -->
+    <!-- HELPER TEXT -->
+    <p style="font-size:14px; color:#555;">
+      Select your property. If unsure, check your tenancy agreement.
+    </p>
+
+    <!-- UNIT -->
+    <input type="text" name="unit" placeholder="Flat / Room Number (if applicable)">
+
+    <!-- ISSUE TYPE -->
     <select name="issue_type" required>
       <option value="">Select Issue Type</option>
       <option>Plumbing</option>
@@ -54,7 +68,7 @@
       <option>Other</option>
     </select>
 
-    <!-- Priority -->
+    <!-- PRIORITY -->
     <select name="priority" required>
       <option value="">Priority Level</option>
       <option>Low</option>
@@ -62,7 +76,7 @@
       <option>Urgent</option>
     </select>
 
-    <!-- Description -->
+    <!-- DESCRIPTION -->
     <textarea name="message" placeholder="Describe the issue in detail (what, where, when)..." required></textarea>
 
     <!-- PHOTO INSTRUCTION -->
@@ -90,7 +104,7 @@
   <h2>Important Information</h2>
   <p>
     Please ensure all details are accurate. For urgent issues such as leaks,
-    electrical faults, or security concerns, contact us immediately via phone.
+    electrical faults, or security concerns, contact us immediately via phone 07377634214.
   </p>
 </section>
 

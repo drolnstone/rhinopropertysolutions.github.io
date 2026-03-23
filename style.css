@@ -169,6 +169,27 @@ button[type="reset"]:hover {
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
+/* BACK TO TOP BUTTON */
+#topBtn {
+  display: none;
+  position: fixed;
+  bottom: 80px; /* sits above WhatsApp button */
+  right: 20px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #2e7d32;
+  color: white;
+  cursor: pointer;
+  padding: 12px 16px;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+#topBtn:hover {
+  background-color: #1b5e20;
+}
 /* FOOTER */
 footer {
   background: #1b5e20;

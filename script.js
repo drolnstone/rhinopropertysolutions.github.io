@@ -1,37 +1,29 @@
-// ---------------------------
-// BACK TO TOP BUTTON
-// ---------------------------
-const topBtn = document.getElementById("topBtn");
-
-window.addEventListener('scroll', () => {
+// Back to top button
+window.onscroll = function() {
+  const btn = document.getElementById("topBtn");
   if (document.documentElement.scrollTop > 200) {
-    topBtn.classList.add("show");
+    btn.classList.add("show");
   } else {
-    topBtn.classList.remove("show");
+    btn.classList.remove("show");
   }
-});
+};
 
-topBtn.addEventListener('click', () => {
+function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
-});
+}
 
-// ---------------------------
-// GALLERY MARQUEE
-// ---------------------------
+// Gallery marquee
 const marquee = document.querySelector('.gallery-marquee');
 let scrollSpeed = 0.5;
 let isDragging = false;
-let isHovering = false;
 let startX, scrollLeft;
 
-// Duplicate content for seamless infinite loop
+// Duplicate marquee content for infinite scroll
 marquee.innerHTML += marquee.innerHTML;
 
-// AUTO SCROLL
 function autoScroll() {
-  if (!isDragging && !isHovering) {
+  if (!isDragging) {
     marquee.scrollLeft += scrollSpeed;
-    // Reset to start when reaching half the content
     if (marquee.scrollLeft >= marquee.scrollWidth / 2) {
       marquee.scrollLeft = 0;
     }
@@ -40,51 +32,34 @@ function autoScroll() {
 }
 autoScroll();
 
-// ---------------------------
-// MOUSE DRAG
-// ---------------------------
+// Mouse drag
 marquee.addEventListener('mousedown', e => {
   isDragging = true;
   startX = e.pageX - marquee.offsetLeft;
   scrollLeft = marquee.scrollLeft;
 });
-
 marquee.addEventListener('mouseleave', () => isDragging = false);
 marquee.addEventListener('mouseup', () => isDragging = false);
-
 marquee.addEventListener('mousemove', e => {
   if (!isDragging) return;
   const x = e.pageX - marquee.offsetLeft;
-  const walk = (x - startX) * 2; // speed multiplier
-  marquee.scrollLeft = scrollLeft - walk;
+  marquee.scrollLeft = scrollLeft - (x - startX) * 2;
 });
 
-// ---------------------------
-// TOUCH DRAG
-// ---------------------------
+// Touch drag
 marquee.addEventListener('touchstart', e => {
   isDragging = true;
   startX = e.touches[0].pageX - marquee.offsetLeft;
   scrollLeft = marquee.scrollLeft;
 });
-
 marquee.addEventListener('touchend', () => isDragging = false);
-
 marquee.addEventListener('touchmove', e => {
   if (!isDragging) return;
-  const x = e.touches[0].pageX - startX;
-  marquee.scrollLeft = scrollLeft - x * 2;
+  const x = e.touches[0].pageX - marquee.offsetLeft;
+  marquee.scrollLeft = scrollLeft - (x - startX) * 2;
 });
 
-// ---------------------------
-// HOVER PAUSE (Desktop)
-// ---------------------------
-marquee.addEventListener('mouseenter', () => isHovering = true);
-marquee.addEventListener('mouseleave', () => isHovering = false);
-
-// ---------------------------
-// ALBUM EXPAND ON CLICK
-// ---------------------------
+// Expand album on click (not during drag)
 document.querySelectorAll('.album').forEach(album => {
   album.addEventListener('click', () => {
     if (!isDragging) album.classList.toggle('expanded');

@@ -36,6 +36,10 @@ body {
   height: 50vh;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 /* BUTTON */
 .btn {
   display: inline-block;
@@ -178,7 +182,7 @@ select {
   margin: 10px 0;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 /* FIX CHECKBOX GLOBAL CONFLICT */

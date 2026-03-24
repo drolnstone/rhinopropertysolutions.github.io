@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Report Maintenance Issue | Rhino Property Solutions</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -24,32 +25,21 @@
 <section class="section grey">
   <p style="font-size: 14px; color: #555; font-style: italic;">
     <strong>Note to Tenants:</strong> Please submit <em>one form per issue</em>. 
-    If you have multiple issues, submit separate forms for each. 
-    You may send all related media (photos/videos) together via WhatsApp after submitting the form.
+    You may send all media together via WhatsApp after submitting the form.
   </p>
 </section>
 
 <!-- FORM -->
 <section class="section">
   <form action="https://formspree.io/f/xdawvjad" method="POST">
-
-    <!-- Redirect -->
     <input type="hidden" name="_redirect" value="https://www.rhinopropertysolutions.co.uk/thank-you.html">
-    <!-- Email Subject -->
     <input type="hidden" name="_subject" value="New Maintenance Issue Report">
-    <!-- Auto Reply -->
-    <input type="hidden" name="_autoresponse" value="Thank you for reporting the issue. Rhino Property Solutions has received your request and will respond shortly. If this is urgent, please call 07832017376.">
+    <input type="hidden" name="_autoresponse" value="Thank you for reporting the issue. Rhino Property Solutions has received your request and will respond shortly. If urgent, call 07832017376.">
 
-    <!-- Name -->
     <input type="text" name="name" placeholder="Full Name" required>
-
-    <!-- Email -->
     <input type="email" name="email" placeholder="Email Address" required>
-
-    <!-- Phone -->
     <input type="tel" name="phone" placeholder="Phone Number" required>
 
-    <!-- PROPERTY DROPDOWN -->
     <select name="property" required>
       <option value="">Select Property</option>
       <option value="80 Dewsbury Road, L4 2XE">80 Dewsbury Road, L4 2XE</option>
@@ -58,7 +48,6 @@
       <option value="9 Scorton Street, L6 4AS">9 Scorton Street, L6 4AS</option>
     </select>
 
-    <!-- ISSUE TYPE -->
     <select name="issue_type" required>
       <option value="">Select Issue Type</option>
       <option>Plumbing</option>
@@ -69,7 +58,6 @@
       <option>Other</option>
     </select>
 
-    <!-- PRIORITY -->
     <select name="priority" required>
       <option value="">Priority Level</option>
       <option>Low</option>
@@ -77,37 +65,22 @@
       <option>Urgent</option>
     </select>
 
-    <!-- DESCRIPTION -->
     <textarea name="message" placeholder="Describe the issue in detail (what, where, when)..." required></textarea>
 
-    <!-- PHOTO INSTRUCTION -->
-    <p style="font-size: 14px; color: #555;">
-      If you have photos or videos of the issue, please submit this form first,
-      then send them via WhatsApp including your name and property address.
+    <p style="font-size:14px; color:#555;">
+      Photos/videos should be sent via WhatsApp after submitting the form.
     </p>
 
-    <!-- SUBMIT AND RESET -->
-    <div style="display:flex; gap:10px; margin-top:10px; flex-wrap: wrap;">
-      <button type="submit" class="btn">Submit Report</button>
-      <button type="reset" style="background:#999;" class="btn">Clear Form</button>
+    <div style="display:flex; gap:10px; margin-top:10px;">
+      <button type="submit">Submit Report</button>
+      <button type="reset" style="background:#999;">Clear Form</button>
     </div>
   </form>
 </section>
 
 <!-- WHATSAPP BUTTON -->
 <section class="section grey">
-  <a href="https://wa.me/447832017376" class="btn">
-    Send Photos via WhatsApp
-  </a>
-</section>
-
-<!-- INFO -->
-<section class="section">
-  <h2>Important Information</h2>
-  <p>
-    Please ensure all details are accurate. For urgent issues such as leaks,
-    electrical faults, or security concerns, contact us immediately via phone 07832017376.
-  </p>
+  <a href="https://wa.me/447832017376" class="btn">Send Photos via WhatsApp</a>
 </section>
 
 <!-- BACK TO HOME -->
@@ -115,34 +88,16 @@
   <a href="/" class="btn">Back to Home</a>
 </section>
 
-<!-- BACK TO TOP BUTTON -->
-<button onclick="topFunction()" id="topBtn" title="Go to top">↑</button>
-
 <!-- FOOTER -->
 <footer>
   <p>Clean. Fixed. Ready. Always.</p>
   <p>© 2026 Rhino Property Solutions. All rights reserved.</p>
 </footer>
 
-<!-- BACK TO TOP SCRIPT -->
-<script>
-  // Get the button
-  const topButton = document.getElementById("topBtn");
+<!-- BACK TO TOP -->
+<button id="topBtn" title="Go to top">↑</button>
 
-  // Show button on scroll
-  window.onscroll = function() {
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-      topButton.classList.add("show");
-    } else {
-      topButton.classList.remove("show");
-    }
-  };
-
-  // Smooth scroll to top
-  function topFunction() {
-    window.scrollTo({top: 0, behavior: 'smooth'});
-  }
-</script>
+<script src="common.js"></script>
 
 </body>
 </html>

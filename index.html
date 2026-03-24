@@ -14,16 +14,138 @@
 
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.png">
-</head>
 
+  <style>
+  /* GENERAL */
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                url('https://via.placeholder.com/1600x800') no-repeat center/cover;
+    height: 90vh;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo { width: 180px; margin-bottom: 20px; }
+
+  .hero h1 { font-size: 3em; color: #4CAF50; }
+  .hero p { font-size: 1.2em; }
+
+  /* BUTTON */
+  .btn {
+    display: inline-block;
+    padding: 14px 30px;
+    background: #f37021;
+    color: white;
+    text-decoration: none;
+    margin-top: 20px;
+    font-weight: bold;
+    border-radius: 30px;
+    transition: 0.3s;
+  }
+
+  .btn:hover { background: #d95f0e; }
+
+  /* SECTIONS */
+  .section { padding: 60px 20px; text-align: center; border-bottom: 1px solid #eee; }
+  .section h2 { color: #2e7d32; }
+  .grey { background: #f4f4f4; }
+  .intro, .about { max-width: 700px; margin: auto; }
+
+  /* SERVICES */
+  .services { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+  .card {
+    background: white;
+    padding: 25px;
+    width: 260px;
+    border-left: 5px solid #4CAF50;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    transition: 0.3s;
+  }
+  .card:hover { transform: translateY(-5px); }
+  .card h3 { color: #2e7d32; }
+
+  /* GALLERY */
+  .gallery-container { overflow: hidden; width: 100%; position: relative; padding: 10px 0; }
+  .gallery-marquee {
+    display: flex;
+    gap: 20px;
+    min-width: max-content;
+    animation: marquee 30s linear infinite;
+  }
+  .album { scroll-snap-align: start; flex-shrink: 0; min-width: 300px; cursor: pointer; transition: transform 0.3s; position: relative; }
+  .album img { width: 100%; border-radius: 6px; display: block; }
+  .album-label {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    padding: 5px 10px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: 0.9rem;
+    border-radius: 4px;
+  }
+  .album-content { display: none; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+  .album-content img { width: 90px; border-radius: 4px; }
+  .album.expanded .album-content { display: flex; }
+  .album.expanded { transform: scale(1.05); z-index: 10; }
+
+  /* MARQUEE KEYFRAMES */
+  @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+  /* FORMS */
+  form { max-width: 400px; margin: auto; }
+  input, textarea, select { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
+  input[type="checkbox"] { width: auto; margin: 0; }
+  label { display: block; margin-top: 10px; font-weight: bold; }
+  form button {
+    background: #2e7d32; color: white; padding: 12px; border: none; width: 100%; font-weight: bold; cursor: pointer; border-radius: 4px;
+  }
+  form button:hover { background: #1b5e20; }
+  form button[type="reset"] { background: #999; }
+  form button[type="reset"]:hover { background: #777; }
+  .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 400px; margin: 10px auto; }
+  .services-grid label { display: flex; align-items: center; gap: 10px; font-weight: normal; font-size: 14px; padding: 4px 0; }
+
+  /* WHATSAPP FLOAT */
+  .whatsapp { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; padding: 15px 20px; text-decoration: none; border-radius: 50px; font-weight: bold; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+
+  /* BACK TO TOP */
+  #topBtn {
+    display: none; position: fixed; bottom: 80px; right: 20px; z-index: 99; width: 50px; height: 50px; font-size: 20px; border: none; outline: none; background-color: #2e7d32; color: white; cursor: pointer; border-radius: 50%; box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  }
+  #topBtn.show { display: flex; align-items: center; justify-content: center; }
+  #topBtn:hover { background-color: #1b5e20; transform: translateY(-2px); }
+
+  /* FOOTER */
+  footer { background: #1b5e20; color: white; text-align: center; padding: 20px; }
+
+  /* MOBILE OPTIMIZATION */
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 2em; }
+    .services { flex-direction: column; align-items: center; }
+  }
+  @media (max-width: 1024px) {
+    .gallery-marquee { animation: none; overflow-x: auto; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+    .gallery-marquee::-webkit-scrollbar { display:none; }
+  }
+  </style>
+</head>
 <body>
 
 <!-- HERO -->
 <header class="hero">
   <div>
-    <a href="" onclick="location.reload(true); return false;">
-      <img src="logo.png" alt="Rhino Property Solutions" class="logo">
-    </a>
+    <a href="" onclick="location.reload(true); return false;"><img src="logo.png" alt="Rhino Property Solutions" class="logo"></a>
     <h1>Specialists in Total Property Care</h1>
     <p>Serving Landlords, Homeowners & Property Investors Across Liverpool</p>
     <a href="#contact" class="btn">Get a Free Quote</a>
@@ -32,46 +154,24 @@
 
 <!-- INTRO -->
 <section class="section">
-  <p class="intro">
-   From cleaning and maintenance to sourcing and full property management,
-    we deliver reliable, end-to-end property solutions you can trust.
-  </p>
+  <p class="intro">From cleaning and maintenance to sourcing and full property management, we deliver reliable, end-to-end property solutions you can trust.</p>
 </section>
 
 <!-- ABOUT -->
 <section class="section grey">
   <h2>About Us</h2>
-  <p class="about">
-    With strong hands-on experience in maintenance, technical services and property operations,
-    Rhino Property Solutions provides dependable, detail-focused support with practical solutions 
-    that deliver results and are tailored to your specific property needs.
-  </p>
+  <p class="about">With strong hands-on experience in maintenance, technical services and property operations, Rhino Property Solutions provides dependable, detail-focused support with practical solutions that deliver results and are tailored to your specific property needs.</p>
 </section>
 
 <!-- SERVICES -->
 <section class="section">
   <h2>Integrated Property Services</h2>
   <div class="services">
-    <div class="card">
-      <h3>Cleaning Solutions</h3>
-      <p>Routine, deep cleaning, and end-of-tenancy cleaning to inspection-ready standards.</p>
-    </div>
-    <div class="card">
-      <h3>Building Maintenance & Asset Care</h3>
-      <p>Repairs, fabric maintenance, and essential building services.</p>
-    </div>
-    <div class="card">
-      <h3>Snagging & Property Inspections</h3>
-      <p>Detailed inspections ensuring defects are identified before purchase.</p>
-    </div>
-    <div class="card">
-      <h3>Property Sourcing & Sales Support</h3>
-      <p>Connecting motivated sellers with ready buyers and supporting property investments.</p>
-    </div>
-    <div class="card">
-      <h3>Full Property Management</h3>
-      <p>Tenant sourcing, prequalification checks, landlord support, and full management.</p>
-    </div>
+    <div class="card"><h3>Cleaning Solutions</h3><p>Routine, deep cleaning, and end-of-tenancy cleaning to inspection-ready standards.</p></div>
+    <div class="card"><h3>Building Maintenance & Asset Care</h3><p>Repairs, fabric maintenance, and essential building services.</p></div>
+    <div class="card"><h3>Snagging & Property Inspections</h3><p>Detailed inspections ensuring defects are identified before purchase.</p></div>
+    <div class="card"><h3>Property Sourcing & Sales Support</h3><p>Connecting motivated sellers with ready buyers and supporting property investments.</p></div>
+    <div class="card"><h3>Full Property Management</h3><p>Tenant sourcing, prequalification checks, landlord support, and full management.</p></div>
   </div>
 </section>
 
@@ -80,106 +180,14 @@
   <h2>Our Work</h2>
   <div class="gallery-container">
     <div class="gallery-marquee">
-      
-      <!-- Album 1: Deep Cleaning -->
-      <div class="album" data-title="Deep Cleaning Projects">
-        <img src="https://via.placeholder.com/300x200" alt="Deep Cleaning Project 1">
-        <div class="album-label">Deep Cleaning Projects</div>
-        <div class="album-content">
-          <img src="https://via.placeholder.com/150x100" alt="Cleaning 1">
-          <img src="https://via.placeholder.com/150x100" alt="Cleaning 2">
-          <img src="https://via.placeholder.com/150x100" alt="Cleaning 3">
-        </div>
-      </div>
-
-      <!-- Album 2: Maintenance Works -->
-      <div class="album" data-title="Maintenance Works">
-        <img src="https://via.placeholder.com/300x200" alt="Maintenance Project 1">
-        <div class="album-label">Maintenance Works</div>
-        <div class="album-content">
-          <img src="https://via.placeholder.com/150x100" alt="Maintenance 1">
-          <img src="https://via.placeholder.com/150x100" alt="Maintenance 2">
-          <img src="https://via.placeholder.com/150x100" alt="Maintenance 3">
-        </div>
-      </div>
-
-      <!-- Album 3: Snagging Inspections -->
-      <div class="album" data-title="Snagging Inspections">
-        <img src="https://via.placeholder.com/300x200" alt="Snagging Inspection 1">
-        <div class="album-label">Snagging Inspections</div>
-        <div class="album-content">
-          <img src="https://via.placeholder.com/150x100" alt="Inspection 1">
-          <img src="https://via.placeholder.com/150x100" alt="Inspection 2">
-          <img src="https://via.placeholder.com/150x100" alt="Inspection 3">
-        </div>
-      </div>
-
-      <!-- Album 4: Painting-->
-      <div class="album" data-title="Painting Projects">
-        <img src="https://via.placeholder.com/300x200" alt="Painting Project 1">
-        <div class="album-label">Painting Projects</div>
-        <div class="album-content">
-          <img src="https://via.placeholder.com/150x100" alt="Painting 1">
-          <img src="https://via.placeholder.com/150x100" alt="Painting 2">
-          <img src="https://via.placeholder.com/150x100" alt="Painting 3">
-        </div>
-      </div>
-
-      <!-- Album 5: Refurbishment -->
-      <div class="album" data-title="Refurbishment Projects">
-        <img src="https://via.placeholder.com/300x200" alt="Refurbishment Project 1">
-        <div class="album-label">Refurbishment Projects</div>
-        <div class="album-content">
-          <img src="https://via.placeholder.com/150x100" alt="Refurbishment 1">
-          <img src="https://via.placeholder.com/150x100" alt="Refurbishment 2">
-          <img src="https://via.placeholder.com/150x100" alt="Refurbishment 3">
-        </div>
-      </div>
-
-      <!-- Album 6: Plumbing -->
-      <div class="album" data-title="Plumbing Projects">
-        <img src="https://via.placeholder.com/300x200" alt="Plumbing Project 1">
-        <div class="album-label">Plumbing Projects</div>
-        <div class="album-content">
-          <img src="https://via.placeholder.com/150x100" alt="Plumbing 1">
-          <img src="https://via.placeholder.com/150x100" alt="Plumbing 2">
-          <img src="https://via.placeholder.com/150x100" alt="Plumbing 3">
-        </div>
-      </div>
-
-      <!-- Album 7: Boiler -->
-      <div class="album" data-title="Boiler Projects">
-        <img src="https://via.placeholder.com/300x200" alt="Boiler Project 1">
-        <div class="album-label">Boiler Projects</div>
-        <div class="album-content">
-          <img src="https://via.placeholder.com/150x100" alt="Boiler 1">
-          <img src="https://via.placeholder.com/150x100" alt="Boiler 2">
-          <img src="https://via.placeholder.com/150x100" alt="Boiler 3">
-        </div>
-      </div>
-
-      <!-- Album 8: Shower -->
-      <div class="album" data-title="Shower Projects">
-        <img src="https://via.placeholder.com/300x200" alt="Shower Project 1">
-        <div class="album-label">Shower Projects</div>
-        <div class="album-content">
-          <img src="https://via.placeholder.com/150x100" alt="Shower 1">
-          <img src="https://via.placeholder.com/150x100" alt="Shower 2">
-          <img src="https://via.placeholder.com/150x100" alt="Shower 3">
-        </div>
-      </div>
-
-       <!-- Album 9: Untitled -->
-      <div class="album" data-title="Untitled Projects">
-        <img src="https://via.placeholder.com/300x200" alt="Untitled Project 1">
-        <div class="album-label">Untitled Projects</div>
-        <div class="album-content">
-          <img src="https://via.placeholder.com/150x100" alt="Untitled 1">
-          <img src="https://via.placeholder.com/150x100" alt="Untitled 2">
-          <img src="https://via.placeholder.com/150x100" alt="Untitled 3">
-        </div>
-      </div>
-      
+      <!-- Albums (repeat for CSS marquee) -->
+      <div class="album"><img src="https://via.placeholder.com/300x200" alt="Deep Cleaning"><div class="album-label">Deep Cleaning</div><div class="album-content"><img src="https://via.placeholder.com/150x100"><img src="https://via.placeholder.com/150x100"><img src="https://via.placeholder.com/150x100"></div></div>
+      <div class="album"><img src="https://via.placeholder.com/300x200" alt="Maintenance"><div class="album-label">Maintenance</div><div class="album-content"><img src="https://via.placeholder.com/150x100"><img src="https://via.placeholder.com/150x100"><img src="https://via.placeholder.com/150x100"></div></div>
+      <div class="album"><img src="https://via.placeholder.com/300x200" alt="Snagging"><div class="album-label">Snagging</div><div class="album-content"><img src="https://via.placeholder.com/150x100"><img src="https://via.placeholder.com/150x100"><img src="https://via.placeholder.com/150x100"></div></div>
+      <!-- Repeat for seamless marquee -->
+      <div class="album"><img src="https://via.placeholder.com/300x200" alt="Deep Cleaning"><div class="album-label">Deep Cleaning</div></div>
+      <div class="album"><img src="https://via.placeholder.com/300x200" alt="Maintenance"><div class="album-label">Maintenance</div></div>
+      <div class="album"><img src="https://via.placeholder.com/300x200" alt="Snagging"><div class="album-label">Snagging</div></div>
     </div>
   </div>
 </section>
@@ -187,11 +195,7 @@
 <!-- LOCATION SEO -->
 <section class="section">
   <h2>Property Services in Liverpool</h2>
-  <p class="about">
-    We provide trusted property services throughout Liverpool, including cleaning,
-    maintenance, inspections, and full property management for landlords,
-    homeowners and property investors.
-  </p>
+  <p class="about">We provide trusted property services throughout Liverpool, including cleaning, maintenance, inspections, and full property management for landlords, homeowners and property investors.</p>
 </section>
 
 <!-- CTA -->
@@ -236,9 +240,7 @@
 </section>
 
 <!-- WHATSAPP -->
-<a href="https://wa.me/447832017376" class="whatsapp" target="_blank">
-  Chat on WhatsApp
-</a>
+<a href="https://wa.me/447832017376" class="whatsapp" target="_blank">Chat on WhatsApp</a>
 
 <!-- FOOTER -->
 <footer>
@@ -248,75 +250,30 @@
 
 <button onclick="scrollToTop()" id="topBtn" title="Go to top">↑</button>
 
-<!-- JS -->
 <script>
   // Back to top button
   window.onscroll = function() {
     let btn = document.getElementById("topBtn");
-    if (document.documentElement.scrollTop > 200) {
-      btn.classList.add("show");
-    } else {
-      btn.classList.remove("show");
-    }
+    if (document.documentElement.scrollTop > 200) { btn.classList.add("show"); } 
+    else { btn.classList.remove("show"); }
   };
-  function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
+  function scrollToTop() { window.scrollTo({ top: 0, behavior: "smooth" }); }
 
-  // Gallery Marquee
-  const marquee = document.querySelector('.gallery-marquee');
-  let scrollSpeed = 0.5;
-  let isDragging = false;
-  let startX, scrollLeft;
-
-  // Duplicate content for infinite loop
-  marquee.innerHTML += marquee.innerHTML;
-
-  function autoScroll() {
-    if (!isDragging) {
-      marquee.scrollLeft += scrollSpeed;
-      if (marquee.scrollLeft >= marquee.scrollWidth / 2) {
-        marquee.scrollLeft = 0;
-      }
-    }
-    requestAnimationFrame(autoScroll);
-  }
-  autoScroll();
-
-  // Mouse drag
-  marquee.addEventListener('mousedown', e => {
-    isDragging = true;
-    startX = e.pageX - marquee.offsetLeft;
-    scrollLeft = marquee.scrollLeft;
-  });
-  marquee.addEventListener('mouseleave', () => isDragging = false);
-  marquee.addEventListener('mouseup', () => isDragging = false);
-  marquee.addEventListener('mousemove', e => {
-    if (!isDragging) return;
-    const x = e.pageX - marquee.offsetLeft;
-    const walk = (x - startX) * 2;
-    marquee.scrollLeft = scrollLeft - walk;
-  });
-
-  // Touch drag
-  marquee.addEventListener('touchstart', e => {
-    isDragging = true;
-    startX = e.touches[0].pageX - marquee.offsetLeft;
-    scrollLeft = marquee.scrollLeft;
-  });
-  marquee.addEventListener('touchend', () => isDragging = false);
-  marquee.addEventListener('touchmove', e => {
-    if (!isDragging) return;
-    const x = e.touches[0].pageX - startX;
-    marquee.scrollLeft = scrollLeft - x * 2;
-  });
-
-  // Album expand on click (only if not dragging)
+  // Album expand
   document.querySelectorAll('.album').forEach(album => {
-    album.addEventListener('click', () => {
-      if (!isDragging) album.classList.toggle('expanded');
-    });
+    album.addEventListener('click', () => { album.classList.toggle('expanded'); });
   });
+
+  // Optional: Drag to scroll (desktop + mobile)
+  const marquee = document.querySelector('.gallery-marquee');
+  let isDragging = false, startX, scrollLeft;
+  marquee.addEventListener('mousedown', e => { isDragging=true; startX=e.pageX-marquee.offsetLeft; scrollLeft=marquee.scrollLeft; marquee.style.cursor='grabbing'; });
+  marquee.addEventListener('mouseup', ()=>{isDragging=false; marquee.style.cursor='grab';});
+  marquee.addEventListener('mouseleave', ()=>{isDragging=false; marquee.style.cursor='grab';});
+  marquee.addEventListener('mousemove', e=>{if(!isDragging)return; const x=e.pageX-marquee.offsetLeft; marquee.scrollLeft=scrollLeft-(x-startX)*2;});
+  marquee.addEventListener('touchstart', e=>{isDragging=true; startX=e.touches[0].pageX-marquee.offsetLeft; scrollLeft=marquee.scrollLeft;});
+  marquee.addEventListener('touchend', ()=>isDragging=false);
+  marquee.addEventListener('touchmove', e=>{if(!isDragging)return; const x=e.touches[0].pageX-startX; marquee.scrollLeft=scrollLeft-x*2;});
 </script>
 
 </body>

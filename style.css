@@ -106,7 +106,7 @@ body {
 .gallery-marquee {
   display: flex;
   gap: 20px;
-  animation: marquee 30s linear infinite;
+  animation: marquee 10s linear infinite;
 }
 
 @keyframes marquee {

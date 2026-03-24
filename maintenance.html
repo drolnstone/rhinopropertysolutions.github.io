@@ -31,7 +31,6 @@
 
   <p style="font-size: 14px; color: #555; font-style: italic; margin-top: 15px;">
    <strong>Tenant Guidance:</strong> If you have multiple issues, submit separate forms for each. 
-    You may send all related media (photos/videos) together via WhatsApp after submitting the form.
   </p>
 </section>
 
@@ -47,7 +46,7 @@
     <input type="hidden" name="_subject" value="New Maintenance Issue Report">
 
     <!-- Auto Reply -->
-    <input type="hidden" name="_autoresponse" value="Thank you for reporting the issue. Rhino Property Solutions has received your request and will respond shortly. If this is urgent, please call 07377 634214.">
+    <input type="hidden" name="_autoresponse" value="Thank you for reporting the issue. Rhino Property Solutions has received your request and will respond shortly. If this is urgent, please call 07832017376.">
 
     <!-- Name -->
     <input type="text" name="name" placeholder="Full Name" required>
@@ -89,11 +88,9 @@
     <!-- DESCRIPTION -->
     <textarea name="message" placeholder="Describe the issue in detail (what, where, when)..." required></textarea>
 
-    <!-- PHOTO INSTRUCTION -->
-    <p style="font-size: 14px; color: #555;">
-      If you have photos or videos of the issue, please submit this form first,
-      then send them via WhatsApp including your name and property address.
-    </p>
+    <!-- File Upload -->
+    <label>Upload Media (optional but recommended)</label>
+    <input type="file" name="attachment">
 
     <!-- SUBMIT AND RESET -->
     <div style="display:flex; gap:10px; margin-top:10px;">
@@ -105,15 +102,8 @@
 
 </section>
 
-<!-- WHATSAPP BUTTON -->
-<section class="section grey">
-  <a href="https://wa.me/447832017376" class="btn">
-    Send Photos via WhatsApp
-  </a>
-</section>
-
 <!-- INFO -->
-<section class="section">
+<section class="section grey">
   <h2>Important Information</h2>
   <p>
     Please ensure all details are accurate. For urgent issues such as leaks,
@@ -122,7 +112,7 @@
 </section>
 
 <!-- BACK TO HOME -->
-<section class="section grey">
+<section class="section">
   <a href="/" class="btn">Back to Home</a>
 </section>
 

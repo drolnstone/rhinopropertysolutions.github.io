@@ -199,6 +199,14 @@
       behavior: "smooth"
     });
   }
+  
+  // Expand album on click
+document.querySelectorAll('.album').forEach(album => {
+  album.addEventListener('click', () => {
+    album.classList.toggle('expanded');
+  });
+});
+
 </script>
 
 </body>

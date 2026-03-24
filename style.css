@@ -32,6 +32,10 @@ body {
   font-size: 1.2em;
 }
 
+.hero.small {
+  height: 50vh;
+}
+
 /* BUTTON */
 .btn {
   display: inline-block;

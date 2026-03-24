@@ -21,9 +21,9 @@
 <!-- HERO -->
 <header class="hero">
   <div>
-    <a href="/" onclick="location.reload(true); return false;">
-      <img src="logo.png" alt="Rhino Property Solutions" class="logo">
-    </a>
+<a href="" onclick="location.reload(true); return false;">
+  <img src="logo.png" alt="Rhino Property Solutions" class="logo">
+</a>
     <h1>Specialists in Total Property Care</h1>
     <p>Serving Landlords, Homeowners & Property Investors Across Liverpool</p>
     <a href="#contact" class="btn">Get a Free Quote</a>
@@ -52,55 +52,42 @@
 <section class="section">
   <h2>Integrated Property Services</h2>
   <div class="services">
+
     <div class="card">
       <h3>Cleaning Solutions</h3>
       <p>Routine, deep cleaning, and end-of-tenancy cleaning to inspection-ready standards.</p>
     </div>
+
     <div class="card">
       <h3>Building Maintenance & Asset Care</h3>
       <p>Repairs, fabric maintenance, and essential building services.</p>
     </div>
+
     <div class="card">
       <h3>Snagging & Property Inspections</h3>
       <p>Detailed inspections ensuring defects are identified before purchase.</p>
     </div>
+
     <div class="card">
       <h3>Property Sourcing & Sales Support</h3>
       <p>Connecting motivated sellers with ready buyers and supporting property investments.</p>
     </div>
+
     <div class="card">
       <h3>Full Property Management</h3>
       <p>Tenant sourcing, prequalification checks, landlord support, and full management.</p>
     </div>
+
   </div>
 </section>
 
 <!-- GALLERY -->
 <section class="section grey">
   <h2>Our Work</h2>
-  <div class="gallery-container">
-    <div class="gallery-marquee">
-      <!-- Add all albums here as in previous version -->
-      <div class="album" data-title="Deep Cleaning Projects">
-        <img src="https://via.placeholder.com/300x200" alt="Deep Cleaning">
-        <div class="album-label">Deep Cleaning Projects</div>
-        <div class="album-content">
-          <img src="https://via.placeholder.com/150x100" alt="Cleaning 1">
-          <img src="https://via.placeholder.com/150x100" alt="Cleaning 2">
-          <img src="https://via.placeholder.com/150x100" alt="Cleaning 3">
-        </div>
-      </div>
-      <div class="album" data-title="Maintenance Works">
-        <img src="https://via.placeholder.com/300x200" alt="Maintenance">
-        <div class="album-label">Maintenance Works</div>
-        <div class="album-content">
-          <img src="https://via.placeholder.com/150x100" alt="Maintenance 1">
-          <img src="https://via.placeholder.com/150x100" alt="Maintenance 2">
-          <img src="https://via.placeholder.com/150x100" alt="Maintenance 3">
-        </div>
-      </div>
-      <!-- Add remaining albums (Snagging, Painting, Refurbishment, etc.) -->
-    </div>
+  <div class="gallery">
+    <img src="https://via.placeholder.com/300x200" alt="">
+    <img src="https://via.placeholder.com/300x200" alt="">
+    <img src="https://via.placeholder.com/300x200" alt="">
   </div>
 </section>
 
@@ -114,7 +101,7 @@
   </p>
 </section>
 
-<!-- CTA -->
+  <!-- CTA -->
 <section class="section grey">
   <h2>Ready to Get Started?</h2>
   <p>Contact us today for reliable property solutions you can trust.</p>
@@ -124,39 +111,45 @@
 <!-- CONTACT -->
 <section class="section" id="contact">
   <h2>Contact Us</h2>
+
   <p><strong>Phone:</strong> 07832017376</p>
   <p><strong>Email:</strong> info@rhinopropertysolutions.co.uk</p>
   <p><strong>Location:</strong> Liverpool, UK</p>
 
-  <form action="https://formspree.io/f/xdawvjad" method="POST">
-    <input type="hidden" name="_redirect" value="https://www.rhinopropertysolutions.co.uk/thank-you.html">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <input type="tel" name="phone" placeholder="Your Phone Number" required>
+ <form action="https://formspree.io/f/xdawvjad" method="POST">
+  
+  <input type="hidden" name="_redirect" value="https://www.rhinopropertysolutions.co.uk/thank-you.html">
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="email" name="email" placeholder="Your Email" required>
+  <input type="tel" name="phone" placeholder="Your Phone Number (Preferred Contact)" required>
+    
+<label>Select Service(s) Required:</label>
 
-    <label>Select Service(s) Required:</label>
-    <div class="services-grid">
-      <label><input type="checkbox" name="services" value="Cleaning Services"> Cleaning Services</label>
-      <label><input type="checkbox" name="services" value="Deep Cleaning"> Deep Cleaning</label>
-      <label><input type="checkbox" name="services" value="Building Maintenance"> Building Maintenance</label>
-      <label><input type="checkbox" name="services" value="Snagging Inspection"> Snagging Inspection</label>
-      <label><input type="checkbox" name="services" value="Property Sourcing"> Property Sourcing</label>
-      <label><input type="checkbox" name="services" value="Property Management"> Property Management</label>
-      <label><input type="checkbox" name="services" value="End of Tenancy"> End of Tenancy</label>
-      <label><input type="checkbox" name="services" value="Other"> Other</label>
-    </div>
+<div class="services-grid">
+  <label><input type="checkbox" name="services" value="Cleaning Services"> Cleaning Services</label>
+  <label><input type="checkbox" name="services" value="Deep Cleaning"> Deep Cleaning</label>
+  <label><input type="checkbox" name="services" value="Building Maintenance"> Building Maintenance</label>
+  <label><input type="checkbox" name="services" value="Snagging Inspection"> Snagging Inspection</label>
+  <label><input type="checkbox" name="services" value="Property Sourcing"> Property Sourcing</label>
+  <label><input type="checkbox" name="services" value="Property Management"> Property Management</label>
+  <label><input type="checkbox" name="services" value="End of Tenancy"> End of Tenancy</label>
+  <label><input type="checkbox" name="services" value="Other"> Other</label>
+</div>
 
-    <textarea name="message" placeholder="Provide more details about your request..." required></textarea>
+<textarea name="message" placeholder="Provide more details about your request..." required></textarea>
 
-    <div style="display:flex; gap:10px; margin-top:10px;">
-      <button type="submit">Send Message</button>
-      <button type="reset" style="background:#999;">Clear Form</button>
-    </div>
-  </form>
+<div style="display:flex; gap:10px; margin-top:10px;">
+  <button type="submit">Send Message</button>
+  <button type="reset" style="background:#999;">Clear Form</button>
+</div>
+
+</form>
 </section>
 
 <!-- WHATSAPP -->
-<a href="https://wa.me/447832017376" class="whatsapp" target="_blank">Chat on WhatsApp</a>
+<a href="https://wa.me/447832017376" class="whatsapp" target="_blank">
+  Chat on WhatsApp
+</a>
 
 <!-- FOOTER -->
 <footer>
@@ -164,12 +157,26 @@
   <p>© 2026 Rhino Property Solutions. All rights reserved.</p>
 </footer>
 
-<!-- BACK TO TOP -->
-<button id="topBtn" title="Go to top">↑</button>
+<button onclick="scrollToTop()" id="topBtn" title="Go to top">↑</button>
 
-<!-- JS -->
-<script src="common.js"></script>
-<script src="gallery.js"></script>
+<script>
+  window.onscroll = function() {
+    let btn = document.getElementById("topBtn");
+
+    if (document.documentElement.scrollTop > 200) {
+      btn.classList.add("show");
+    } else {
+      btn.classList.remove("show");
+    }
+  };
+
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+</script>
 
 </body>
 </html>

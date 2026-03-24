@@ -3,9 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Report Maintenance Issue | Rhino Property Solutions</title>
-
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -33,17 +31,14 @@
 
 <!-- FORM -->
 <section class="section">
-
   <form action="https://formspree.io/f/xdawvjad" method="POST">
 
     <!-- Redirect -->
     <input type="hidden" name="_redirect" value="https://www.rhinopropertysolutions.co.uk/thank-you.html">
-
     <!-- Email Subject -->
     <input type="hidden" name="_subject" value="New Maintenance Issue Report">
-
     <!-- Auto Reply -->
-    <input type="hidden" name="_autoresponse" value="Thank you for reporting the issue. Rhino Property Solutions has received your request and will respond shortly. If this is urgent, please call 07377 634214.">
+    <input type="hidden" name="_autoresponse" value="Thank you for reporting the issue. Rhino Property Solutions has received your request and will respond shortly. If this is urgent, please call 07832017376.">
 
     <!-- Name -->
     <input type="text" name="name" placeholder="Full Name" required>
@@ -92,13 +87,11 @@
     </p>
 
     <!-- SUBMIT AND RESET -->
-    <div style="display:flex; gap:10px; margin-top:10px;">
-      <button type="submit">Submit Report</button>
-      <button type="reset" style="background:#999;">Clear Form</button>
+    <div style="display:flex; gap:10px; margin-top:10px; flex-wrap: wrap;">
+      <button type="submit" class="btn">Submit Report</button>
+      <button type="reset" style="background:#999;" class="btn">Clear Form</button>
     </div>
-
   </form>
-
 </section>
 
 <!-- WHATSAPP BUTTON -->
@@ -133,24 +126,22 @@
 
 <!-- BACK TO TOP SCRIPT -->
 <script>
-//Get the button
-let topButton = document.getElementById("topBtn");
+  // Get the button
+  const topButton = document.getElementById("topBtn");
 
-// When the user scrolls down 100px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
+  // Show button on scroll
+  window.onscroll = function() {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+      topButton.classList.add("show");
+    } else {
+      topButton.classList.remove("show");
+    }
+  };
 
-function scrollFunction() {
-  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-    topButton.classList.add("show");
-  } else {
-    topButton.classList.remove("show");
+  // Smooth scroll to top
+  function topFunction() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
   }
-}
-
-// When the user clicks on the button, scroll to the top smoothly
-function topFunction() {
-  window.scrollTo({top: 0, behavior: 'smooth'});
-}
 </script>
 
 </body>

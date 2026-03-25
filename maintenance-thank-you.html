@@ -6,6 +6,10 @@
   <title>Maintenance Request Received | Rhino Property Solutions</title>
 
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    .hidden { display: none; }
+  </style>
 </head>
 
 <body>
@@ -24,26 +28,27 @@
 <!-- MESSAGE -->
 <section class="section">
   <p class="intro">
-    Thank you for reporting the issue. Our team will review your request and take appropriate action.
+    Thank you for reporting the issue at:
   </p>
 
+  <h2 id="propertyName" style="margin-top:10px;"></h2>
+
   <p class="about">
-    Please ensure your phone is available in case we need further details.
+    Our team will review your request and take appropriate action.
   </p>
 </section>
 
-<!-- IMPORTANT -->
-<section class="section grey">
-  <h2>Important Next Step</h2>
+<!-- MEDIA SECTION (ONLY SHOWS IF USER HAS MEDIA) -->
+<section class="section grey hidden" id="mediaSection">
+  <h2>Send Photos / Videos</h2>
 
   <p>
-    If you have photos or videos of the issue, please send them via WhatsApp. 
-    This helps us assess and respond faster.
+    You indicated that you have photos or videos. Please send them via WhatsApp to help us assess the issue faster.
   </p>
 
   <div style="margin-top:20px;">
-    <a href="https://wa.me/447832017376" target="_blank" class="btn" style="background:#25D366;">
-      Send Photos / Videos
+    <a id="whatsappLink" target="_blank" class="btn" style="background:#25D366;">
+      Send Media on WhatsApp
     </a>
   </div>
 </section>
@@ -53,7 +58,7 @@
   <h2>Urgent Issues</h2>
 
   <p>
-    For urgent issues such as leaks, electrical faults, or security concerns, 
+    For urgent issues such as leaks, electrical faults, or security concerns,
     please contact us immediately.
   </p>
 
@@ -72,6 +77,29 @@
   <p>Clean. Fixed. Ready. Always.</p>
   <p>© 2026 Rhino Property Solutions. All rights reserved.</p>
 </footer>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+
+  const property = params.get("property");
+  const issue = params.get("issue_type");
+  const hasMedia = params.get("has_media");
+
+  // Show property name dynamically
+  document.getElementById("propertyName").textContent = property || "your property";
+
+  // Show WhatsApp section only if checkbox was selected
+  if (hasMedia === "Yes") {
+    document.getElementById("mediaSection").classList.remove("hidden");
+
+    const message = `Hi, I just submitted a maintenance request for ${property || "my property"}. Issue: ${issue || "unspecified"}. I am sending media as requested.`;
+
+    const encodedMessage = encodeURIComponent(message);
+
+    document.getElementById("whatsappLink").href =
+      `https://wa.me/447832017376?text=${encodedMessage}`;
+  }
+</script>
 
 </body>
 </html>

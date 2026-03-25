@@ -209,6 +209,18 @@ document.querySelectorAll('.album').forEach(album => {
     album.classList.toggle('expanded');
   });
 });
+
+  const form = document.querySelector("form");
+
+  form.addEventListener("submit", function(e) {
+    const checkboxes = document.querySelectorAll('input[name="services"]');
+    const isChecked = Array.from(checkboxes).some(cb => cb.checked);
+
+    if (!isChecked) {
+      e.preventDefault();
+      alert("Please select at least one service.");
+    }
+  });
 </script>
 
 </body>

@@ -9,40 +9,40 @@
 
 <body>
 
+<!-- HERO SECTION -->
 <header class="hero small">
   <div>
+    <!-- PSEUDOCODE: Logo linking back to homepage -->
     <a href="/"><img src="logo.png" alt="Rhino Property Solutions" class="logo"></a>
     <h1>Report a Maintenance Issue</h1>
     <p>Please complete the form below. Urgent issues should also be reported via phone.</p>
   </div>
 </header>
 
+<!-- TENANT GUIDANCE -->
 <section class="section grey">
+  <!-- PSEUDOCODE: Explains single issue per form submission -->
   <p class="intro">
     Use this form to report a specific issue in your property.
     Please submit <strong>one issue per form</strong> to help us respond efficiently.
   </p>
 </section>
 
+<!-- FORM SECTION -->
 <section class="section">
-
   <form action="https://api.web3forms.com/submit" method="POST">
 
-    <!-- Web3Forms Config -->
+    <!-- PSEUDOCODE: Web3Forms configuration -->
     <input type="hidden" name="access_key" value="91fdb16f-fb5c-4f85-9fbd-576811b31599">
     <input type="hidden" name="redirect" value="https://www.rhinopropertysolutions.co.uk/maintenance-thank-you.html">
     <input type="hidden" name="subject" value="New Maintenance Issue">
 
-    <!-- Name -->
+    <!-- PSEUDOCODE: User input fields -->
     <input type="text" name="name" placeholder="Full Name" required>
-
-    <!-- Email -->
     <input type="email" name="email" placeholder="Email Address" required>
-
-    <!-- Phone -->
     <input type="tel" name="phone" placeholder="Phone Number" required>
 
-    <!-- Property -->
+    <!-- PSEUDOCODE: Property dropdown -->
     <select name="property" required>
       <option value="">Select Property</option>
       <option value="80 Dewsbury Road, L4 2XE">80 Dewsbury Road, L4 2XE</option>
@@ -51,7 +51,7 @@
       <option value="9 Scorton Street, L6 4AS">9 Scorton Street, L6 4AS</option>
     </select>
 
-    <!-- Issue Type -->
+    <!-- PSEUDOCODE: Issue type dropdown -->
     <select name="issue_type" required>
       <option value="">Select Issue Type</option>
       <option>Plumbing</option>
@@ -62,7 +62,7 @@
       <option>Other</option>
     </select>
 
-    <!-- Priority -->
+    <!-- PSEUDOCODE: Priority level dropdown -->
     <select name="priority" required>
       <option value="">Priority Level</option>
       <option>Low</option>
@@ -70,25 +70,28 @@
       <option>Urgent</option>
     </select>
 
-    <!-- Description -->
+    <!-- PSEUDOCODE: Issue description -->
     <textarea name="message" placeholder="Describe the issue in detail..." required></textarea>
 
-    <!-- Checkbox -->
+    <!-- PSEUDOCODE: Media checkbox -->
     <label style="display:block; margin-top:15px;">
       <input type="checkbox" name="has_media" value="Yes">
       I have photos or videos of this issue
     </label>
 
-    <!-- Hidden field for redirect -->
+    <!-- PSEUDOCODE: Hidden field updated by JS to Yes/No for redirect -->
     <input type="hidden" name="has_media_value" value="No">
 
+    <!-- PSEUDOCODE: Submit & reset buttons -->
     <div style="display:flex; gap:10px; margin-top:15px;">
       <button type="submit">Submit Report</button>
       <button type="reset" style="background:#999;">Clear Form</button>
     </div>
+
   </form>
 </section>
 
+<!-- PSEUDOCODE: JS to sync checkbox with hidden field -->
 <script>
   const checkbox = document.querySelector('input[name="has_media"]');
   const hiddenField = document.querySelector('input[name="has_media_value"]');

@@ -119,18 +119,23 @@ If you have multiple issues, kindly complete a separate form for each.
 </footer>
 
 <script>
+// Get the button
 let topButton = document.getElementById("topBtn");
 
-window.onscroll = function() {
+// Show the button when the user scrolls down 100px
+window.onscroll = function() { scrollFunction(); };
+
+function scrollFunction() {
   if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
     topButton.classList.add("show");
   } else {
     topButton.classList.remove("show");
   }
-};
+}
 
+// Scroll to top smoothly when the button is clicked
 function topFunction() {
-  window.scrollTo({top: 0, behavior: 'smooth'});
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
 

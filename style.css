@@ -335,21 +335,20 @@ footer {
   border-radius: 50px;
   font-weight: bold;
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  z-index: 1000;
 }
 
-  /* FLOATING CALL BUTTON */
   .call-float {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: orange;
-    color: white;
-    font-size: 20px;
-    padding: 15px 20px;
-    border-radius: 50%;
-    text-align: center;
-    text-decoration: none;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-    z-index: 1000;
-  }
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: orange;           /* call button color */
+  color: white;
+  padding: 15px 20px;           /* same as WhatsApp */
+  text-decoration: none;
+  border-radius: 50px;          /* pill shape like WhatsApp */
+  font-weight: bold;             /* same boldness */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
   .call-float:hover { background: darkorange; }

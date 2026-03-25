@@ -4,12 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maintenance Request Received | Rhino Property Solutions</title>
-
   <link rel="stylesheet" href="style.css">
-
-  <style>
-    .hidden { display: none; }
-  </style>
+  <style>.hidden { display: none; }</style>
 </head>
 
 <body>
@@ -17,57 +13,39 @@
 <!-- HERO -->
 <header class="hero small">
   <div>
-    <a href="/">
-      <img src="logo.png" alt="Rhino Property Solutions" class="logo">
-    </a>
+    <!-- PSEUDOCODE: Logo linking back -->
+    <a href="/"><img src="logo.png" alt="Rhino Property Solutions" class="logo"></a>
     <h1>Report Submitted</h1>
     <p>Your maintenance issue has been received</p>
   </div>
 </header>
 
-<!-- MESSAGE -->
+<!-- PSEUDOCODE: Display property dynamically -->
 <section class="section">
-  <p class="intro">
-    Thank you for reporting the issue at:
-  </p>
-
+  <p class="intro">Thank you for reporting the issue at:</p>
   <h2 id="propertyName" style="margin-top:10px;"></h2>
-
-  <p class="about">
-    Our team will review your request and take appropriate action.
-  </p>
+  <p class="about">Our team will review your request and take appropriate action.</p>
 </section>
 
-<!-- MEDIA SECTION (ONLY SHOWS IF USER HAS MEDIA) -->
+<!-- PSEUDOCODE: Media section visible only if checkbox checked -->
 <section class="section grey hidden" id="mediaSection">
   <h2>Send Photos / Videos</h2>
-
-  <p>
-    You indicated that you have photos or videos. Please send them via WhatsApp to help us assess the issue faster.
-  </p>
-
+  <p>You indicated that you have photos or videos. Please send them via WhatsApp to help us assess the issue faster.</p>
   <div style="margin-top:20px;">
-    <a id="whatsappLink" target="_blank" class="btn" style="background:#25D366;">
-      Send Media on WhatsApp
-    </a>
+    <a id="whatsappLink" target="_blank" class="btn" style="background:#25D366;">Send Media on WhatsApp</a>
   </div>
 </section>
 
-<!-- URGENT -->
+<!-- PSEUDOCODE: Urgent call -->
 <section class="section">
   <h2>Urgent Issues</h2>
-
-  <p>
-    For urgent issues such as leaks, electrical faults, or security concerns,
-    please contact us immediately.
-  </p>
-
+  <p>For urgent issues such as leaks, electrical faults, or security concerns, please contact us immediately.</p>
   <div style="margin-top:20px;">
     <a href="tel:07832017376" class="btn">Call Now</a>
   </div>
 </section>
 
-<!-- BACK -->
+<!-- PSEUDOCODE: Back to home -->
 <section class="section grey">
   <a href="/" class="btn">Back to Home</a>
 </section>
@@ -78,26 +56,22 @@
   <p>© 2026 Rhino Property Solutions. All rights reserved.</p>
 </footer>
 
+<!-- PSEUDOCODE: JS to read query params and update page -->
 <script>
+  // PSEUDOCODE: Read URL parameters from redirect
   const params = new URLSearchParams(window.location.search);
-
   const property = params.get("property");
   const issue = params.get("issue_type");
-  const hasMedia = params.get("has_media");
+  const hasMedia = params.get("has_media_value");
 
-  // Show property name dynamically
+  // PSEUDOCODE: Display property dynamically
   document.getElementById("propertyName").textContent = property || "your property";
 
-  // Show WhatsApp section only if checkbox was selected
+  // PSEUDOCODE: Show WhatsApp section only if media checkbox checked
   if (hasMedia === "Yes") {
     document.getElementById("mediaSection").classList.remove("hidden");
-
     const message = `Hi, I just submitted a maintenance request for ${property || "my property"}. Issue: ${issue || "unspecified"}. I am sending media as requested.`;
-
-    const encodedMessage = encodeURIComponent(message);
-
-    document.getElementById("whatsappLink").href =
-      `https://wa.me/447832017376?text=${encodedMessage}`;
+    document.getElementById("whatsappLink").href = `https://wa.me/447832017376?text=${encodeURIComponent(message)}`;
   }
 </script>
 

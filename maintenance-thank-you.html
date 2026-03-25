@@ -28,8 +28,8 @@
 
 <section class="section grey">
   <p>Do you have photos or videos of the issue?</p>
-  <a href="#" class="choice-btn" id="yesMedia">Yes</a>
-  <a href="#" class="choice-btn" id="noMedia">No</a>
+<button type="button" class="choice-btn" id="yesMedia">Yes</button>
+<button type="button" class="choice-btn" id="noMedia">No</button>
 </section>
 
 <section class="section grey hidden" id="mediaSection">
@@ -77,19 +77,19 @@
   const whatsappLink = document.getElementById("whatsappLink");
 
   yesBtn.addEventListener("click", () => {
-    mediaSection.classList.remove("hidden");
-    noMediaSection.classList.add("hidden");
-    yesBtn.parentElement.classList.add("hidden");
+  mediaSection.classList.remove("hidden");
+  noMediaSection.classList.add("hidden");
+  yesBtn.parentElement.classList.add("hidden");
 
-    const msg = `Hi, I just submitted a maintenance request for ${property}. Issue: ${issue}. I am sending media as requested.`;
-    whatsappLink.href = `https://wa.me/447832017376?text=${encodeURIComponent(msg)}`;
-  });
+  const msg = `Hi, I just submitted a maintenance request for ${property}. Issue: ${issue}. I am sending media as requested.`;
+  whatsappLink.href = `https://wa.me/447832017376?text=${encodeURIComponent(msg)}`;
+});
 
-  noBtn.addEventListener("click", () => {
-    noMediaSection.classList.remove("hidden");
-    mediaSection.classList.add("hidden");
-    yesBtn.parentElement.classList.add("hidden");
-  });
+noBtn.addEventListener("click", () => {
+  noMediaSection.classList.remove("hidden");
+  mediaSection.classList.add("hidden");
+  yesBtn.parentElement.classList.add("hidden");
+});
   
 //Get the button
 let topButton = document.getElementById("topBtn");

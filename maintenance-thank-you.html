@@ -90,6 +90,25 @@
     mediaSection.classList.add("hidden");
     yesBtn.parentElement.classList.add("hidden");
   });
+  
+//Get the button
+let topButton = document.getElementById("topBtn");
+
+// When the user scrolls down 100px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+    topButton.classList.add("show");
+  } else {
+    topButton.classList.remove("show");
+  }
+}
+
+// When the user clicks on the button, scroll to the top smoothly
+function topFunction() {
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
 </script>
 
 </body>

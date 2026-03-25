@@ -4,36 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Report Maintenance Issue | Rhino Property Solutions</title>
-
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- HERO -->
 <header class="hero small">
   <div>
-    <a href="/">
-      <img src="logo.png" alt="Rhino Property Solutions" class="logo">
-    </a>
+    <a href="/"><img src="logo.png" alt="Rhino Property Solutions" class="logo"></a>
     <h1>Report a Maintenance Issue</h1>
     <p>Please complete the form below. Urgent issues should also be reported via phone.</p>
   </div>
 </header>
 
-<!-- TENANT ADVISORY -->
 <section class="section grey">
   <p class="intro">
     Use this form to report a specific issue in your property.
     Please submit <strong>one issue per form</strong> to help us respond efficiently.
   </p>
-
-  <p style="font-size: 14px; color: #555; font-style: italic; margin-top: 15px;">
-   <strong>Tenant Guidance:</strong> If you have multiple issues, submit separate forms for each.
-  </p>
 </section>
 
-<!-- FORM -->
 <section class="section">
 
   <form action="https://api.web3forms.com/submit" method="POST">
@@ -52,7 +42,7 @@
     <!-- Phone -->
     <input type="tel" name="phone" placeholder="Phone Number" required>
 
-    <!-- PROPERTY DROPDOWN -->
+    <!-- Property -->
     <select name="property" required>
       <option value="">Select Property</option>
       <option value="80 Dewsbury Road, L4 2XE">80 Dewsbury Road, L4 2XE</option>
@@ -61,7 +51,7 @@
       <option value="9 Scorton Street, L6 4AS">9 Scorton Street, L6 4AS</option>
     </select>
 
-    <!-- ISSUE TYPE -->
+    <!-- Issue Type -->
     <select name="issue_type" required>
       <option value="">Select Issue Type</option>
       <option>Plumbing</option>
@@ -72,7 +62,7 @@
       <option>Other</option>
     </select>
 
-    <!-- PRIORITY -->
+    <!-- Priority -->
     <select name="priority" required>
       <option value="">Priority Level</option>
       <option>Low</option>
@@ -80,68 +70,32 @@
       <option>Urgent</option>
     </select>
 
-    <!-- DESCRIPTION -->
-    <textarea name="message" placeholder="Describe the issue in detail (what, where, when)..." required></textarea>
+    <!-- Description -->
+    <textarea name="message" placeholder="Describe the issue in detail..." required></textarea>
 
-    <!-- MEDIA CHECKBOX -->
+    <!-- Checkbox -->
     <label style="display:block; margin-top:15px;">
       <input type="checkbox" name="has_media" value="Yes">
       I have photos or videos of this issue
     </label>
 
-    <!-- GUIDANCE -->
-    <p style="font-size:12px; color:#777; margin-top:10px;">
-      After submitting this form, you can send any photos or videos via WhatsApp if applicable.
-    </p>
+    <!-- Hidden field for redirect -->
+    <input type="hidden" name="has_media_value" value="No">
 
-    <!-- SUBMIT -->
     <div style="display:flex; gap:10px; margin-top:15px;">
       <button type="submit">Submit Report</button>
       <button type="reset" style="background:#999;">Clear Form</button>
     </div>
-
   </form>
-
 </section>
 
-<!-- INFO -->
-<section class="section grey">
-  <h2>Important Information</h2>
-  <p>
-    Please ensure all details are accurate. For urgent issues such as leaks,
-    electrical faults, or security concerns, contact us immediately via phone 07832017376.
-  </p>
-</section>
-
-<!-- BACK TO HOME -->
-<section class="section">
-  <a href="/" class="btn">Back to Home</a>
-</section>
-
-<!-- BACK TO TOP BUTTON -->
-<button onclick="topFunction()" id="topBtn" title="Go to top">↑</button>
-
-<!-- FOOTER -->
-<footer>
-  <p>Clean. Fixed. Ready. Always.</p>
-  <p>© 2026 Rhino Property Solutions. All rights reserved.</p>
-</footer>
-
-<!-- SCRIPT -->
 <script>
-let topButton = document.getElementById("topBtn");
+  const checkbox = document.querySelector('input[name="has_media"]');
+  const hiddenField = document.querySelector('input[name="has_media_value"]');
 
-window.onscroll = function() {
-  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-    topButton.classList.add("show");
-  } else {
-    topButton.classList.remove("show");
-  }
-};
-
-function topFunction() {
-  window.scrollTo({top: 0, behavior: 'smooth'});
-}
+  checkbox.addEventListener('change', () => {
+    hiddenField.value = checkbox.checked ? "Yes" : "No";
+  });
 </script>
 
 </body>

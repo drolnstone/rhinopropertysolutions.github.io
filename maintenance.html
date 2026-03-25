@@ -4,45 +4,55 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Report Maintenance Issue | Rhino Property Solutions</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- HERO SECTION -->
+<!-- HERO -->
 <header class="hero small">
   <div>
-    <!-- PSEUDOCODE: Logo linking back to homepage -->
-    <a href="/"><img src="logo.png" alt="Rhino Property Solutions" class="logo"></a>
+    <a href="/">
+      <img src="logo.png" alt="Rhino Property Solutions" class="logo">
+    </a>
     <h1>Report a Maintenance Issue</h1>
     <p>Please complete the form below. Urgent issues should also be reported via phone.</p>
   </div>
 </header>
 
-<!-- TENANT GUIDANCE -->
+<!-- TENANT ADVISORY -->
 <section class="section grey">
-  <!-- PSEUDOCODE: Explains single issue per form submission -->
   <p class="intro">
     Use this form to report a specific issue in your property.
     Please submit <strong>one issue per form</strong> to help us respond efficiently.
   </p>
+
+  <p style="font-size: 14px; color: #555; font-style: italic; margin-top: 15px;">
+   <strong>Tenant Guidance:</strong> If you have multiple issues, submit separate forms for each.
+  </p>
 </section>
 
-<!-- FORM SECTION -->
+<!-- FORM -->
 <section class="section">
+
   <form action="https://api.web3forms.com/submit" method="POST">
 
-    <!-- PSEUDOCODE: Web3Forms configuration -->
+    <!-- Web3Forms Config -->
     <input type="hidden" name="access_key" value="91fdb16f-fb5c-4f85-9fbd-576811b31599">
     <input type="hidden" name="redirect" value="https://www.rhinopropertysolutions.co.uk/maintenance-thank-you.html">
     <input type="hidden" name="subject" value="New Maintenance Issue">
 
-    <!-- PSEUDOCODE: User input fields -->
+    <!-- Name -->
     <input type="text" name="name" placeholder="Full Name" required>
+
+    <!-- Email -->
     <input type="email" name="email" placeholder="Email Address" required>
+
+    <!-- Phone -->
     <input type="tel" name="phone" placeholder="Phone Number" required>
 
-    <!-- PSEUDOCODE: Property dropdown -->
+    <!-- PROPERTY DROPDOWN -->
     <select name="property" required>
       <option value="">Select Property</option>
       <option value="80 Dewsbury Road, L4 2XE">80 Dewsbury Road, L4 2XE</option>
@@ -51,7 +61,7 @@
       <option value="9 Scorton Street, L6 4AS">9 Scorton Street, L6 4AS</option>
     </select>
 
-    <!-- PSEUDOCODE: Issue type dropdown -->
+    <!-- ISSUE TYPE -->
     <select name="issue_type" required>
       <option value="">Select Issue Type</option>
       <option>Plumbing</option>
@@ -62,7 +72,7 @@
       <option>Other</option>
     </select>
 
-    <!-- PSEUDOCODE: Priority level dropdown -->
+    <!-- PRIORITY -->
     <select name="priority" required>
       <option value="">Priority Level</option>
       <option>Low</option>
@@ -70,35 +80,55 @@
       <option>Urgent</option>
     </select>
 
-    <!-- PSEUDOCODE: Issue description -->
+    <!-- DESCRIPTION -->
     <textarea name="message" placeholder="Describe the issue in detail..." required></textarea>
 
-    <!-- PSEUDOCODE: Media checkbox -->
-    <label style="display:block; margin-top:15px;">
-      <input type="checkbox" name="has_media" value="Yes">
-      I have photos or videos of this issue
-    </label>
-
-    <!-- PSEUDOCODE: Hidden field updated by JS to Yes/No for redirect -->
-    <input type="hidden" name="has_media_value" value="No">
-
-    <!-- PSEUDOCODE: Submit & reset buttons -->
+    <!-- SUBMIT -->
     <div style="display:flex; gap:10px; margin-top:15px;">
       <button type="submit">Submit Report</button>
       <button type="reset" style="background:#999;">Clear Form</button>
     </div>
-
   </form>
+
 </section>
 
-<!-- PSEUDOCODE: JS to sync checkbox with hidden field -->
-<script>
-  const checkbox = document.querySelector('input[name="has_media"]');
-  const hiddenField = document.querySelector('input[name="has_media_value"]');
+<!-- INFO -->
+<section class="section grey">
+  <h2>Important Information</h2>
+  <p>
+    Please ensure all details are accurate. For urgent issues such as leaks,
+    electrical faults, or security concerns, contact us immediately via phone 07832017376.
+  </p>
+</section>
 
-  checkbox.addEventListener('change', () => {
-    hiddenField.value = checkbox.checked ? "Yes" : "No";
-  });
+<!-- BACK TO HOME -->
+<section class="section">
+  <a href="/" class="btn">Back to Home</a>
+</section>
+
+<!-- BACK TO TOP BUTTON -->
+<button onclick="topFunction()" id="topBtn" title="Go to top">↑</button>
+
+<!-- FOOTER -->
+<footer>
+  <p>Clean. Fixed. Ready. Always.</p>
+  <p>© 2026 Rhino Property Solutions. All rights reserved.</p>
+</footer>
+
+<script>
+let topButton = document.getElementById("topBtn");
+
+window.onscroll = function() {
+  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+    topButton.classList.add("show");
+  } else {
+    topButton.classList.remove("show");
+  }
+};
+
+function topFunction() {
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
 </script>
 
 </body>

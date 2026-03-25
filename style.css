@@ -323,6 +323,9 @@ footer {
   }
 }
 
+/* HIDDEN CLASS */
+.hidden { display:none; }
+
 /* WHATSAPP FLOAT */
 .whatsapp {
   position: fixed;

@@ -5,74 +5,87 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maintenance Request Received | Rhino Property Solutions</title>
   <link rel="stylesheet" href="style.css">
-  <style>.hidden { display: none; }</style>
+  <style>
+    .hidden { display: none; }
+    .choice-btn { padding:12px 20px; margin:10px; text-decoration:none; color:white; background:#2e7d32; display:inline-block; }
+  </style>
 </head>
-
 <body>
 
-<!-- HERO -->
 <header class="hero small">
   <div>
-    <!-- PSEUDOCODE: Logo linking back -->
     <a href="/"><img src="logo.png" alt="Rhino Property Solutions" class="logo"></a>
     <h1>Report Submitted</h1>
     <p>Your maintenance issue has been received</p>
   </div>
 </header>
 
-<!-- PSEUDOCODE: Display property dynamically -->
 <section class="section">
   <p class="intro">Thank you for reporting the issue at:</p>
-  <h2 id="propertyName" style="margin-top:10px;"></h2>
+  <h2 id="propertyName"></h2>
   <p class="about">Our team will review your request and take appropriate action.</p>
 </section>
 
-<!-- PSEUDOCODE: Media section visible only if checkbox checked -->
-<section class="section grey hidden" id="mediaSection">
-  <h2>Send Photos / Videos</h2>
-  <p>You indicated that you have photos or videos. Please send them via WhatsApp to help us assess the issue faster.</p>
-  <div style="margin-top:20px;">
-    <a id="whatsappLink" target="_blank" class="btn" style="background:#25D366;">Send Media on WhatsApp</a>
-  </div>
+<section class="section grey">
+  <p>Do you have photos or videos of the issue?</p>
+  <a href="#" class="choice-btn" id="yesMedia">Yes</a>
+  <a href="#" class="choice-btn" id="noMedia">No</a>
 </section>
 
-<!-- PSEUDOCODE: Urgent call -->
+<section class="section hidden" id="mediaSection">
+  <h2>Send Photos / Videos</h2>
+  <p>Please send your media via WhatsApp to help us assess the issue faster.</p>
+  <a id="whatsappLink" target="_blank" class="btn" style="background:#25D366;">Send Media on WhatsApp</a>
+</section>
+
+<section class="section hidden" id="noMediaSection">
+  <p>Thank you! No media needed. Our team will proceed based on the details you provided.</p>
+</section>
+
 <section class="section">
   <h2>Urgent Issues</h2>
-  <p>For urgent issues such as leaks, electrical faults, or security concerns, please contact us immediately.</p>
-  <div style="margin-top:20px;">
-    <a href="tel:07832017376" class="btn">Call Now</a>
-  </div>
+  <p>For urgent issues such as leaks, electrical faults, or security concerns, contact us immediately.</p>
+  <a href="tel:07832017376" class="btn">Call Now</a>
 </section>
 
-<!-- PSEUDOCODE: Back to home -->
 <section class="section grey">
   <a href="/" class="btn">Back to Home</a>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <p>Clean. Fixed. Ready. Always.</p>
   <p>© 2026 Rhino Property Solutions. All rights reserved.</p>
 </footer>
 
-<!-- PSEUDOCODE: JS to read query params and update page -->
 <script>
-  // PSEUDOCODE: Read URL parameters from redirect
+  // Read query params for property + issue
   const params = new URLSearchParams(window.location.search);
-  const property = params.get("property");
-  const issue = params.get("issue_type");
-  const hasMedia = params.get("has_media_value");
+  const property = params.get("property") || "your property";
+  const issue = params.get("issue_type") || "unspecified";
 
-  // PSEUDOCODE: Display property dynamically
-  document.getElementById("propertyName").textContent = property || "your property";
+  document.getElementById("propertyName").textContent = property;
 
-  // PSEUDOCODE: Show WhatsApp section only if media checkbox checked
-  if (hasMedia === "Yes") {
-    document.getElementById("mediaSection").classList.remove("hidden");
-    const message = `Hi, I just submitted a maintenance request for ${property || "my property"}. Issue: ${issue || "unspecified"}. I am sending media as requested.`;
-    document.getElementById("whatsappLink").href = `https://wa.me/447832017376?text=${encodeURIComponent(message)}`;
-  }
+  // Buttons
+  const yesBtn = document.getElementById("yesMedia");
+  const noBtn = document.getElementById("noMedia");
+  const mediaSection = document.getElementById("mediaSection");
+  const noMediaSection = document.getElementById("noMediaSection");
+  const whatsappLink = document.getElementById("whatsappLink");
+
+  yesBtn.addEventListener("click", () => {
+    mediaSection.classList.remove("hidden");
+    noMediaSection.classList.add("hidden");
+    yesBtn.parentElement.classList.add("hidden");
+
+    const msg = `Hi, I just submitted a maintenance request for ${property}. Issue: ${issue}. I am sending media as requested.`;
+    whatsappLink.href = `https://wa.me/447832017376?text=${encodeURIComponent(msg)}`;
+  });
+
+  noBtn.addEventListener("click", () => {
+    noMediaSection.classList.remove("hidden");
+    mediaSection.classList.add("hidden");
+    yesBtn.parentElement.classList.add("hidden");
+  });
 </script>
 
 </body>

@@ -133,7 +133,51 @@
 
   <input type="text" name="name" placeholder="Your Name" required>
   <input type="email" name="email" placeholder="Your Email" required>
-  <input type="tel" name="phone" placeholder="Your Phone Number (Preferred Contact)" required>
+<input type="tel" name="phone" required pattern="[0-9+ ]{10,}">
+
+  <label>Select Service(s) Required:</label>
+
+  <div class="services-grid">
+    <label>
+      <input type="checkbox" name="services" value="Cleaning Services" required>
+      Cleaning Services
+    </label>
+
+    <label>
+      <input type="checkbox" name="services" value="Deep Cleaning">
+      Deep Cleaning
+    </label>
+
+    <label>
+      <input type="checkbox" name="services" value="Building Maintenance">
+      Building Maintenance
+    </label>
+
+    <label>
+      <input type="checkbox" name="services" value="Snagging Inspection">
+      Snagging Inspection
+    </label>
+
+    <label>
+      <input type="checkbox" name="services" value="Property Sourcing">
+      Property Sourcing
+    </label>
+
+    <label>
+      <input type="checkbox" name="services" value="Property Management">
+      Property Management
+    </label>
+
+    <label>
+      <input type="checkbox" name="services" value="End of Tenancy">
+      End of Tenancy
+    </label>
+
+    <label>
+      <input type="checkbox" name="services" value="Other">
+      Other
+    </label>
+  </div>
 
 <textarea name="message" placeholder="Provide more details about your request..." required></textarea>
 

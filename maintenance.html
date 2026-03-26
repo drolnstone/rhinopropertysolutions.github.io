@@ -6,13 +6,14 @@
   <title>Report Maintenance Issue | Rhino Property Solutions</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <!-- HERO -->
 <header class="hero small">
   <div>
-    <a href="/"><img src="logo.png" alt="Rhino Property Solutions" class="logo"></a>
+    <a href="/">
+      <img src="logo.png" alt="Rhino Property Solutions" class="logo">
+    </a>
     <h1>Report a Maintenance Issue</h1>
     <p>Please complete the form below.<br>Urgent issues should also be reported via phone.</p>
   </div>
@@ -32,16 +33,10 @@
 
   <!-- FORM -->
   <section class="section" id="formSection">
-
-    <form action="https://api.web3forms.com/submit" method="POST">
-
+    <form id="maintenanceForm" action="https://api.web3forms.com/submit" method="POST">
       <!-- Web3Forms Config -->
       <input type="hidden" name="access_key" value="91fdb16f-fb5c-4f85-9fbd-576811b31599">
-
-      <!-- ✅ Updated redirect with placeholders -->
-      <input type="hidden" name="redirect" 
-        value="https://www.rhinopropertysolutions.co.uk/maintenance-thank-you.html?property={property}&issue_type={issue_type}">
-
+      <input type="hidden" name="redirect" id="redirectInput" value="https://www.rhinopropertysolutions.co.uk/maintenance-thank-you.html">
       <input type="hidden" name="subject" value="New Maintenance Issue">
 
       <!-- Name -->
@@ -89,9 +84,7 @@
         <button type="submit">Submit Report</button>
         <button type="reset" class="btn-secondary">Clear Form</button>
       </div>
-
     </form>
-
   </section>
 
   <!-- INFO -->
@@ -125,19 +118,27 @@
 </footer>
 
 <script>
-  // Back to Top
+  // Scroll-to-top
   window.onscroll = function() {
     let btn = document.getElementById("topBtn");
-    if (document.documentElement.scrollTop > 200) {
-      btn.classList.add("show");
-    } else {
-      btn.classList.remove("show");
-    }
+    if (document.documentElement.scrollTop > 200) btn.classList.add("show");
+    else btn.classList.remove("show");
   };
-
   function scrollToTop() {
     window.scrollTo({top: 0, behavior: "smooth"});
   }
+
+  // Intercept form submit to append property & issue_type to redirect URL
+  const form = document.getElementById("maintenanceForm");
+  const redirectInput = document.getElementById("redirectInput");
+
+  form.addEventListener("submit", (e) => {
+    const property = form.querySelector('select[name="property"]').value;
+    const issue = form.querySelector('select[name="issue_type"]').value;
+
+    // Append as query params
+    redirectInput.value = `https://www.rhinopropertysolutions.co.uk/maintenance-thank-you.html?property=${encodeURIComponent(property)}&issue_type=${encodeURIComponent(issue)}`;
+  });
 </script>
 
 </body>

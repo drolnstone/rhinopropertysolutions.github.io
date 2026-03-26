@@ -4,12 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maintenance Request Received | Rhino Property Solutions</title>
+
   <link rel="stylesheet" href="style.css">
-  <style>
-    .hidden { display: none; }
-    .choice-btn { padding:12px 20px; margin:10px; text-decoration:none; color:white; background:#2e7d32; display:inline-block; border-radius:4px; cursor:pointer; }
-  </style>
 </head>
+
 <body>
 
 <header class="hero small">
@@ -20,43 +18,62 @@
   </div>
 </header>
 
-<section class="section">
-  <p class="intro">Thank you for reporting the issue at:</p>
-  <h2 id="propertyName">Loading...</h2>
-  <p class="about">Our team will review your request and take appropriate action.</p>
-</section>
+<main>
 
-<section class="section grey">
-  <p>Do you have photos or videos of the issue?</p>
-  <div class="choice-buttons">
-    <button type="button" class="choice-btn" id="yesMedia">Yes</button>
-    <button type="button" class="choice-btn" id="noMedia">No</button>
-  </div>
-</section>
+  <!-- CONFIRMATION -->
+  <section class="section">
+    <p class="intro">Thank you for reporting the issue at:</p>
+    <h2 id="propertyName">Loading...</h2>
+    <p class="about">Our team will review your request and take appropriate action.</p>
+  </section>
 
-<section class="section grey hidden" id="mediaSection">
-  <h2>Send Photos / Videos</h2>
-  <p>Please send your media via WhatsApp to help us assess the issue faster.</p>
-  <a id="whatsappLink" target="_blank" class="btn btn-whatsapp">Send Media on WhatsApp</a>
-</section>
+  <!-- MEDIA QUESTION -->
+  <section class="section grey" id="choiceSection">
+    <p>Do you have photos or videos of the issue?</p>
+    <div class="choice-buttons">
+      <button type="button" class="btn" id="yesMedia">Yes</button>
+      <button type="button" class="btn btn-secondary" id="noMedia">No</button>
+    </div>
+  </section>
 
-<section class="section grey hidden" id="noMediaSection">
-  <p>Thank you!<br>No media needed. Our team will proceed based on the details you provided.</p>
-</section>
+  <!-- MEDIA SECTION -->
+  <section class="section grey hidden" id="mediaSection">
+    <h2>Send Photos / Videos</h2>
+    <p>Please send your media via WhatsApp to help us assess the issue faster.</p>
+    <a id="whatsappLink" target="_blank" class="btn btn-whatsapp">
+      Send Media on WhatsApp
+    </a>
+  </section>
 
-<section class="section">
-  <h2>Urgent Issues</h2>
-  <p>For urgent issues such as leaks, electrical faults, or security concerns, contact us immediately.</p>
-  <a href="tel:07832017376" class="btn">Call Now</a>
-</section>
+  <!-- NO MEDIA -->
+  <section class="section grey hidden" id="noMediaSection">
+    <p>
+      Thank you!<br>
+      No media needed. Our team will proceed based on the details you provided.
+    </p>
+  </section>
 
-<section class="section grey" style="display:flex; flex-direction:column; gap:10px; align-items:center;">
-  <a href="/maintenance.html#formSection" class="btn" style="background:#555;">Submit Another Issue</a>
-  <a href="/" class="btn">Home</a>
-</section>
+  <!-- URGENT -->
+  <section class="section">
+    <h2>Urgent Issues</h2>
+    <p>
+      For urgent issues such as leaks, electrical faults, or security concerns, contact us immediately.
+    </p>
+    <a href="tel:07832017376" class="btn">Call Now</a>
+  </section>
+
+  <!-- NAVIGATION -->
+  <section class="section grey">
+    <div class="cta-stack">
+      <a href="/maintenance.html#formSection" class="btn btn-secondary">Submit Another Issue</a>
+      <a href="/" class="btn">Home</a>
+    </div>
+  </section>
+
+</main>
 
 <!-- BACK TO TOP BUTTON -->
-<button onclick="topFunction()" id="topBtn" title="Go to top">↑</button>
+<button onclick="scrollToTop()" id="topBtn">↑</button>
 
 <footer>
   <p>Clean. Fixed. Ready. Always.</p>
@@ -64,51 +81,46 @@
 </footer>
 
 <script>
-  // ✅ Read property & issue_type from URL
-  const params = new URLSearchParams(window.location.search);
-  const property = params.get("property") || "your property";
-  const issue = params.get("issue_type") || "unspecified";
+/* GET DATA */
+const params = new URLSearchParams(window.location.search);
+const property = params.get("property") || "your property";
+const issue = params.get("issue_type") || "unspecified";
 
-  // Update page text
-  document.getElementById("propertyName").textContent = property;
+document.getElementById("propertyName").textContent = property;
 
-  // WhatsApp message template
-  const messageText = `Hi, I just submitted a maintenance request for ${property}. Issue: ${issue}. I am sending media as requested.`;
+/* ELEMENTS */
+const yesBtn = document.getElementById("yesMedia");
+const noBtn = document.getElementById("noMedia");
+const mediaSection = document.getElementById("mediaSection");
+const noMediaSection = document.getElementById("noMediaSection");
+const choiceSection = document.getElementById("choiceSection");
+const whatsappLink = document.getElementById("whatsappLink");
 
-  // Buttons
-  const yesBtn = document.getElementById("yesMedia");
-  const noBtn = document.getElementById("noMedia");
-  const mediaSection = document.getElementById("mediaSection");
-  const noMediaSection = document.getElementById("noMediaSection");
-  const whatsappLink = document.getElementById("whatsappLink");
+/* ACTIONS */
+yesBtn.addEventListener("click", () => {
+  mediaSection.classList.remove("hidden");
+  noMediaSection.classList.add("hidden");
+  choiceSection.classList.add("hidden");
 
-  yesBtn.addEventListener("click", () => {
-    mediaSection.classList.remove("hidden");
-    noMediaSection.classList.add("hidden");
-    yesBtn.parentElement.classList.add("hidden");
+  const msg = `Hi, I just submitted a maintenance request for ${property}. Issue: ${issue}. I am sending media as requested.`;
+  whatsappLink.href = `https://wa.me/447832017376?text=${encodeURIComponent(msg)}`;
+});
 
-    // Auto-populate WhatsApp link
-    whatsappLink.href = `https://wa.me/447832017376?text=${encodeURIComponent(messageText)}`;
-  });
+noBtn.addEventListener("click", () => {
+  noMediaSection.classList.remove("hidden");
+  mediaSection.classList.add("hidden");
+  choiceSection.classList.add("hidden");
+});
 
-  noBtn.addEventListener("click", () => {
-    noMediaSection.classList.remove("hidden");
-    mediaSection.classList.add("hidden");
-    yesBtn.parentElement.classList.add("hidden");
-  });
+/* SCROLL BUTTON */
+window.onscroll = function() {
+  const btn = document.getElementById("topBtn");
+  btn.classList.toggle("show", document.documentElement.scrollTop > 200);
+};
 
-  // Back to Top Button
-  let topButton = document.getElementById("topBtn");
-  window.onscroll = function() {
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-      topButton.classList.add("show");
-    } else {
-      topButton.classList.remove("show");
-    }
-  };
-  function topFunction() {
-    window.scrollTo({top: 0, behavior: 'smooth'});
-  }
+function scrollToTop() {
+  window.scrollTo({top: 0, behavior: "smooth"});
+}
 </script>
 
 </body>

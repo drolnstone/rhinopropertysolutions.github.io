@@ -79,6 +79,8 @@ html {
 
 .btn-whatsapp {
   background: #25D366;
+  color: white;
+  text-decoration: none; /* removes underline */
 }
 
 .btn-whatsapp:hover {

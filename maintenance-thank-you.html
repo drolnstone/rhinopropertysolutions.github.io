@@ -84,8 +84,6 @@ const params = new URLSearchParams(window.location.search);
 const property = params.get("property") || "your property";
 const issue = params.get("issue_type") || "unspecified";
 
-document.getElementById("propertyName").textContent = property;
-
 /* ELEMENTS */
 const yesBtn = document.getElementById("yesMedia");
 const noBtn = document.getElementById("noMedia");
@@ -100,7 +98,7 @@ yesBtn.addEventListener("click", () => {
   noMediaSection.classList.add("hidden");
   choiceSection.classList.add("hidden");
 
-  const msg = `Hi, I’ve just submitted a maintenance request online and I'm sending the related media as requested. Thank you.`;
+const msg = `Hi, I’ve just submitted a maintenance request (${issue}). I'm sending the related media as requested. Thank you.`;
   whatsappLink.href = `https://wa.me/447832017376?text=${encodeURIComponent(msg)}`;
 });
 

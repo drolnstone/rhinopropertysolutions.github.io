@@ -1,12 +1,22 @@
 /* GENERAL */
 * {
-  box-sizing: border-box; /* 🔥 prevents layout issues */
+  box-sizing: border-box;
+  transition: all 0.2s ease; /* 🔥 global smooth transitions */
 }
 
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto; /* 🔒 prevents layout shifts */
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent; /* 📱 better mobile UX */
 }
 
 /* HTML GLOBAL SETTINGS */
@@ -63,11 +73,24 @@ html {
   transform: translateY(-2px);
 }
 
+.btn-secondary {
+  background: #999;
+}
+
+.btn-whatsapp {
+  background: #25D366;
+}
+
+.btn-whatsapp:hover {
+  background: #1ebe5d;
+}
+
 /* SECTIONS */
 .section {
   padding: 60px 20px;
   text-align: center;
   border-bottom: 1px solid #eee;
+  scroll-margin-top: 80px; /* 🎯 anchor scroll fix */
 }
 
 .section h2 {
@@ -82,6 +105,12 @@ html {
 .about {
   max-width: 700px;
   margin: auto;
+}
+
+.advisory-title,
+.advisory-text {
+  color: #555;
+  font-style: italic;
 }
 
 /* SERVICES */
@@ -120,7 +149,7 @@ html {
 .gallery-marquee {
   display: flex;
   gap: 20px;
-  animation: marquee 12s linear infinite; /* 🔥 slowed down */
+  animation: marquee 12s linear infinite;
 }
 
 @keyframes marquee {
@@ -139,6 +168,7 @@ html {
   width: 100%;
   border-radius: 6px;
   display: block;
+  will-change: transform; /* ⚡ smoother animation */
 }
 
 .album-label {
@@ -175,7 +205,7 @@ html {
 
 /* FORMS */
 form {
-  max-width: 400px;
+  max-width: 500px; /* 🔥 improved width */
   margin: auto;
 }
 
@@ -203,23 +233,13 @@ label {
   font-weight: bold;
 }
 
+/* FORM BUTTONS */
 .form-buttons {
   display: flex;
   gap: 10px;
   margin-top: 15px;
 }
 
-.btn-secondary {
-  background: #999;
-}
-
-.advisory-title,
-.advisory-text {
-  color: #555;
-  font-style: italic;
-}
-
-/* FORM BUTTONS */
 form button {
   background: #2e7d32;
   color: white;
@@ -261,11 +281,28 @@ form button[type="reset"]:hover {
   font-size: 14px;
 }
 
+/* CTA STACK */
+.cta-stack {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+/* CHOICE BUTTONS */
+.choice-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
 /* BACK TO TOP */
 #topBtn {
   display: none;
   position: fixed;
-  bottom: 90px; /* 🔥 moved up to avoid clash */
+  bottom: 90px;
   right: 20px;
   z-index: 999;
 
@@ -307,7 +344,7 @@ form button[type="reset"]:hover {
 
 .call-float {
   position: fixed;
-  bottom: 80px; /* 🔥 stacked above WhatsApp */
+  bottom: 80px;
   right: 20px;
   background: orange;
   color: white;
@@ -352,27 +389,6 @@ footer {
 }
 
 /* UTIL */
-.hidden { display: none; }
-
-.cta-stack {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
-}
-
-.btn-whatsapp {
-  background: #25D366;
-}
-
-.btn-whatsapp:hover {
-  background: #1ebe5d;
-}
-
-.choice-buttons {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin-top: 10px;
+.hidden {
+  display: none;
 }

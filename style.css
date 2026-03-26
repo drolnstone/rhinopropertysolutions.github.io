@@ -360,6 +360,7 @@ form button[type="reset"]:hover {
   background: darkorange;
 }
 
+.btn-whatsapp,
 .call-float {
   text-decoration: none;  /* prevents underlines */
 }

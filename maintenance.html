@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Report Maintenance Issue | Rhino Property Solutions</title>
-
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -13,9 +12,7 @@
 <!-- HERO -->
 <header class="hero small">
   <div>
-    <a href="/">
-      <img src="logo.png" alt="Rhino Property Solutions" class="logo">
-    </a>
+    <a href="/"><img src="logo.png" alt="Rhino Property Solutions" class="logo"></a>
     <h1>Report a Maintenance Issue</h1>
     <p>Please complete the form below.<br>Urgent issues should also be reported via phone.</p>
   </div>
@@ -25,9 +22,7 @@
 
   <!-- TENANT ADVISORY -->
   <section class="section grey">
-    <p class="intro advisory-title">
-      <strong>TENANT GUIDANCE:</strong>
-    </p>
+    <p class="intro advisory-title"><strong>TENANT GUIDANCE:</strong></p>
     <p class="advisory-text">
       Please use this form to report a single issue in your property.
       Submit <strong>one form per issue</strong> to help us respond efficiently.
@@ -42,7 +37,11 @@
 
       <!-- Web3Forms Config -->
       <input type="hidden" name="access_key" value="91fdb16f-fb5c-4f85-9fbd-576811b31599">
-      <input type="hidden" name="redirect" value="https://www.rhinopropertysolutions.co.uk/maintenance-thank-you.html">
+
+      <!-- ✅ Updated redirect with placeholders -->
+      <input type="hidden" name="redirect" 
+        value="https://www.rhinopropertysolutions.co.uk/maintenance-thank-you.html?property={property}&issue_type={issue_type}">
+
       <input type="hidden" name="subject" value="New Maintenance Issue">
 
       <!-- Name -->
@@ -126,18 +125,19 @@
 </footer>
 
 <script>
-window.onscroll = function() {
-  let btn = document.getElementById("topBtn");
-  if (document.documentElement.scrollTop > 200) {
-    btn.classList.add("show");
-  } else {
-    btn.classList.remove("show");
-  }
-};
+  // Back to Top
+  window.onscroll = function() {
+    let btn = document.getElementById("topBtn");
+    if (document.documentElement.scrollTop > 200) {
+      btn.classList.add("show");
+    } else {
+      btn.classList.remove("show");
+    }
+  };
 
-function scrollToTop() {
-  window.scrollTo({top: 0, behavior: "smooth"});
-}
+  function scrollToTop() {
+    window.scrollTo({top: 0, behavior: "smooth"});
+  }
 </script>
 
 </body>

@@ -1,7 +1,6 @@
 /* GENERAL */
 * {
   box-sizing: border-box;
-  transition: all 0.2s ease; /* 🔥 global smooth transitions */
 }
 
 body {
@@ -12,11 +11,16 @@ body {
 
 img {
   max-width: 100%;
-  height: auto; /* 🔒 prevents layout shifts */
+  height: auto;
+}
+
+/* CONTROLLED TRANSITIONS (🔥 FIXED) */
+a, button, .btn, .card, .album {
+  transition: all 0.2s ease;
 }
 
 button, a {
-  -webkit-tap-highlight-color: transparent; /* 📱 better mobile UX */
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* HTML GLOBAL SETTINGS */
@@ -65,12 +69,16 @@ html {
   margin-top: 20px;
   font-weight: bold;
   border-radius: 30px;
-  transition: 0.3s;
 }
 
 .btn:hover {
   background: #d95f0e;
   transform: translateY(-2px);
+}
+
+/* 🔥 BUTTON CLICK FEEDBACK */
+.btn:active {
+  transform: scale(0.98);
 }
 
 .btn-secondary {
@@ -80,7 +88,7 @@ html {
 .btn-whatsapp {
   background: #25D366;
   color: white;
-  text-decoration: none; /* removes underline */
+  text-decoration: none;
 }
 
 .btn-whatsapp:hover {
@@ -92,7 +100,7 @@ html {
   padding: 60px 20px;
   text-align: center;
   border-bottom: 1px solid #eee;
-  scroll-margin-top: 80px; /* 🎯 anchor scroll fix */
+  scroll-margin-top: 80px;
 }
 
 .section h2 {
@@ -129,7 +137,6 @@ html {
   width: 260px;
   border-left: 5px solid #4CAF50;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  transition: 0.3s;
 }
 
 .card:hover {
@@ -154,6 +161,11 @@ html {
   animation: marquee 12s linear infinite;
 }
 
+/* 🔥 PAUSE ON HOVER */
+.gallery-marquee:hover {
+  animation-play-state: paused;
+}
+
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -163,14 +175,13 @@ html {
   position: relative;
   min-width: 300px;
   cursor: pointer;
-  transition: transform 0.3s;
 }
 
 .album img {
   width: 100%;
   border-radius: 6px;
   display: block;
-  will-change: transform; /* ⚡ smoother animation */
+  will-change: transform;
 }
 
 .album-label {
@@ -207,7 +218,7 @@ html {
 
 /* FORMS */
 form {
-  max-width: 500px; /* 🔥 improved width */
+  max-width: 500px;
   margin: auto;
 }
 
@@ -220,6 +231,15 @@ select {
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
+}
+
+/* 🔥 FORM FOCUS STATE */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #2e7d32;
+  box-shadow: 0 0 5px rgba(46,125,50,0.3);
 }
 
 /* CHECKBOX FIX */
@@ -251,7 +271,6 @@ form button {
   font-weight: bold;
   cursor: pointer;
   border-radius: 4px;
-  transition: 0.3s;
 }
 
 form button:hover {
@@ -362,7 +381,7 @@ form button[type="reset"]:hover {
 
 .btn-whatsapp,
 .call-float {
-  text-decoration: none;  /* prevents underlines */
+  text-decoration: none;
 }
 
 /* FOOTER */

@@ -257,13 +257,6 @@ input[type="checkbox"] {
   margin: 0;
 }
 
-/* LABELS */
-label {
-  display: block;
-  margin-top: 10px;
-  font-weight: bold;
-}
-
 /* FORM BUTTONS */
 .form-buttons {
   display: flex;

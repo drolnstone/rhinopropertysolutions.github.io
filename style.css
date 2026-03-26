@@ -358,6 +358,11 @@ form button[type="reset"]:hover {
   background: darkorange;
 }
 
+.btn-whatsapp,
+.call-float {
+  text-decoration: none;  /* prevents underlines */
+}
+
 /* FOOTER */
 footer {
   background: #1b5e20;

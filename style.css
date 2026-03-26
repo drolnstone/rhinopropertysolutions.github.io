@@ -202,6 +202,26 @@ label {
   font-weight: bold;
 }
 
+.form-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.btn-secondary {
+  background: #999;
+}
+
+.advisory-title {
+  color: #555;
+  font-style: italic;
+}
+
+.advisory-text {
+  color: #555;
+  font-style: italic;
+}
+
 /* FORM BUTTONS ONLY */
 form button {
   background: #2e7d32;

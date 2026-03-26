@@ -11,6 +11,10 @@
   <style>
     #formSectionContent { display:none; }
   </style>
+  
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
 </head>
 
 <body>
@@ -139,6 +143,13 @@
 </footer>
 
 <script>
+// Force password check on page show/back navigation
+window.addEventListener('pageshow', function(event) {
+    if (event.persisted) { // page loaded from cache
+        location.reload(); // triggers password gate
+    }
+});
+
   // ✅ Show back to top button
   window.onscroll = function() {
     let btn = document.getElementById("topBtn");

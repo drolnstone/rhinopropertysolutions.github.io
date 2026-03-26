@@ -196,8 +196,15 @@ window.addEventListener('pageshow', function(event) {
   }
 
   function showError() {
-    document.getElementById("errorMsg").style.display = "block";
-  }
+  const input = document.getElementById("passwordInput");
+  input.value = ""; // clear the password field
+  input.focus(); // put the cursor back in the field
+  document.getElementById("errorMsg").style.display = "block";
+}
+
+document.getElementById("passwordInput").addEventListener("input", function() {
+  document.getElementById("errorMsg").style.display = "none";
+});
 </script>
 
 </body>

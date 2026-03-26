@@ -13,7 +13,6 @@
 
 <body>
 
-<!-- HERO -->
 <header class="hero small">
   <div>
     <a href="/">
@@ -37,8 +36,8 @@
       <strong>Typical response time:</strong> within a few hours during working hours.
     </p>
 
-    <!-- COUNTDOWN MESSAGE -->
-    <p id="redirect-msg" class="advisory-text" style="margin-top:20px;">
+    <!-- COUNTDOWN -->
+    <p id="redirect-msg" class="advisory-text">
       You will be redirected to the homepage in 
       <strong><span id="countdown">10</span></strong> seconds.
     </p>
@@ -68,7 +67,6 @@
 <!-- BACK TO TOP BUTTON -->
 <button onclick="scrollToTop()" id="topBtn" title="Go to top">↑</button>
 
-<!-- FOOTER -->
 <footer>
   <p>Clean. Fixed. Ready. Always.</p>
   <p>© 2026 Rhino Property Solutions. All rights reserved.</p>
@@ -77,12 +75,8 @@
 <script>
 /* SCROLL BUTTON */
 window.onscroll = function() {
-  let btn = document.getElementById("topBtn");
-  if (document.documentElement.scrollTop > 200) {
-    btn.classList.add("show");
-  } else {
-    btn.classList.remove("show");
-  }
+  const btn = document.getElementById("topBtn");
+  btn.classList.toggle("show", document.documentElement.scrollTop > 200);
 };
 
 function scrollToTop() {
@@ -95,7 +89,10 @@ const countdownEl = document.getElementById("countdown");
 
 const timer = setInterval(() => {
   seconds--;
-  if (countdownEl) countdownEl.textContent = seconds;
+
+  if (countdownEl) {
+    countdownEl.textContent = seconds;
+  }
 
   if (seconds <= 0) {
     clearInterval(timer);

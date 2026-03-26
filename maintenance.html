@@ -21,96 +21,103 @@
   </div>
 </header>
 
-<!-- TENANT ADVISORY -->
-<section class="section grey">
-  <p class="intro" style="color: #555; font-style: italic;">
-    <strong>TENANT GUIDANCE:</strong>
- </p>
-  <p style="color: #555; font-style: italic;">
-  Please use this form to report a single issue in your property.
-Submit <strong>one form per issue</strong> to help us respond efficiently.
-If you have multiple issues, kindly complete a separate form for each.
- </p>
-</section>
+<main>
 
-<!-- FORM -->
-<section class="section" id="formSection">
+  <!-- TENANT ADVISORY -->
+  <section class="section grey">
+    <p class="intro advisory-title">
+      <strong>TENANT GUIDANCE:</strong>
+    </p>
+    <p class="advisory-text">
+      Please use this form to report a single issue in your property.
+      Submit <strong>one form per issue</strong> to help us respond efficiently.
+      If you have multiple issues, kindly complete a separate form for each.
+    </p>
+  </section>
 
-  <form action="https://api.web3forms.com/submit" method="POST">
+  <!-- FORM -->
+  <section class="section" id="formSection">
 
-    <!-- Web3Forms Config -->
-    <input type="hidden" name="access_key" value="91fdb16f-fb5c-4f85-9fbd-576811b31599">
-    <input type="hidden" name="redirect" value="https://www.rhinopropertysolutions.co.uk/maintenance-thank-you.html">
-    <input type="hidden" name="subject" value="New Maintenance Issue">
+    <form action="https://api.web3forms.com/submit" method="POST">
 
-    <!-- Name -->
-    <input type="text" name="name" placeholder="Full Name" required>
+      <!-- Web3Forms Config -->
+      <input type="hidden" name="access_key" value="91fdb16f-fb5c-4f85-9fbd-576811b31599">
+      <input type="hidden" name="redirect" value="https://www.rhinopropertysolutions.co.uk/maintenance-thank-you.html">
+      <input type="hidden" name="subject" value="New Maintenance Issue">
 
-    <!-- Email -->
-    <input type="email" name="email" placeholder="Email Address" required>
+      <!-- Name -->
+      <input type="text" name="name" placeholder="Full Name" required>
 
-    <!-- Phone -->
-<input type="tel" name="phone" placeholder="Your Phone Number (Preferred Contact)" required pattern="[0-9+ ]{10,}">
+      <!-- Email -->
+      <input type="email" name="email" placeholder="Email Address" required>
 
-    <!-- PROPERTY DROPDOWN -->
-    <select name="property" required>
-      <option value="">Select Property</option>
-      <option value="80 Dewsbury Road, L4 2XE">80 Dewsbury Road, L4 2XE</option>
-      <option value="23 Helena Street, L9 1BH">23 Helena Street, L9 1BH</option>
-      <option value="36 Kipling Street, L20 4QE">36 Kipling Street, L20 4QE</option>
-      <option value="9 Scorton Street, L6 4AS">9 Scorton Street, L6 4AS</option>
-    </select>
+      <!-- Phone -->
+      <input type="tel" name="phone" placeholder="Your Phone Number (Preferred Contact)" required pattern="[0-9+ ]{10,}">
 
-    <!-- ISSUE TYPE -->
-    <select name="issue_type" required>
-      <option value="">Select Issue Type</option>
-      <option>Plumbing</option>
-      <option>Electrical</option>
-      <option>Heating</option>
-      <option>Structural</option>
-      <option>Cleaning</option>
-      <option>Other</option>
-    </select>
+      <!-- PROPERTY DROPDOWN -->
+      <select name="property" required>
+        <option value="">Select Property</option>
+        <option value="80 Dewsbury Road, L4 2XE">80 Dewsbury Road, L4 2XE</option>
+        <option value="23 Helena Street, L9 1BH">23 Helena Street, L9 1BH</option>
+        <option value="36 Kipling Street, L20 4QE">36 Kipling Street, L20 4QE</option>
+        <option value="9 Scorton Street, L6 4AS">9 Scorton Street, L6 4AS</option>
+      </select>
 
-    <!-- PRIORITY -->
-    <select name="priority" required>
-      <option value="">Priority Level</option>
-      <option>Low</option>
-      <option>Medium</option>
-      <option>Urgent</option>
-    </select>
+      <!-- ISSUE TYPE -->
+      <select name="issue_type" required>
+        <option value="">Select Issue Type</option>
+        <option value="Plumbing">Plumbing</option>
+        <option value="Electrical">Electrical</option>
+        <option value="Heating">Heating</option>
+        <option value="Structural">Structural</option>
+        <option value="Cleaning">Cleaning</option>
+        <option value="Other">Other</option>
+      </select>
 
-    <!-- DESCRIPTION -->
-    <textarea name="message" placeholder="Describe the issue in detail..." required></textarea>
+      <!-- PRIORITY -->
+      <select name="priority" required>
+        <option value="">Priority Level</option>
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="Urgent">Urgent</option>
+      </select>
 
-    <!-- SUBMIT -->
-    <div style="display:flex; gap:10px; margin-top:15px;">
-      <button type="submit">Submit Report</button>
-      <button type="reset" style="background:#999;">Clear Form</button>
-    </div>
-  </form>
+      <!-- DESCRIPTION -->
+      <textarea name="message" placeholder="Describe the issue in detail..." required></textarea>
 
-</section>
+      <!-- SUBMIT -->
+      <div class="form-buttons">
+        <button type="submit">Submit Report</button>
+        <button type="reset" class="btn-secondary">Clear Form</button>
+      </div>
 
-<!-- INFO -->
-<section class="section grey">
-  <h2>Important Information</h2>
-  <p>
-    Please ensure all details are accurate.<br>For urgent issues such as leaks,
-    electrical faults, or security concerns, contact us immediately via phone.
-  </p>
-</section>
+    </form>
 
-<!-- BACK TO HOME -->
-<section class="section">
-  <a href="/" class="btn">Home</a>
-</section>
+  </section>
+
+  <!-- INFO -->
+  <section class="section grey">
+    <h2>Important Information</h2>
+    <p>
+      Please ensure all details are accurate.<br>
+      For urgent issues such as leaks, electrical faults, or security concerns, contact us immediately via phone.
+    </p>
+  </section>
+
+  <!-- BACK TO HOME -->
+  <section class="section">
+    <a href="/" class="btn">Home</a>
+  </section>
+
+</main>
 
 <!-- BACK TO TOP BUTTON -->
 <button onclick="scrollToTop()" id="topBtn">↑</button>
 
 <!-- FLOATING CALL BUTTON -->
-<a href="tel:07832017376" class="call-float">Call Now</a>
+<a href="tel:07832017376" class="call-float" aria-label="Call Rhino Property Solutions">
+  Call Now
+</a>
 
 <!-- FOOTER -->
 <footer>

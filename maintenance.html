@@ -3,150 +3,142 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maintenance Request | Rhino Property Solutions</title>
+  <title>Report Maintenance Issue | Rhino Property Solutions</title>
+
   <link rel="stylesheet" href="style.css">
-  <style>
-    .hidden { display: none; }
-    .choice-btn { padding:12px 20px; margin:10px; text-decoration:none; color:white; background:#2e7d32; display:inline-block; border-radius:4px; cursor:pointer; }
-  </style>
 </head>
+
 <body>
 
+<!-- HERO -->
 <header class="hero small">
   <div>
-    <a href="/"><img src="logo.png" alt="Rhino Property Solutions" class="logo"></a>
-    <h1>Report Submitted ✅</h1>
-    <p>Your maintenance issue has been received</p>
+    <a href="/">
+      <img src="logo.png" alt="Rhino Property Solutions" class="logo">
+    </a>
+    <h1>Report a Maintenance Issue</h1>
+    <p>Please complete the form below.<br>Urgent issues should also be reported via phone.</p>
   </div>
 </header>
 
-<section class="section">
-  <p class="intro">Thank you for reporting the issue at:</p>
-  <h2 id="propertyName">Loading...</h2>
-  <p class="about">Our team will review your request and take appropriate action.</p>
-</section>
+<main>
 
-<section class="section grey">
-  <p>Do you have photos or videos of the issue?</p>
-  <div class="choice-buttons">
-    <button type="button" class="choice-btn" id="yesMedia">Yes</button>
-    <button type="button" class="choice-btn" id="noMedia">No</button>
-  </div>
-</section>
+  <!-- TENANT ADVISORY -->
+  <section class="section grey">
+    <p class="intro advisory-title">
+      <strong>TENANT GUIDANCE:</strong>
+    </p>
+    <p class="advisory-text">
+      Please use this form to report a single issue in your property.
+      Submit <strong>one form per issue</strong> to help us respond efficiently.
+      If you have multiple issues, kindly complete a separate form for each.
+    </p>
+  </section>
 
-<section class="section grey hidden" id="mediaSection">
-  <h2>Send Photos / Videos</h2>
-  <p>Please send your media via WhatsApp to help us assess the issue faster.</p>
-  <a id="whatsappLink" target="_blank" class="btn btn-whatsapp">Send Media on WhatsApp</a>
-</section>
+  <!-- FORM -->
+  <section class="section" id="formSection">
 
-<section class="section grey hidden" id="noMediaSection">
-  <p>Thank you!<br>No media needed. Our team will proceed based on the details you provided.</p>
-</section>
+    <form action="https://api.web3forms.com/submit" method="POST">
 
-<section class="section">
-  <h2>Urgent Issues</h2>
-  <p>For urgent issues such as leaks, electrical faults, or security concerns, contact us immediately.</p>
-  <a href="tel:07832017376" class="btn">Call Now</a>
-</section>
+      <!-- Web3Forms Config -->
+      <input type="hidden" name="access_key" value="91fdb16f-fb5c-4f85-9fbd-576811b31599">
+      <input type="hidden" name="redirect" value="https://www.rhinopropertysolutions.co.uk/maintenance-thank-you.html">
+      <input type="hidden" name="subject" value="New Maintenance Issue">
 
-<section class="section grey" style="display:flex; flex-direction:column; gap:10px; align-items:center;">
-  <a href="/maintenance.html#formSection" class="btn" style="background:#555;">Submit Another Issue</a>
-  <a href="/" class="btn">Home</a>
-</section>
+      <!-- Name -->
+      <input type="text" name="name" placeholder="Full Name" required>
 
-<!-- BACK TO TOP -->
-<button onclick="topFunction()" id="topBtn" title="Go to top">↑</button>
+      <!-- Email -->
+      <input type="email" name="email" placeholder="Email Address" required>
 
-<section class="section" id="formSection">
-  <h2>Submit Maintenance Request</h2>
-  <form action="https://api.web3forms.com/submit" method="POST">
-    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
-    <input type="hidden" name="redirect" value="/maintenance-thank-you.html">
-    <input type="hidden" name="subject" value="Maintenance Request">
+      <!-- Phone -->
+      <input type="tel" name="phone" placeholder="Your Phone Number (Preferred Contact)" required pattern="[0-9+ ]{10,}">
 
-    <!-- Placeholder-only form -->
-    <input type="text" name="name" placeholder="Full Name" required>
-    <input type="email" name="email" placeholder="Email Address" required>
-    <input type="tel" name="phone" placeholder="Phone Number" required pattern="[0-9+ ]{10,}">
+      <!-- PROPERTY DROPDOWN -->
+      <select name="property" required>
+        <option value="">Select Property</option>
+        <option value="80 Dewsbury Road, L4 2XE">80 Dewsbury Road, L4 2XE</option>
+        <option value="23 Helena Street, L9 1BH">23 Helena Street, L9 1BH</option>
+        <option value="36 Kipling Street, L20 4QE">36 Kipling Street, L20 4QE</option>
+        <option value="9 Scorton Street, L6 4AS">9 Scorton Street, L6 4AS</option>
+      </select>
 
-    <select name="property" required>
-      <option value="" disabled selected>Select Property</option>
-      <option value="80 Dewsbury Road, L4 2XE">80 Dewsbury Road, L4 2XE</option>
-      <option value="23 Helena Street, L9 1BH">23 Helena Street, L9 1BH</option>
-      <option value="36 Kipling Street, L20 4QE">36 Kipling Street, L20 4QE</option>
-      <option value="9 Scorton Street, L6 4AS">9 Scorton Street, L6 4AS</option>
-    </select>
+      <!-- ISSUE TYPE -->
+      <select name="issue_type" required>
+        <option value="">Select Issue Type</option>
+        <option value="Plumbing">Plumbing</option>
+        <option value="Electrical">Electrical</option>
+        <option value="Heating">Heating</option>
+        <option value="Structural">Structural</option>
+        <option value="Cleaning">Cleaning</option>
+        <option value="Other">Other</option>
+      </select>
 
-    <select name="issue_type" required>
-      <option value="" disabled selected>Select Issue Type</option>
-      <option value="Plumbing">Plumbing</option>
-      <option value="Electrical">Electrical</option>
-      <option value="Heating">Heating</option>
-      <option value="Structural">Structural</option>
-      <option value="Cleaning">Cleaning</option>
-      <option value="Other">Other</option>
-    </select>
+      <!-- PRIORITY -->
+      <select name="priority" required>
+        <option value="">Priority Level</option>
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="Urgent">Urgent</option>
+      </select>
 
-    <select name="priority" required>
-      <option value="" disabled selected>Priority Level</option>
-      <option value="Low">Low</option>
-      <option value="Medium">Medium</option>
-      <option value="Urgent">Urgent</option>
-    </select>
+      <!-- DESCRIPTION -->
+      <textarea name="message" placeholder="Describe the issue in detail..." required></textarea>
 
-    <textarea name="message" placeholder="Describe the issue in detail..." required></textarea>
+      <!-- SUBMIT -->
+      <div class="form-buttons">
+        <button type="submit">Submit Report</button>
+        <button type="reset" class="btn-secondary">Clear Form</button>
+      </div>
 
-    <div class="form-buttons">
-      <button type="submit">Submit Request</button>
-      <button type="reset">Clear Form</button>
-    </div>
-  </form>
-</section>
+    </form>
 
-<script>
-const params = new URLSearchParams(window.location.search);
-const property = params.get("property") || "your property";
-const issue = params.get("issue_type") || "unspecified";
-document.getElementById("propertyName").textContent = property;
+  </section>
 
-const yesBtn = document.getElementById("yesMedia");
-const noBtn = document.getElementById("noMedia");
-const mediaSection = document.getElementById("mediaSection");
-const noMediaSection = document.getElementById("noMediaSection");
-const whatsappLink = document.getElementById("whatsappLink");
+  <!-- INFO -->
+  <section class="section grey">
+    <h2>Important Information</h2>
+    <p>
+      Please ensure all details are accurate.<br>
+      For urgent issues such as <strong>leaks, electrical faults, or security concerns,</strong> contact us immediately via phone.
+    </p>
+  </section>
 
-const messageText = `Hi, I just submitted a maintenance request for ${property}. Issue: ${issue}. I am sending media as requested.`;
+  <!-- BACK TO HOME -->
+  <section class="section">
+    <a href="/" class="btn">Home</a>
+  </section>
 
-yesBtn.addEventListener("click", () => {
-  mediaSection.classList.remove("hidden");
-  noMediaSection.classList.add("hidden");
-  yesBtn.parentElement.classList.add("hidden");
-  whatsappLink.href = `https://wa.me/447832017376?text=${encodeURIComponent(messageText)}`;
-});
+</main>
 
-noBtn.addEventListener("click", () => {
-  noMediaSection.classList.remove("hidden");
-  mediaSection.classList.add("hidden");
-  yesBtn.parentElement.classList.add("hidden");
-});
+<!-- BACK TO TOP BUTTON -->
+<button onclick="scrollToTop()" id="topBtn">↑</button>
 
-let topButton = document.getElementById("topBtn");
-window.onscroll = function() {
-  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-    topButton.classList.add("show");
-  } else {
-    topButton.classList.remove("show");
-  }
-};
-function topFunction() {
-  window.scrollTo({top: 0, behavior: 'smooth'});
-}
-</script>
+<!-- FLOATING CALL BUTTON -->
+<a href="tel:07832017376" class="call-float" aria-label="Call Rhino Property Solutions">
+  Call Now
+</a>
 
+<!-- FOOTER -->
 <footer>
   <p>Clean. Fixed. Ready. Always.</p>
   <p>© 2026 Rhino Property Solutions. All rights reserved.</p>
 </footer>
+
+<script>
+window.onscroll = function() {
+  let btn = document.getElementById("topBtn");
+  if (document.documentElement.scrollTop > 200) {
+    btn.classList.add("show");
+  } else {
+    btn.classList.remove("show");
+  }
+};
+
+function scrollToTop() {
+  window.scrollTo({top: 0, behavior: "smooth"});
+}
+</script>
+
 </body>
 </html>

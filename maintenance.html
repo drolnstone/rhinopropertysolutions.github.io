@@ -4,8 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Report Maintenance Issue | Rhino Property Solutions</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <!-- HERO -->
@@ -23,7 +25,9 @@
 
   <!-- TENANT ADVISORY -->
   <section class="section grey">
-    <p class="intro advisory-title"><strong>TENANT GUIDANCE:</strong></p>
+    <p class="intro advisory-title">
+      <strong>TENANT GUIDANCE:</strong>
+    </p>
     <p class="advisory-text">
       Please use this form to report a single issue in your property.
       Submit <strong>one form per issue</strong> to help us respond efficiently.
@@ -33,23 +37,32 @@
 
   <!-- FORM -->
   <section class="section" id="formSection">
-    <form id="maintenanceForm" action="https://api.web3forms.com/submit" method="POST">
+
+    <form action="https://api.web3forms.com/submit" method="POST">
+
       <!-- Web3Forms Config -->
       <input type="hidden" name="access_key" value="91fdb16f-fb5c-4f85-9fbd-576811b31599">
-      <input type="hidden" name="redirect" id="redirectInput" value="https://www.rhinopropertysolutions.co.uk/maintenance-thank-you.html">
+      <input type="hidden" name="redirect" value="https://www.rhinopropertysolutions.co.uk/maintenance-thank-you.html">
       <input type="hidden" name="subject" value="New Maintenance Issue">
 
-      <!-- Name -->
-      <input type="text" name="name" placeholder="Full Name" required>
+      <!-- 🔥 Added for future automation -->
+      <input type="hidden" name="form_type" value="Maintenance Request">
 
-      <!-- Email -->
-      <input type="email" name="email" placeholder="Email Address" required>
+      <!-- NAME -->
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Full Name" required>
 
-      <!-- Phone -->
-      <input type="tel" name="phone" placeholder="Your Phone Number (Preferred Contact)" required pattern="[0-9+ ]{10,}">
+      <!-- EMAIL -->
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="Email Address" required>
 
-      <!-- PROPERTY DROPDOWN -->
-      <select name="property" required>
+      <!-- PHONE -->
+      <label for="phone">Phone Number (Preferred Contact)</label>
+      <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required pattern="[0-9+ ]{10,}">
+
+      <!-- PROPERTY -->
+      <label for="property">Property</label>
+      <select name="property" id="property" required>
         <option value="">Select Property</option>
         <option value="80 Dewsbury Road, L4 2XE">80 Dewsbury Road, L4 2XE</option>
         <option value="23 Helena Street, L9 1BH">23 Helena Street, L9 1BH</option>
@@ -58,7 +71,8 @@
       </select>
 
       <!-- ISSUE TYPE -->
-      <select name="issue_type" required>
+      <label for="issue_type">Issue Type</label>
+      <select name="issue_type" id="issue_type" required>
         <option value="">Select Issue Type</option>
         <option value="Plumbing">Plumbing</option>
         <option value="Electrical">Electrical</option>
@@ -69,7 +83,8 @@
       </select>
 
       <!-- PRIORITY -->
-      <select name="priority" required>
+      <label for="priority">Priority Level</label>
+      <select name="priority" id="priority" required>
         <option value="">Priority Level</option>
         <option value="Low">Low</option>
         <option value="Medium">Medium</option>
@@ -77,14 +92,17 @@
       </select>
 
       <!-- DESCRIPTION -->
-      <textarea name="message" placeholder="Describe the issue in detail..." required></textarea>
+      <label for="message">Issue Description</label>
+      <textarea id="message" name="message" placeholder="Describe the issue in detail..." required></textarea>
 
       <!-- SUBMIT -->
       <div class="form-buttons">
         <button type="submit">Submit Report</button>
         <button type="reset" class="btn-secondary">Clear Form</button>
       </div>
+
     </form>
+
   </section>
 
   <!-- INFO -->
@@ -118,27 +136,15 @@
 </footer>
 
 <script>
-  // Scroll-to-top
-  window.onscroll = function() {
-    let btn = document.getElementById("topBtn");
-    if (document.documentElement.scrollTop > 200) btn.classList.add("show");
-    else btn.classList.remove("show");
-  };
-  function scrollToTop() {
-    window.scrollTo({top: 0, behavior: "smooth"});
-  }
+/* SCROLL BUTTON (clean version) */
+window.onscroll = function() {
+  const btn = document.getElementById("topBtn");
+  btn.classList.toggle("show", document.documentElement.scrollTop > 200);
+};
 
-  // Intercept form submit to append property & issue_type to redirect URL
-  const form = document.getElementById("maintenanceForm");
-  const redirectInput = document.getElementById("redirectInput");
-
-  form.addEventListener("submit", (e) => {
-    const property = form.querySelector('select[name="property"]').value;
-    const issue = form.querySelector('select[name="issue_type"]').value;
-
-    // Append as query params
-    redirectInput.value = `https://www.rhinopropertysolutions.co.uk/maintenance-thank-you.html?property=${encodeURIComponent(property)}&issue_type=${encodeURIComponent(issue)}`;
-  });
+function scrollToTop() {
+  window.scrollTo({top: 0, behavior: "smooth"});
+}
 </script>
 
 </body>

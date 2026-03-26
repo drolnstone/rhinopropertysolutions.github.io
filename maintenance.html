@@ -6,11 +6,26 @@
   <title>Report Maintenance Issue | Rhino Property Solutions</title>
 
   <link rel="stylesheet" href="style.css">
+
+  <!-- Prevent flash of content -->
+  <style>
+    #formSectionContent { display:none; }
+  </style>
 </head>
 
 <body>
 
+<!-- PASSWORD GATE -->
+<div id="gate" style="display:flex; justify-content:center; align-items:center; height:100vh; flex-direction:column; gap:10px;">
+  <p>Enter Password to Access Maintenance</p>
+  <input type="text" id="passwordInput" maxlength="5" placeholder="Enter 5-character password" autofocus>
+  <button onclick="checkPassword()">Submit</button>
+  <p id="errorMsg" style="color:red; display:none;">Incorrect password. Try again.</p>
+</div>
+
 <!-- HERO -->
+<div id="formSectionContent">
+
 <header class="hero small">
   <div>
     <a href="/">
@@ -50,7 +65,7 @@
       <input type="email" name="email" placeholder="Email Address" required>
 
       <!-- Phone -->
-      <input type="tel" name="phone"   placeholder="Your Phone Number (Preferred Contact)" required pattern="[0-9]{11}" title="Enter an 11-digit phone number">
+      <input type="tel" name="phone" placeholder="Your Phone Number (Preferred Contact)" required pattern="[0-9]{11}" title="Enter an 11-digit phone number">
 
       <!-- PROPERTY DROPDOWN -->
       <select name="property" required>
@@ -124,18 +139,54 @@
 </footer>
 
 <script>
-window.onscroll = function() {
-  let btn = document.getElementById("topBtn");
-  if (document.documentElement.scrollTop > 200) {
-    btn.classList.add("show");
-  } else {
-    btn.classList.remove("show");
+  // ✅ Show back to top button
+  window.onscroll = function() {
+    let btn = document.getElementById("topBtn");
+    if (document.documentElement.scrollTop > 200) {
+      btn.classList.add("show");
+    } else {
+      btn.classList.remove("show");
+    }
+  };
+  function scrollToTop() {
+    window.scrollTo({top: 0, behavior: "smooth"});
   }
-};
 
-function scrollToTop() {
-  window.scrollTo({top: 0, behavior: "smooth"});
-}
+  // 🔐 PASSWORD LOGIC
+  const validPasswords = ["B7448","A7377"]; // Add more as needed
+  const formHash = "#formSection";
+
+  window.onload = function() {
+    if (window.location.hash === formHash) {
+      document.getElementById("gate").style.display = "none";
+      document.getElementById("formSectionContent").style.display = "block";
+    } else {
+      document.getElementById("gate").style.display = "flex";
+      document.getElementById("formSectionContent").style.display = "none";
+    }
+  };
+
+  function checkPassword() {
+    const input = document.getElementById("passwordInput").value.trim();
+    const pattern = /^[A-Z]7[0-9]{3}$/; // First char caps, second 7, last three digits
+
+    if (!pattern.test(input)) {
+      showError();
+      return;
+    }
+
+    if (validPasswords.includes(input)) {
+      document.getElementById("gate").style.display = "none";
+      document.getElementById("formSectionContent").style.display = "block";
+      window.location.hash = ""; // optional, remove hash
+    } else {
+      showError();
+    }
+  }
+
+  function showError() {
+    document.getElementById("errorMsg").style.display = "block";
+  }
 </script>
 
 </body>

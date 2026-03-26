@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thank You | Rhino Property Solutions</title>
 
+  <!-- AUTO REDIRECT -->
+  <meta http-equiv="refresh" content="10; url=/" />
+
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -21,39 +24,49 @@
   </div>
 </header>
 
-<!-- MESSAGE -->
-<section class="section">
-  <p class="intro">
-    Thank you for contacting Rhino Property Solutions. 
-    A member of our team will review your request and get back to you shortly.
-  </p>
+<main>
 
-  <p class="about">
-    <strong>Typical response time:</strong> within a few hours during working hours.
-  </p>
-</section>
+  <!-- MESSAGE -->
+  <section class="section">
+    <p class="intro">
+      Thank you for contacting Rhino Property Solutions. 
+      A member of our team will review your request and get back to you shortly.
+    </p>
 
-<!-- ACTIONS -->
-<section class="section grey">
-  <h2>Need Immediate Assistance?</h2>
+    <p class="about">
+      <strong>Typical response time:</strong> within a few hours during working hours.
+    </p>
 
-  <p>If your request is urgent, you can contact us directly:</p>
-  
-<div style="margin-top:20px; display:flex; flex-direction:column; gap:10px; align-items:center;">
-  <a href="tel:07832017376" class="btn">Call Now</a>
-  <a href="https://wa.me/447832017376" target="_blank" class="btn" style="background:#25D366;">
-    Chat on WhatsApp
-  </a>
-</div>
-</section>
+    <!-- COUNTDOWN MESSAGE -->
+    <p id="redirect-msg" class="advisory-text" style="margin-top:20px;">
+      You will be redirected to the homepage in 
+      <strong><span id="countdown">10</span></strong> seconds.
+    </p>
+  </section>
 
-<!-- BACK -->
-<section class="section">
-  <a href="/" class="btn">Home</a>
-</section>
+  <!-- ACTIONS -->
+  <section class="section grey">
+    <h2>Need Immediate Assistance?</h2>
+
+    <p>If your request is urgent, you can contact us directly:</p>
+    
+    <div class="cta-stack">
+      <a href="tel:07832017376" class="btn">Call Now</a>
+      <a href="https://wa.me/447832017376" target="_blank" class="btn btn-whatsapp" aria-label="Chat on WhatsApp">
+        Chat on WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- BACK -->
+  <section class="section">
+    <a href="/" class="btn">Home</a>
+  </section>
+
+</main>
 
 <!-- BACK TO TOP BUTTON -->
-<button onclick="topFunction()" id="topBtn" title="Go to top">↑</button>
+<button onclick="scrollToTop()" id="topBtn" title="Go to top">↑</button>
 
 <!-- FOOTER -->
 <footer>
@@ -62,24 +75,33 @@
 </footer>
 
 <script>
-//Get the button
-let topButton = document.getElementById("topBtn");
-
-// When the user scrolls down 100px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
-
-function scrollFunction() {
-  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-    topButton.classList.add("show");
+/* SCROLL BUTTON */
+window.onscroll = function() {
+  let btn = document.getElementById("topBtn");
+  if (document.documentElement.scrollTop > 200) {
+    btn.classList.add("show");
   } else {
-    topButton.classList.remove("show");
+    btn.classList.remove("show");
   }
+};
+
+function scrollToTop() {
+  window.scrollTo({top: 0, behavior: "smooth"});
 }
 
-// When the user clicks on the button, scroll to the top smoothly
-function topFunction() {
-  window.scrollTo({top: 0, behavior: 'smooth'});
-}
+/* COUNTDOWN + REDIRECT */
+let seconds = 10;
+const countdownEl = document.getElementById("countdown");
+
+const timer = setInterval(() => {
+  seconds--;
+  if (countdownEl) countdownEl.textContent = seconds;
+
+  if (seconds <= 0) {
+    clearInterval(timer);
+    window.location.href = "/";
+  }
+}, 1000);
 </script>
 
 </body>

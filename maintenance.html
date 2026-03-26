@@ -164,7 +164,7 @@ window.addEventListener('pageshow', function(event) {
   }
 
   // 🔐 PASSWORD LOGIC
-  const validPasswords = ["b7448","a7377"]; // Add more as needed
+const validPasswords = ["7377A", "7448B"];
   const formHash = "#formSection";
 
   window.onload = function() {
@@ -179,7 +179,7 @@ window.addEventListener('pageshow', function(event) {
 
   function checkPassword() {
     const input = document.getElementById("passwordInput").value.trim();
-    const pattern = /^[a-z]7[0-9]{3}$/; // First char lowercase, second 7, last three digits
+const pattern = /^7[0-9]{3}[A-Z]$/; // Starts with 7, then 3 digits, ends with capital letter
 
     if (!pattern.test(input)) {
       showError();

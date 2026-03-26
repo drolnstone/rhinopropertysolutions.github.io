@@ -353,3 +353,19 @@ footer {
 
 /* UTIL */
 .hidden { display: none; }
+
+.cta-stack {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn-whatsapp {
+  background: #25D366;
+}
+
+.btn-whatsapp:hover {
+  background: #1ebe5d;
+}

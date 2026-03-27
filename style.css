@@ -111,6 +111,7 @@ html {
   background: #1b5e20;
   transform: translateY(-1px);
 }
+
 /* SECTIONS */
 .section {
   padding: 60px 20px;
@@ -177,7 +178,6 @@ html {
   animation: marquee 12s linear infinite;
 }
 
-/* 🔥 PAUSE ON HOVER */
 .gallery-marquee:hover {
   animation-play-state: paused;
 }
@@ -251,14 +251,12 @@ select {
   background: #fff;
 }
 
-/* PLACEHOLDER STYLE (clean + subtle) */
 input::placeholder,
 textarea::placeholder {
   color: #777;
   font-size: 14px;
 }
 
-/* FOCUS EFFECT (🔥 premium feel) */
 input:focus,
 textarea:focus,
 select:focus {
@@ -267,7 +265,6 @@ select:focus {
   box-shadow: 0 0 0 2px rgba(46,125,50,0.15);
 }
 
-/* CHECKBOX FIX */
 input[type="checkbox"] {
   width: auto;
   margin: 0;
@@ -318,23 +315,6 @@ form button[type="reset"]:hover {
   gap: 10px;
   font-weight: normal;
   font-size: 14px;
-}
-
-/* CTA STACK */
-.cta-stack {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
-}
-
-/* CHOICE BUTTONS */
-.choice-buttons {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin-top: 10px;
 }
 
 /* BACK TO TOP */

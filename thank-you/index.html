@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You | Rhino Property Solutions</title>
+
+  <!-- AUTO REDIRECT -->
+  <meta http-equiv="refresh" content="10; url=/" />
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="hero small">
+  <div>
+    <a href="/">
+      <img src="logo.png" alt="Rhino Property Solutions" class="logo">
+    </a>
+    <h1>Thank You</h1>
+    <p>Your enquiry has been received</p>
+  </div>
+</header>
+
+<main>
+
+  <!-- MESSAGE -->
+  <section class="section">
+    <p class="intro">
+      Thank you for contacting Rhino Property Solutions. 
+      A member of our team will review your request and get back to you shortly.
+    </p>
+
+    <p class="about">
+      <strong>Typical response time:</strong> within a few hours during working hours.
+    </p>
+
+    <!-- COUNTDOWN -->
+    <p id="redirect-msg" class="advisory-text">
+      You will be redirected back to the homepage in 
+      <strong><span id="countdown">15</span></strong> seconds.
+    </p>
+  </section>
+
+  <!-- ACTIONS -->
+  <section class="section grey">
+    <h2>Need Immediate Assistance?</h2>
+
+    <p>If your request is urgent, you can contact us directly:</p>
+    
+    <div class="cta-stack">
+      <a href="tel:07832017376" class="btn">Call Now</a>
+      <a href="https://wa.me/447832017376" target="_blank" class="btn btn-whatsapp" aria-label="Chat on WhatsApp">
+        Chat on WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- BACK -->
+  <section class="section">
+    <a href="/" class="btn">Home</a>
+  </section>
+
+</main>
+
+<!-- BACK TO TOP BUTTON -->
+<button onclick="scrollToTop()" id="topBtn" title="Go to top">↑</button>
+
+<footer>
+  <p>Clean. Fixed. Ready. Always.</p>
+  <p>© 2026 Rhino Property Solutions. All rights reserved.</p>
+</footer>
+
+<script>
+/* SCROLL BUTTON */
+window.onscroll = function() {
+  const btn = document.getElementById("topBtn");
+  btn.classList.toggle("show", document.documentElement.scrollTop > 200);
+};
+
+function scrollToTop() {
+  window.scrollTo({top: 0, behavior: "smooth"});
+}
+
+/* COUNTDOWN + REDIRECT */
+let seconds = 10;
+const countdownEl = document.getElementById("countdown");
+
+const timer = setInterval(() => {
+  seconds--;
+
+  if (countdownEl) {
+    countdownEl.textContent = seconds;
+  }
+
+  if (seconds <= 0) {
+    clearInterval(timer);
+    window.location.href = "/";
+  }
+}, 1000);
+</script>
+
+</body>
+</html>

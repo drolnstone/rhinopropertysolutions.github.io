@@ -95,6 +95,22 @@ html {
   background: #1ebe5d;
 }
 
+/* PASSWORD GATE BUTTON */
+.gate-btn {
+  padding: 14px 28px;
+  font-size: 18px;
+  font-weight: bold;
+  background: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.gate-btn:hover {
+  background: #1b5e20;
+  transform: translateY(-1px);
+}
 /* SECTIONS */
 .section {
   padding: 60px 20px;

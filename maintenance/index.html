@@ -69,7 +69,7 @@
 
   <input type="text" name="name" placeholder="Full Name" required>
   <input type="email" name="email" placeholder="Email Address" required>
-  <input type="tel" name="phone" placeholder="Your Phone Number (Preferred Contact)" required>
+  <input type="tel" name="phone" placeholder="Your Phone Number (Preferred Contact)" required pattern="[0-9]{11}" title="Enter an 11-digit phone number">
 
   <select name="property" required>
     <option value="">Select Property</option>
@@ -170,10 +170,15 @@ window.addEventListener("pageshow", function (event) {
   if (event.persisted) location.reload();
 });
 
-/* ✅ NEVER auto-unlock via URL hash — always require password */
+/* ✅ If arriving via #formSection (already authenticated), skip gate */
 window.onload = function () {
-  document.getElementById("gate").style.display = "flex";
-  document.getElementById("formSectionContent").style.display = "none";
+  if (window.location.hash === "#formSection") {
+    document.getElementById("gate").style.display = "none";
+    document.getElementById("formSectionContent").style.display = "block";
+  } else {
+    document.getElementById("gate").style.display = "flex";
+    document.getElementById("formSectionContent").style.display = "none";
+  }
 };
 
 async function checkPassword() {

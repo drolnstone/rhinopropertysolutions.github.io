@@ -14,7 +14,7 @@ img {
   height: auto;
 }
 
-/* CONTROLLED TRANSITIONS (🔥 FIXED) */
+/* CONTROLLED TRANSITIONS */
 a, button, .btn, .card, .album {
   transition: all 0.2s ease;
 }
@@ -23,7 +23,6 @@ button, a {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* HTML GLOBAL SETTINGS */
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
@@ -32,7 +31,7 @@ html {
 /* HERO */
 .hero {
   background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-              url('https://via.placeholder.com/1600x800') no-repeat center/cover;
+              url('hero.jpg') no-repeat center/cover;
   height: 90vh;
   color: white;
   text-align: center;
@@ -76,7 +75,6 @@ html {
   transform: translateY(-2px);
 }
 
-/* 🔥 BUTTON CLICK FEEDBACK */
 .btn:active {
   transform: scale(0.98);
 }
@@ -232,13 +230,29 @@ html {
   z-index: 10;
 }
 
+/* ✅ GALLERY PAUSE BUTTON */
+.gallery-pause-btn {
+  background: #2e7d32;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.gallery-pause-btn:hover {
+  background: #1b5e20;
+}
+
 /* FORMS */
 form {
   max-width: 500px;
   margin: auto;
 }
 
-/* INPUTS */
 input,
 textarea,
 select {
@@ -388,6 +402,23 @@ footer {
   color: white;
   text-align: center;
   padding: 20px;
+}
+
+/* CTA STACK */
+.cta-stack {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+/* CHOICE BUTTONS */
+.choice-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
 }
 
 /* MOBILE */

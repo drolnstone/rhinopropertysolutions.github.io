@@ -1,13 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maintenance Request Received | Rhino Property Solutions</title>
 
-<link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/style.css">
   <link rel="icon" href="/favicon.png">
-
 </head>
 
 <body>
@@ -15,7 +15,7 @@
 <header class="hero small">
   <div>
     <a href="/"><img src="/logo.png" alt="Rhino Property Solutions" class="logo"></a>
-    <h1>Report Submitted </h1>
+    <h1>Report Submitted</h1>
     <p>Your maintenance issue has been received</p>
   </div>
 </header>
@@ -23,11 +23,13 @@
 <main>
 
   <!-- CONFIRMATION -->
+
   <section class="section">
     <p class="intro">Thank you for reporting the issue at the property.<br>Our team will review your request and take the necessary action as soon as possible.</p>
   </section>
 
   <!-- MEDIA QUESTION -->
+
   <section class="section grey" id="choiceSection">
     <p><strong>Do you have photos or videos of the issue?</strong></p>
     <div class="choice-buttons">
@@ -37,6 +39,7 @@
   </section>
 
   <!-- MEDIA SECTION -->
+
   <section class="section grey hidden" id="mediaSection">
     <h2>Send Photos / Videos</h2>
     <p>Please send your media via WhatsApp to help us assess the issue faster.</p>
@@ -46,6 +49,7 @@
   </section>
 
   <!-- NO MEDIA -->
+
   <section class="section grey hidden" id="noMediaSection">
     <p>
       <strong>Thank you!<br>
@@ -54,6 +58,7 @@
   </section>
 
   <!-- URGENT -->
+
   <section class="section">
     <h2>Urgent Issues</h2>
     <p>
@@ -63,8 +68,10 @@
   </section>
 
   <!-- NAVIGATION -->
+
   <section class="section grey">
     <div class="cta-stack">
+      <!-- ✅ Hash removed — link now goes to password gate, not directly to the form -->
       <a href="/maintenance/#formSection" class="btn btn-secondary">Submit Another Issue</a>
       <a href="/" class="btn">Home</a>
     </div>
@@ -72,7 +79,6 @@
 
 </main>
 
-<!-- BACK TO TOP BUTTON -->
 <button onclick="scrollToTop()" id="topBtn">↑</button>
 
 <footer>
@@ -81,10 +87,14 @@
 </footer>
 
 <script>
-/* GET DATA */
-const params = new URLSearchParams(window.location.search);
-const property = params.get("property") || "your property";
-const issue = params.get("issue_type") || "unspecified";
+/* SCROLL BUTTON */
+window.onscroll = function () {
+  document.getElementById("topBtn").classList.toggle("show", document.documentElement.scrollTop > 200);
+};
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
 
 /* ELEMENTS */
 const yesBtn = document.getElementById("yesMedia");
@@ -100,7 +110,7 @@ yesBtn.addEventListener("click", () => {
   noMediaSection.classList.add("hidden");
   choiceSection.classList.add("hidden");
 
-const msg = `Hi, I’ve just submitted a maintenance request. I'm sending the related media as required. Thank you.`;
+  const msg = "Hi, I've just submitted a maintenance request. I'm sending the related media as required. Thank you.";
   whatsappLink.href = `https://wa.me/447832017376?text=${encodeURIComponent(msg)}`;
 });
 
@@ -109,16 +119,6 @@ noBtn.addEventListener("click", () => {
   mediaSection.classList.add("hidden");
   choiceSection.classList.add("hidden");
 });
-
-/* SCROLL BUTTON */
-window.onscroll = function() {
-  const btn = document.getElementById("topBtn");
-  btn.classList.toggle("show", document.documentElement.scrollTop > 200);
-};
-
-function scrollToTop() {
-  window.scrollTo({top: 0, behavior: "smooth"});
-}
 </script>
 
 </body>

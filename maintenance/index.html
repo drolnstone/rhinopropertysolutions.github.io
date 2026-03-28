@@ -49,18 +49,16 @@
 
   <section class="section" id="formSection">
 
-<form action="https://api.web3forms.com/submit" method="POST">
+<form id="maintenanceForm" action="https://api.web3forms.com/submit" method="POST">
 
   <input type="hidden" name="access_key" value="91fdb16f-fb5c-4f85-9fbd-576811b31599">
-  <input type="hidden" name="redirect" value="https://www.rhinopropertysolutions.co.uk/maintenance-thank-you/">
   <input type="hidden" name="subject" value="New Maintenance Issue">
   <input type="checkbox" name="botcheck" style="display:none;">
-
   <input type="text" name="name" placeholder="Full Name" required>
   <input type="email" name="email" placeholder="Email Address" required>
   <input type="tel" name="phone" placeholder="Your Phone Number (Preferred Contact)" required pattern="[0-9]{11}" title="Enter an 11-digit phone number">
 
-  <select name="property" required>
+<select name="property" id="propertySelect" required>
     <option value="">Select Property</option>
     <option value="80 Dewsbury Road, L4 2XE">80 Dewsbury Road, L4 2XE</option>
     <option value="23 Helena Street, L9 1BH">23 Helena Street, L9 1BH</option>
@@ -68,7 +66,7 @@
     <option value="9 Scorton Street, L6 4AS">9 Scorton Street, L6 4AS</option>
   </select>
 
-  <select name="issue_type" required>
+<select name="issue_type" id="issueSelect" required>
     <option value="">Select Issue Type</option>
     <option value="Plumbing">Plumbing</option>
     <option value="Electrical">Electrical</option>
@@ -194,6 +192,18 @@ window.onscroll = function () {
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
+
+document.getElementById("maintenanceForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+  const property = encodeURIComponent(document.getElementById("propertySelect").value);
+  const issue = encodeURIComponent(document.getElementById("issueSelect").value);
+  const r = document.createElement("input");
+  r.type = "hidden";
+  r.name = "redirect";
+  r.value = `https://www.rhinopropertysolutions.co.uk/maintenance-thank-you/?property=${property}&issue_type=${issue}`;
+  this.appendChild(r);
+  this.submit();
+});
 </script>
 
 </body>

@@ -164,14 +164,20 @@ async function hashInput(value) {
     .join("");
 }
 
-/* ✅ Force password check even on back-navigation from cache */
+/* ✅ On back navigation, force gate regardless of hash */
 window.addEventListener("pageshow", function (event) {
-  if (event.persisted) location.reload();
+  if (event.persisted) {
+    sessionStorage.setItem("forceGate", "true");
+    location.reload();
+  }
 });
 
-/* ✅ If arriving via #formSection (already authenticated), skip gate */
+/* ✅ Bypass gate only if arriving via #formSection and not a back navigation */
 window.onload = function () {
-  if (window.location.hash === "#formSection") {
+  const forceGate = sessionStorage.getItem("forceGate");
+  sessionStorage.removeItem("forceGate");
+
+  if (!forceGate && window.location.hash === "#formSection") {
     document.getElementById("gate").style.display = "none";
     document.getElementById("formSectionContent").style.display = "block";
   } else {
@@ -179,6 +185,7 @@ window.onload = function () {
     document.getElementById("formSectionContent").style.display = "none";
   }
 };
+
 
 async function checkPassword() {
   const input = document.getElementById("passwordInput").value.trim();

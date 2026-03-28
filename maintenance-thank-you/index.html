@@ -22,7 +22,8 @@
 <main>
 
   <section class="section">
-    <p class="intro">Thank you for reporting the issue at the property.<br>Our team will review your request and take the necessary action as soon as possible.</p>
+<p class="intro">Thank you for reporting the issue at<br><strong id="confirmProperty"></strong></p>
+<p class="about">Our team will review your request and take the necessary action as soon as possible.</p>
   </section>
 
   <section class="section grey" id="choiceSection">
@@ -95,7 +96,12 @@ yesBtn.addEventListener("click", () => {
   mediaSection.classList.remove("hidden");
   noMediaSection.classList.add("hidden");
   choiceSection.classList.add("hidden");
-  const msg = "Hi, I've just submitted a maintenance request. I'm sending the related media as required. Thank you.";
+const params = new URLSearchParams(window.location.search);
+const property = params.get("property") || "the property";
+const issue = params.get("issue_type") || "an issue";
+document.getElementById("confirmProperty").textContent = property;
+const msg = `Hi, I've just submitted a maintenance request for ${property} regarding a ${issue} issue. I'm sending the related photos/videos to help your assessment. Thank you.`;
+
   whatsappLink.href = `https://wa.me/447832017376?text=${encodeURIComponent(msg)}`;
 });
 

@@ -97,6 +97,20 @@ html {
               url('/hero.webp') no-repeat center 40% / cover;
 }
 
+.hero-content .btn {
+  background: linear-gradient(90deg, #f37021, #ffd700, #f37021);
+  background-size: 200% auto;
+  animation: shimmer 2.5s linear infinite;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  color: white;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
 .logo {
   width: 180px;
   margin-bottom: 20px;

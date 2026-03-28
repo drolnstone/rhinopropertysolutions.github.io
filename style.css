@@ -72,11 +72,6 @@ html {
   text-decoration: none;
 }
 
-.logo {
-  width: 180px;
-  margin-bottom: 20px;
-}
-
 .hero h1 {
   font-size: 3em;
   color: #4CAF50;
@@ -94,6 +89,17 @@ html {
 .hero.small > div:not(.hero-slides) {
   position: relative;
   z-index: 1;
+}
+
+.hero.small {
+  height: 50vh;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.75) 100%),
+              url('/hero.webp') no-repeat center 40% / cover;
+}
+
+.logo {
+  width: 180px;
+  margin-bottom: 20px;
 }
 
 .btn {

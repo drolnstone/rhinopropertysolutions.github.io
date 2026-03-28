@@ -5,18 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thank You | Rhino Property Solutions</title>
-
-  <!-- ✅ meta refresh removed — JS countdown handles redirect to avoid race condition -->
-
-<link rel="stylesheet" href="/style.css?v=1.0.2">
-
+  <link rel="stylesheet" href="/style.css?v=1.0.3">
   <link rel="icon" href="/favicon.png">
 </head>
 
 <body>
 
 <header class="hero small">
-  <div>
+  <div class="hero-content">
     <a href="/">
       <img src="/logo.png" alt="Rhino Property Solutions" class="logo">
     </a>
@@ -32,16 +28,13 @@
       Thank you for contacting Rhino Property Solutions.
       A member of our team will review your request and get back to you shortly.
     </p>
-
-<p class="about">
-  <strong>Typical response time:</strong> within a few hours during working hours.
-</p>
-
-<p id="redirect-msg" class="advisory-text">
-  You will be redirected back to the homepage in <br>
-  <strong><span id="countdown">15</span></strong> seconds.
-</p>
-
+    <p class="about">
+      <strong>Typical response time:</strong> within a few hours during working hours.
+    </p>
+    <p id="redirect-msg" class="advisory-text">
+      You will be redirected back to the homepage in <br>
+      <strong><span id="countdown">15</span></strong> seconds.
+    </p>
   </section>
 
   <section class="section grey">
@@ -49,15 +42,15 @@
     <p>If your request is urgent, you can contact us directly:</p>
     <div class="cta-stack">
       <a href="tel:07832017376" class="btn">Call Now</a>
-          </div>
-      <br>
-            <div class="cta-stack">
+    </div>
+    <br>
+    <div class="cta-stack">
       <a href="https://wa.me/447832017376" target="_blank" class="btn btn-whatsapp" aria-label="Chat on WhatsApp">
         Chat on WhatsApp
       </a>
     </div>
   </section>
-  
+
   <section class="section">
     <a href="/" class="btn">Home</a>
   </section>
@@ -72,7 +65,6 @@
 </footer>
 
 <script>
-/* SCROLL BUTTON */
 window.onscroll = function () {
   document.getElementById("topBtn").classList.toggle("show", document.documentElement.scrollTop > 200);
 };
@@ -81,7 +73,6 @@ function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-/* ✅ JS-only countdown — meta refresh removed to avoid race condition */
 let seconds = 15;
 const countdownEl = document.getElementById("countdown");
 

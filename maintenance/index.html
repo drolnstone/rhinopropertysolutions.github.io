@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Report Maintenance Issue | Rhino Property Solutions</title>
-  <link rel="stylesheet" href="/style.css?v=1.0.2">
+  <link rel="stylesheet" href="/style.css?v=1.0.3">
   <link rel="icon" href="/favicon.png">
   <style>
     #formSectionContent { display:none; }
@@ -27,7 +27,7 @@
 <div id="formSectionContent">
 
 <header class="hero small">
-  <div>
+  <div class="hero-content">
     <a href="/">
       <img src="/logo.png" alt="Rhino Property Solutions" class="logo">
     </a>
@@ -55,6 +55,7 @@
   <input type="hidden" name="access_key" value="91fdb16f-fb5c-4f85-9fbd-576811b31599">
   <input type="hidden" name="redirect" value="https://www.rhinopropertysolutions.co.uk/maintenance-thank-you/">
   <input type="hidden" name="subject" value="New Maintenance Issue">
+  <input type="checkbox" name="botcheck" style="display:none;">
 
   <input type="text" name="name" placeholder="Full Name" required>
   <input type="email" name="email" placeholder="Email Address" required>
@@ -148,7 +149,6 @@ window.addEventListener("pageshow", function (event) {
 window.onload = function () {
   const forceGate = sessionStorage.getItem("forceGate");
   sessionStorage.removeItem("forceGate");
-
   if (!forceGate && window.location.hash === "#formSection") {
     document.getElementById("gate").style.display = "none";
     document.getElementById("formSectionContent").style.display = "block";
@@ -161,14 +161,8 @@ window.onload = function () {
 async function checkPassword() {
   const input = document.getElementById("passwordInput").value.trim();
   const pattern = /^7[0-9]{3}[A-Z]$/;
-
-  if (!pattern.test(input)) {
-    showError();
-    return;
-  }
-
+  if (!pattern.test(input)) { showError(); return; }
   const hashed = await hashInput(input);
-
   if (validHashes.includes(hashed)) {
     document.getElementById("gate").style.display = "none";
     document.getElementById("formSectionContent").style.display = "block";

@@ -31,7 +31,7 @@ html {
 /* HERO */
 .hero {
   background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-              url('hero.jpg') no-repeat center/cover;
+              url('hero.png') no-repeat center/cover;
   height: 90vh;
   color: white;
   text-align: center;

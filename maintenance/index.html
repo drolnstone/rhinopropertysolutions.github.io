@@ -5,15 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Report Maintenance Issue | Rhino Property Solutions</title>
-
-<link rel="stylesheet" href="/style.css?v=1.0.2">
-
+  <link rel="stylesheet" href="/style.css?v=1.0.2">
   <link rel="icon" href="/favicon.png">
-
   <style>
     #formSectionContent { display:none; }
   </style>
-
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
@@ -21,16 +17,12 @@
 
 <body>
 
-<!-- PASSWORD GATE -->
-
 <div id="gate" style="display:flex; justify-content:center; align-items:center; height:100vh; flex-direction:column; gap:10px;">
   <p><strong>Enter Password to Access Maintenance</strong></p>
   <input type="password" id="passwordInput" maxlength="5" placeholder="Enter Landlord/Tenant Password" autofocus>
   <button id="gateSubmit" class="gate-btn">Submit</button>
   <p id="errorMsg" style="color:red; display:none;">Incorrect password. Try again.</p>
 </div>
-
-<!-- HERO -->
 
 <div id="formSectionContent">
 
@@ -46,8 +38,6 @@
 
 <main>
 
-  <!-- TENANT ADVISORY -->
-
   <section class="section grey">
     <p class="intro advisory-title">
       <strong>TENANT GUIDANCE:</strong>
@@ -57,10 +47,9 @@
     </p>
   </section>
 
-  <!-- FORM -->
-
   <section class="section" id="formSection">
 
+```
 <form action="https://api.web3forms.com/submit" method="POST">
 
   <input type="hidden" name="access_key" value="91fdb16f-fb5c-4f85-9fbd-576811b31599">
@@ -104,10 +93,9 @@
   </div>
 
 </form>
+```
 
   </section>
-
-  <!-- INFO -->
 
   <section class="section grey">
     <h2>Important Information</h2>
@@ -116,8 +104,6 @@
       For urgent issues such as <strong>leaks, electrical faults, or security concerns,</strong> contact us immediately via phone.
     </p>
   </section>
-
-  <!-- BACK TO HOME -->
 
   <section class="section">
     <a href="/" class="btn">Home</a>
@@ -136,24 +122,12 @@
   <p>© 2026 Rhino Property Solutions. All rights reserved.</p>
 </footer>
 
-</div><!-- /formSectionContent -->
+</div>
 
 <script>
-/*
-  ✅ PASSWORDS STORED AS SHA-256 HASHES — plaintext no longer visible in source.
-  
-  To add or change a password:
-  1. Open your browser console on any page.
-  2. Run: crypto.subtle.digest('SHA-256', new TextEncoder().encode('YOURPASSWORD'))
-       .then(b => console.log([...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')))
-  3. Copy the resulting hash into the validHashes array below.
-
-  NOTE: This is a meaningful improvement over plaintext but is still client-side.
-  For stronger security, move validation to a serverless function (e.g. Netlify Functions).
-*/
 const validHashes = [
-  "3ee6624b3e41b3cb14b471f1bd986fdf5f34857bd7e2a3fd54eb2dc1c81e3b63", // 7377A
-  "49365c486263091b7fc79291d56b6bc2b2a76965ae456eb2c12011a02bfa294f"  // 7448B
+  "3ee6624b3e41b3cb14b471f1bd986fdf5f34857bd7e2a3fd54eb2dc1c81e3b63",
+  "49365c486263091b7fc79291d56b6bc2b2a76965ae456eb2c12011a02bfa294f"
 ];
 
 async function hashInput(value) {
@@ -164,7 +138,6 @@ async function hashInput(value) {
     .join("");
 }
 
-/* ✅ On back navigation, force gate regardless of hash */
 window.addEventListener("pageshow", function (event) {
   if (event.persisted) {
     sessionStorage.setItem("forceGate", "true");
@@ -172,7 +145,6 @@ window.addEventListener("pageshow", function (event) {
   }
 });
 
-/* ✅ Bypass gate only if arriving via #formSection and not a back navigation */
 window.onload = function () {
   const forceGate = sessionStorage.getItem("forceGate");
   sessionStorage.removeItem("forceGate");
@@ -185,7 +157,6 @@ window.onload = function () {
     document.getElementById("formSectionContent").style.display = "none";
   }
 };
-
 
 async function checkPassword() {
   const input = document.getElementById("passwordInput").value.trim();
@@ -213,7 +184,6 @@ function showError() {
   document.getElementById("errorMsg").style.display = "block";
 }
 
-/* ✅ Enter key submits password gate */
 document.getElementById("passwordInput").addEventListener("keydown", function (e) {
   if (e.key === "Enter") checkPassword();
 });
@@ -224,7 +194,6 @@ document.getElementById("passwordInput").addEventListener("input", function () {
   document.getElementById("errorMsg").style.display = "none";
 });
 
-/* SCROLL BUTTON */
 window.onscroll = function () {
   document.getElementById("topBtn").classList.toggle("show", document.documentElement.scrollTop > 200);
 };

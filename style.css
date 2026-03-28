@@ -58,6 +58,11 @@ html {
   height: 50vh;
 }
 
+.hero a {
+  color: #FFB347;
+  text-decoration: none;
+}
+
 /* BUTTON */
 .btn {
   display: inline-block;

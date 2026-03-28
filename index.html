@@ -4,18 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Rhino Property Solutions | Property Services in Liverpool</title>
   <meta name="description" content="Cleaning, maintenance, snagging, and property management services in Liverpool.">
   <meta name="robots" content="index, follow">
-
-  <!-- Social Preview -->
-
   <meta property="og:title" content="Rhino Property Solutions Liverpool">
   <meta property="og:description" content="Professional property services across Liverpool.">
-
-  <!-- ✅ LocalBusiness Structured Data -->
-
+  <meta property="og:image" content="https://www.rhinopropertysolutions.co.uk/hero.webp">
+  <meta property="og:url" content="https://www.rhinopropertysolutions.co.uk">
+  <meta property="og:type" content="website">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -31,27 +27,25 @@
       "addressCountry": "GB"
     },
     "areaServed": "Liverpool",
-    "serviceType": [
-      "Cleaning Services",
-      "Building Maintenance",
-      "Snagging Inspections",
-      "Property Sourcing",
-      "Property Management"
-    ]
+    "serviceType": ["Cleaning Services","Building Maintenance","Snagging Inspections","Property Sourcing","Property Management"]
   }
   </script>
-
-<link rel="stylesheet" href="/style.css?v=1.0.2">
-
+  <link rel="stylesheet" href="style.css?v=1.0.3">
   <link rel="icon" href="favicon.png">
 </head>
 
 <body>
 
-<!-- HERO -->
-
 <header class="hero">
-  <div>
+  <div class="hero-slides">
+    <div class="hero-slide active" style="background-image: url('hero.webp')"></div>
+    <div class="hero-slide" style="background-image: url('hero-cleaning.webp')"></div>
+    <div class="hero-slide" style="background-image: url('hero-maintenance.webp')"></div>
+    <div class="hero-slide" style="background-image: url('hero-snagging.webp')"></div>
+    <div class="hero-slide" style="background-image: url('hero-sourcing.webp')"></div>
+    <div class="hero-slide" style="background-image: url('hero-management.webp')"></div>
+  </div>
+  <div class="hero-content">
     <a href="#" onclick="location.href = location.origin + location.pathname; return false;">
       <img src="logo.png" alt="Rhino Property Solutions" class="logo">
     </a>
@@ -62,15 +56,13 @@
 </header>
 
 <main>
-  <!-- INTRO -->
+
   <section class="section grey">
     <p class="intro">
       From cleaning and maintenance to sourcing and full property management,
       we deliver reliable, end-to-end property solutions you can trust.
     </p>
   </section>
-
-  <!-- REPORT AN ISSUE -->
 
   <section class="section">
     <div style="text-align:center; max-width:600px; margin:0 auto;">
@@ -83,8 +75,6 @@
     </div>
   </section>
 
-  <!-- ABOUT -->
-
   <section class="section grey">
     <h2>About Us</h2>
     <p class="about">
@@ -94,134 +84,95 @@
     </p>
   </section>
 
-  <!-- SERVICES -->
-
   <section class="section">
     <h2>Integrated Property Services</h2>
     <div class="services">
-
-  <div class="card">
-    <h3>Cleaning Solutions</h3>
-    <p>Routine, deep cleaning, and end-of-tenancy cleaning to inspection-ready standards.</p>
-  </div>
-
-  <div class="card">
-    <h3>Building Maintenance & Asset Care</h3>
-    <p>Repairs, fabric maintenance, and essential building services.</p>
-  </div>
-
-  <div class="card">
-    <h3>Snagging & Property Inspections</h3>
-    <p>Detailed inspections ensuring defects are identified before purchase.</p>
-  </div>
-
-  <div class="card">
-    <h3>Property Sourcing & Sales Support</h3>
-    <p>Connecting motivated sellers with ready buyers and supporting property investments.</p>
-  </div>
-
-  <div class="card">
-    <h3>Full Property Management</h3>
-    <p>Tenant sourcing, prequalification checks, landlord support, and full management.</p>
-  </div>
-
-</div>
-
+      <div class="card">
+        <h3>Cleaning Solutions</h3>
+        <p>Routine, deep cleaning, and end-of-tenancy cleaning to inspection-ready standards.</p>
+      </div>
+      <div class="card">
+        <h3>Building Maintenance & Asset Care</h3>
+        <p>Repairs, fabric maintenance, and essential building services.</p>
+      </div>
+      <div class="card">
+        <h3>Snagging & Property Inspections</h3>
+        <p>Detailed inspections ensuring defects are identified before purchase.</p>
+      </div>
+      <div class="card">
+        <h3>Property Sourcing & Sales Support</h3>
+        <p>Connecting motivated sellers with ready buyers and supporting property investments.</p>
+      </div>
+      <div class="card">
+        <h3>Full Property Management</h3>
+        <p>Tenant sourcing, prequalification checks, landlord support, and full management.</p>
+      </div>
+    </div>
   </section>
-
-  <!-- GALLERY -->
 
   <section class="section grey">
     <h2>Our Work</h2>
-
-<div class="gallery-container">
-  <div class="gallery-marquee" id="galleryMarquee">
-
-    <div class="album" data-title="Deep Cleaning Projects">
-      <img src="gallery/cleaning-main.jpg" alt="Deep cleaning project overview">
-      <div class="album-label">Deep Cleaning Projects</div>
-      <div class="album-content">
-        <img src="gallery/cleaning-1.jpg" alt="Kitchen deep clean">
-        <img src="gallery/cleaning-2.jpg" alt="Bathroom deep clean">
-        <img src="gallery/cleaning-3.jpg" alt="End-of-tenancy clean">
+    <div style="text-align:center; margin-bottom:12px;">
+      <button id="galleryToggle" class="gallery-pause-btn" aria-label="Pause gallery" aria-pressed="false">⏸ Pause</button>
+    </div>
+    <div class="gallery-container">
+      <div class="gallery-marquee" id="galleryMarquee">
+        <div class="album" data-title="Deep Cleaning Projects">
+          <img src="gallery/cleaning-main.webp" alt="Deep cleaning project overview">
+          <div class="album-label">Deep Cleaning Projects</div>
+          <div class="album-content">
+            <img src="gallery/cleaning-1.webp" alt="Kitchen deep clean">
+            <img src="gallery/cleaning-2.webp" alt="Bathroom deep clean">
+            <img src="gallery/cleaning-3.webp" alt="End-of-tenancy clean">
+          </div>
+        </div>
+        <div class="album" data-title="Maintenance Works">
+          <img src="gallery/maintenance-main.webp" alt="Maintenance works overview">
+          <div class="album-label">Maintenance Works</div>
+          <div class="album-content">
+            <img src="gallery/maintenance-1.webp" alt="Plumbing repair">
+            <img src="gallery/maintenance-2.webp" alt="Electrical work">
+            <img src="gallery/maintenance-3.webp" alt="General repair">
+          </div>
+        </div>
+        <div class="album" data-title="Snagging Inspections">
+          <img src="gallery/snagging-main.webp" alt="Snagging inspection overview">
+          <div class="album-label">Snagging Inspections</div>
+          <div class="album-content">
+            <img src="gallery/snagging-1.webp" alt="Snagging detail 1">
+            <img src="gallery/snagging-2.webp" alt="Snagging detail 2">
+            <img src="gallery/snagging-3.webp" alt="Snagging report">
+          </div>
+        </div>
       </div>
     </div>
-
-    <div class="album" data-title="Maintenance Works">
-      <img src="gallery/maintenance-main.jpg" alt="Maintenance works overview">
-      <div class="album-label">Maintenance Works</div>
-      <div class="album-content">
-        <img src="gallery/maintenance-1.jpg" alt="Plumbing repair">
-        <img src="gallery/maintenance-2.jpg" alt="Electrical work">
-        <img src="gallery/maintenance-3.jpg" alt="General repair">
-      </div>
-    </div>
-
-    <div class="album" data-title="Snagging Inspections">
-      <img src="gallery/snagging-main.jpg" alt="Snagging inspection overview">
-      <div class="album-label">Snagging Inspections</div>
-      <div class="album-content">
-        <img src="gallery/snagging-1.jpg" alt="Snagging detail 1">
-        <img src="gallery/snagging-2.jpg" alt="Snagging detail 2">
-        <img src="gallery/snagging-3.jpg" alt="Snagging report">
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ✅ Pause / Play toggle -->
-<div style="text-align:left; margin-top:12px;">
-  <button id="galleryToggle" class="gallery-pause-btn" aria-label="Pause gallery" aria-pressed="false">⏸ Pause</button>
-</div>
-
   </section>
-
-  <!-- CONTACT -->
 
   <section class="section" id="contact">
     <h2>Contact Us</h2>
-
-<form action="https://api.web3forms.com/submit" method="POST">
-  <input type="hidden" name="access_key" value="9b0d60bd-7807-4a9b-bf3a-05ebd0d2e033">
-  <input type="hidden" name="redirect" value="https://www.rhinopropertysolutions.co.uk/thank-you/">
-  <input type="hidden" name="subject" value="New Website Enquiry">
-
-  <input type="text" name="name" placeholder="Full Name" required>
-  <input type="email" name="email" placeholder="Email Address" required>
-  <input type="tel" name="phone" placeholder="Your Phone Number (Preferred Contact)" required pattern="[0-9]{11}" title="Enter an 11-digit phone number">
-
-  <p style="font-size:0.9em; color:#555;"><strong>Service(s) Required</strong></p>
-
-  <div class="services-grid">
-    <label>
-      <input type="checkbox" name="services[]" value="Cleaning Services"> Cleaning Services
-    </label>
-    <label>
-      <input type="checkbox" name="services[]" value="Building Maintenance"> Building Maintenance
-    </label>
-    <label>
-      <input type="checkbox" name="services[]" value="Snagging Inspection"> Snagging Inspection
-    </label>
-    <label>
-      <input type="checkbox" name="services[]" value="Property Sourcing"> Property Sourcing
-    </label>
-    <label>
-      <input type="checkbox" name="services[]" value="Property Management"> Property Management
-    </label>
-    <label>
-      <input type="checkbox" name="services[]" value="General Enquiry"> General Enquiry
-    </label>
-  </div>
-
-  <textarea name="message" placeholder="Provide more details about your request..." required></textarea>
-
-  <div class="form-buttons">
-    <button type="submit">Send Message</button>
-    <button type="reset">Clear Form</button>
-  </div>
-</form>
-
+    <form action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="9b0d60bd-7807-4a9b-bf3a-05ebd0d2e033">
+      <input type="hidden" name="redirect" value="https://www.rhinopropertysolutions.co.uk/thank-you/">
+      <input type="hidden" name="subject" value="New Website Enquiry">
+      <input type="checkbox" name="botcheck" style="display:none;">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <input type="tel" name="phone" placeholder="Your Phone Number (Preferred Contact)" required pattern="[0-9]{11}" title="Enter an 11-digit phone number">
+      <p style="font-size:0.9em; color:#555;"><strong>Service(s) Required</strong></p>
+      <div class="services-grid">
+        <label><input type="checkbox" name="services[]" value="Cleaning Services"> Cleaning Services</label>
+        <label><input type="checkbox" name="services[]" value="Building Maintenance"> Building Maintenance</label>
+        <label><input type="checkbox" name="services[]" value="Snagging Inspection"> Snagging Inspection</label>
+        <label><input type="checkbox" name="services[]" value="Property Sourcing"> Property Sourcing</label>
+        <label><input type="checkbox" name="services[]" value="Property Management"> Property Management</label>
+        <label><input type="checkbox" name="services[]" value="General Enquiry"> General Enquiry</label>
+      </div>
+      <textarea name="message" placeholder="Provide more details about your request..." required></textarea>
+      <div class="form-buttons">
+        <button type="submit">Send Message</button>
+        <button type="reset">Clear Form</button>
+      </div>
+    </form>
   </section>
 
 </main>
@@ -238,7 +189,6 @@
 <button onclick="scrollToTop()" id="topBtn">↑</button>
 
 <script>
-/* SCROLL BUTTON */
 window.onscroll = function () {
   document.getElementById("topBtn").classList.toggle("show", document.documentElement.scrollTop > 200);
 };
@@ -247,12 +197,10 @@ function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-/* ALBUM EXPAND */
 document.querySelectorAll('.album').forEach(album => {
   album.addEventListener('click', () => album.classList.toggle('expanded'));
 });
 
-/* FORM SERVICE VALIDATION */
 document.querySelector("form").addEventListener("submit", function (e) {
   const checkboxes = document.querySelectorAll('input[name="services[]"]');
   if (!Array.from(checkboxes).some(cb => cb.checked)) {
@@ -261,18 +209,15 @@ document.querySelector("form").addEventListener("submit", function (e) {
   }
 });
 
-/* ✅ SEAMLESS GALLERY MARQUEE — clone items in JS */
 (function () {
   const marquee = document.getElementById("galleryMarquee");
-  const origItems = Array.from(marquee.children);
-  origItems.forEach(item => {
+  Array.from(marquee.children).forEach(item => {
     const clone = item.cloneNode(true);
     clone.setAttribute("aria-hidden", "true");
     marquee.appendChild(clone);
   });
 })();
 
-/* ✅ GALLERY PAUSE / PLAY TOGGLE */
 const galleryToggle = document.getElementById("galleryToggle");
 const galleryMarquee = document.getElementById("galleryMarquee");
 let isPaused = false;
@@ -283,6 +228,17 @@ galleryToggle.addEventListener("click", () => {
   galleryToggle.textContent = isPaused ? "▶ Play" : "⏸ Pause";
   galleryToggle.setAttribute("aria-pressed", isPaused);
 });
+
+(function () {
+  const slides = document.querySelectorAll('.hero-slide');
+  if (slides.length <= 1) return;
+  let current = 0;
+  setInterval(() => {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }, 6000);
+})();
 </script>
 
 </body>

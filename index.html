@@ -240,6 +240,41 @@ galleryToggle.addEventListener("click", () => {
 });
 
 (function () {
+  const container = document.querySelector(".gallery-container");
+  let startX, scrollLeft, isDown = false;
+
+  container.addEventListener("mousedown", e => {
+    isDown = true;
+    startX = e.pageX - container.offsetLeft;
+    scrollLeft = container.scrollLeft;
+    galleryMarquee.style.animationPlayState = "paused";
+  });
+  container.addEventListener("mouseleave", () => { isDown = false; });
+  container.addEventListener("mouseup", () => {
+    isDown = false;
+    if (!isPaused) galleryMarquee.style.animationPlayState = "running";
+  });
+  container.addEventListener("mousemove", e => {
+    if (!isDown) return;
+    e.preventDefault();
+    container.scrollLeft = scrollLeft - (e.pageX - container.offsetLeft - startX);
+  });
+
+  container.addEventListener("touchstart", e => {
+    startX = e.touches[0].pageX - container.offsetLeft;
+    scrollLeft = container.scrollLeft;
+    galleryMarquee.style.animationPlayState = "paused";
+  }, { passive: true });
+  container.addEventListener("touchend", () => {
+    if (!isPaused) galleryMarquee.style.animationPlayState = "running";
+  });
+  container.addEventListener("touchmove", e => {
+    const x = e.touches[0].pageX - container.offsetLeft;
+    container.scrollLeft = scrollLeft - (x - startX);
+  }, { passive: true });
+})();
+
+(function () {
   const slides = document.querySelectorAll('.hero-slide');
   if (slides.length <= 1) return;
   let current = 0;

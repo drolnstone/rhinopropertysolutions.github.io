@@ -83,18 +83,14 @@ html {
 
 .hero.small {
   height: 50vh;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.75) 100%),
+              url('/hero.webp') no-repeat center 40% / cover;
 }
 
 .hero.small .hero-content,
 .hero.small > div:not(.hero-slides) {
   position: relative;
   z-index: 1;
-}
-
-.hero.small {
-  height: 50vh;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.75) 100%),
-              url('/hero.webp') no-repeat center 40% / cover;
 }
 
 .hero-content .btn {
@@ -270,8 +266,11 @@ html {
 }
 
 .album-content img {
-  width: 90px;
+  width: 140px;
+  height: 100px;
+  object-fit: cover;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .album.expanded .album-content {
@@ -297,6 +296,27 @@ html {
 
 .gallery-pause-btn:hover {
   background: #1b5e20;
+}
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 8px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
 }
 
 form {

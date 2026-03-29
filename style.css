@@ -217,7 +217,7 @@ html {
 }
 
 .gallery-container {
-  overflow: hidden;
+  overflow-x: auto;
   width: 100%;
   position: relative;
   padding: 10px 0;

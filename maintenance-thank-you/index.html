@@ -85,6 +85,13 @@ function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
+const property = sessionStorage.getItem("maint_property") || "the property";
+const issue = sessionStorage.getItem("maint_issue") || "an issue";
+sessionStorage.removeItem("maint_property");
+sessionStorage.removeItem("maint_issue");
+
+document.getElementById("confirmProperty").textContent = property;
+
 const yesBtn = document.getElementById("yesMedia");
 const noBtn = document.getElementById("noMedia");
 const mediaSection = document.getElementById("mediaSection");
@@ -96,12 +103,7 @@ yesBtn.addEventListener("click", () => {
   mediaSection.classList.remove("hidden");
   noMediaSection.classList.add("hidden");
   choiceSection.classList.add("hidden");
-const params = new URLSearchParams(window.location.search);
-const property = params.get("property") || "the property";
-const issue = params.get("issue_type") || "an issue";
-document.getElementById("confirmProperty").textContent = property;
-const msg = `Hi, I've just submitted a maintenance request for ${property} regarding a ${issue} issue. I'm sending the related photos/videos to help your assessment. Thank you.`;
-
+  const msg = `Hi, I've just submitted a maintenance request for ${property} regarding a ${issue} issue. I'm sending the related photos/videos to help your assessment. Thank you.`;
   whatsappLink.href = `https://wa.me/447832017376?text=${encodeURIComponent(msg)}`;
 });
 

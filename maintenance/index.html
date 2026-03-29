@@ -193,16 +193,9 @@ function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-document.getElementById("maintenanceForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-  const property = encodeURIComponent(document.getElementById("propertySelect").value);
-  const issue = encodeURIComponent(document.getElementById("issueSelect").value);
-  const r = document.createElement("input");
-  r.type = "hidden";
-  r.name = "redirect";
-  r.value = `https://www.rhinopropertysolutions.co.uk/maintenance-thank-you/?property=${property}&issue_type=${issue}`;
-  this.appendChild(r);
-  this.submit();
+document.getElementById("maintenanceForm").addEventListener("submit", function () {
+  sessionStorage.setItem("maint_property", document.getElementById("propertySelect").value);
+  sessionStorage.setItem("maint_issue", document.getElementById("issueSelect").value);
 });
 </script>
 

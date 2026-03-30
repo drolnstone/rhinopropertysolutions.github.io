@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Report Maintenance Issue | Rhino Property Solutions</title>
-  <link rel="stylesheet" href="/style.css?v=1.0.7">
+  <link rel="stylesheet" href="/style.css?v=1.0.8">
   <link rel="icon" href="/favicon.png">
   <style>
     #formSectionContent { display:none; }
@@ -49,6 +49,7 @@
 
   <section class="section" id="formSection">
 
+```
 <form id="maintenanceForm" action="https://api.web3forms.com/submit" method="POST">
 
   <input type="hidden" name="access_key" value="91fdb16f-fb5c-4f85-9fbd-576811b31599">
@@ -84,6 +85,13 @@
     <option value="Urgent">Urgent</option>
   </select>
 
+  <select name="contact_time" required>
+    <option value="">Preferred Contact Time</option>
+    <option value="Morning (9am - 12pm)">Morning (9am - 12pm)</option>
+    <option value="Afternoon (12pm - 5pm)">Afternoon (12pm - 5pm)</option>
+    <option value="Evening (5pm - 7pm)">Evening (5pm - 7pm)</option>
+  </select>
+
   <textarea name="message" placeholder="Describe the issue in detail..." required></textarea>
 
   <div class="form-buttons">
@@ -92,6 +100,7 @@
   </div>
 
 </form>
+```
 
   </section>
 

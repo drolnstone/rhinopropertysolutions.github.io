@@ -30,7 +30,7 @@
     "serviceType": ["Cleaning Services","Building Maintenance","Snagging Inspections","Property Sourcing","Property Management"]
   }
   </script>
-  <link rel="stylesheet" href="style.css?v=1.0.5">
+  <link rel="stylesheet" href="style.css?v=1.0.6">
   <link rel="icon" href="favicon.png">
 </head>
 
@@ -112,9 +112,9 @@
 
   <section class="section grey">
     <h2>Our Work</h2>
-    <div class="gallery-container">
+    <div class="gallery-container" id="galleryContainer">
       <div class="gallery-marquee" id="galleryMarquee">
-        <div class="album" data-title="Deep Cleaning Projects">
+        <div class="album">
           <img src="gallery/cleaning-main.webp" alt="Deep cleaning project overview">
           <div class="album-label">Deep Cleaning Projects</div>
           <div class="album-content">
@@ -123,7 +123,7 @@
             <img src="gallery/cleaning-3.webp" alt="End-of-tenancy clean">
           </div>
         </div>
-        <div class="album" data-title="Building Repairs & Maintenance">
+        <div class="album">
           <img src="gallery/maintenance-main.webp" alt="Building repairs and maintenance overview">
           <div class="album-label">Building Repairs & Maintenance</div>
           <div class="album-content">
@@ -132,7 +132,7 @@
             <img src="gallery/maintenance-4.webp" alt="General repair">
           </div>
         </div>
-        <div class="album" data-title="Refurbishment Works">
+        <div class="album">
           <img src="gallery/refurb-main.webp" alt="Refurbishment works overview">
           <div class="album-label">Refurbishment Works</div>
           <div class="album-content">
@@ -141,7 +141,7 @@
             <img src="gallery/refurb-3.webp" alt="Lawn and grounds">
           </div>
         </div>
-        <div class="album" data-title="External & Grounds Maintenance">
+        <div class="album">
           <img src="gallery/external-main.webp" alt="External and grounds maintenance overview">
           <div class="album-label">External & Grounds Maintenance</div>
           <div class="album-content">
@@ -210,10 +210,6 @@ function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-document.querySelectorAll('.album').forEach(album => {
-  album.addEventListener('click', () => album.classList.toggle('expanded'));
-});
-
 document.querySelector("form").addEventListener("submit", function (e) {
   const checkboxes = document.querySelectorAll('input[name="services[]"]');
   if (!Array.from(checkboxes).some(cb => cb.checked)) {
@@ -223,59 +219,102 @@ document.querySelector("form").addEventListener("submit", function (e) {
 });
 
 (function () {
+  const container = document.getElementById("galleryContainer");
   const marquee = document.getElementById("galleryMarquee");
+
   Array.from(marquee.children).forEach(item => {
     const clone = item.cloneNode(true);
     clone.setAttribute("aria-hidden", "true");
     marquee.appendChild(clone);
   });
-})();
 
-const galleryToggle = document.getElementById("galleryToggle");
-const galleryMarquee = document.getElementById("galleryMarquee");
-let isPaused = false;
+  let paused = false;
+  const speed = 0.6;
 
-galleryToggle.addEventListener("click", () => {
-  isPaused = !isPaused;
-  galleryMarquee.style.animationPlayState = isPaused ? "paused" : "running";
-  galleryToggle.textContent = isPaused ? "▶ Play" : "⏸ Pause";
-  galleryToggle.setAttribute("aria-pressed", isPaused);
-});
+  function step() {
+    if (!paused) {
+      container.scrollLeft += speed;
+      if (container.scrollLeft >= marquee.scrollWidth / 2) {
+        container.scrollLeft = 0;
+      }
+    }
+    requestAnimationFrame(step);
+  }
 
-(function () {
-  const container = document.querySelector(".gallery-container");
-  let startX, scrollLeft, isDown = false;
+  requestAnimationFrame(step);
+
+  const toggle = document.getElementById("galleryToggle");
+  toggle.addEventListener("click", () => {
+    paused = !paused;
+    toggle.textContent = paused ? "▶ Play" : "⏸ Pause";
+    toggle.setAttribute("aria-pressed", paused);
+  });
+
+  let isDragging = false;
+  let startX, startScroll;
 
   container.addEventListener("mousedown", e => {
-    isDown = true;
-    startX = e.pageX - container.offsetLeft;
-    scrollLeft = container.scrollLeft;
-    galleryMarquee.style.animationPlayState = "paused";
+    isDragging = true;
+    paused = true;
+    startX = e.pageX;
+    startScroll = container.scrollLeft;
   });
-  container.addEventListener("mouseleave", () => { isDown = false; });
-  container.addEventListener("mouseup", () => {
-    isDown = false;
-    if (!isPaused) galleryMarquee.style.animationPlayState = "running";
-  });
+  container.addEventListener("mouseup", () => { isDragging = false; paused = false; });
+  container.addEventListener("mouseleave", () => { isDragging = false; paused = false; });
   container.addEventListener("mousemove", e => {
-    if (!isDown) return;
+    if (!isDragging) return;
     e.preventDefault();
-    container.scrollLeft = scrollLeft - (e.pageX - container.offsetLeft - startX);
+    container.scrollLeft = startScroll - (e.pageX - startX);
   });
 
   container.addEventListener("touchstart", e => {
-    startX = e.touches[0].pageX - container.offsetLeft;
-    scrollLeft = container.scrollLeft;
-    galleryMarquee.style.animationPlayState = "paused";
+    paused = true;
+    startX = e.touches[0].pageX;
+    startScroll = container.scrollLeft;
   }, { passive: true });
-  container.addEventListener("touchend", () => {
-    if (!isPaused) galleryMarquee.style.animationPlayState = "running";
-  });
+  container.addEventListener("touchend", () => { paused = false; });
   container.addEventListener("touchmove", e => {
-    const x = e.touches[0].pageX - container.offsetLeft;
-    container.scrollLeft = scrollLeft - (x - startX);
+    container.scrollLeft = startScroll - (e.touches[0].pageX - startX);
   }, { passive: true });
 })();
+
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+
+document.getElementById("galleryMarquee").addEventListener("click", (e) => {
+  const album = e.target.closest(".album");
+  if (!album) return;
+
+  const isContentImg = e.target.closest(".album-content img");
+
+  if (isContentImg) {
+    lightboxImg.src = e.target.src;
+    lightboxImg.alt = e.target.alt;
+    lightbox.classList.add("active");
+    return;
+  }
+
+  const isCoverImg = e.target === album.querySelector(":scope > img");
+
+  if (isCoverImg) {
+    if (!album.classList.contains("expanded")) {
+      album.classList.add("expanded");
+    } else {
+      lightboxImg.src = e.target.src;
+      lightboxImg.alt = e.target.alt;
+      lightbox.classList.add("active");
+    }
+    return;
+  }
+
+  if (album.classList.contains("expanded")) {
+    album.classList.remove("expanded");
+  }
+});
+
+lightbox.addEventListener("click", () => {
+  lightbox.classList.remove("active");
+});
 
 (function () {
   const slides = document.querySelectorAll('.hero-slide');
@@ -287,22 +326,6 @@ galleryToggle.addEventListener("click", () => {
     slides[current].classList.add('active');
   }, 6000);
 })();
-
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightboxImg");
-
-document.querySelectorAll(".album-content img").forEach(img => {
-  img.addEventListener("click", (e) => {
-    e.stopPropagation();
-    lightboxImg.src = img.src;
-    lightboxImg.alt = img.alt;
-    lightbox.classList.add("active");
-  });
-});
-
-lightbox.addEventListener("click", () => {
-  lightbox.classList.remove("active");
-});
 </script>
 
 </body>

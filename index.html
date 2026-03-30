@@ -30,7 +30,7 @@
     "serviceType": ["Cleaning Services","Building Maintenance","Snagging Inspections","Property Sourcing","Property Management"]
   }
   </script>
-  <link rel="stylesheet" href="style.css?v=1.0.6">
+  <link rel="stylesheet" href="style.css?v=1.0.7">
   <link rel="icon" href="favicon.png">
 </head>
 
@@ -152,9 +152,6 @@
         </div>
       </div>
     </div>
-    <div style="text-align:left; margin-top:12px;">
-      <button id="galleryToggle" class="gallery-pause-btn" aria-label="Pause gallery" aria-pressed="false">⏸ Pause</button>
-    </div>
   </section>
 
   <section class="section" id="contact">
@@ -228,39 +225,16 @@ document.querySelector("form").addEventListener("submit", function (e) {
     marquee.appendChild(clone);
   });
 
-  let paused = false;
-  const speed = 0.6;
-
-  function step() {
-    if (!paused) {
-      container.scrollLeft += speed;
-      if (container.scrollLeft >= marquee.scrollWidth / 2) {
-        container.scrollLeft = 0;
-      }
-    }
-    requestAnimationFrame(step);
-  }
-
-  requestAnimationFrame(step);
-
-  const toggle = document.getElementById("galleryToggle");
-  toggle.addEventListener("click", () => {
-    paused = !paused;
-    toggle.textContent = paused ? "▶ Play" : "⏸ Pause";
-    toggle.setAttribute("aria-pressed", paused);
-  });
-
   let isDragging = false;
   let startX, startScroll;
 
   container.addEventListener("mousedown", e => {
     isDragging = true;
-    paused = true;
     startX = e.pageX;
     startScroll = container.scrollLeft;
   });
-  container.addEventListener("mouseup", () => { isDragging = false; paused = false; });
-  container.addEventListener("mouseleave", () => { isDragging = false; paused = false; });
+  container.addEventListener("mouseup", () => { isDragging = false; });
+  container.addEventListener("mouseleave", () => { isDragging = false; });
   container.addEventListener("mousemove", e => {
     if (!isDragging) return;
     e.preventDefault();
@@ -268,11 +242,10 @@ document.querySelector("form").addEventListener("submit", function (e) {
   });
 
   container.addEventListener("touchstart", e => {
-    paused = true;
     startX = e.touches[0].pageX;
     startScroll = container.scrollLeft;
   }, { passive: true });
-  container.addEventListener("touchend", () => { paused = false; });
+  container.addEventListener("touchend", () => {});
   container.addEventListener("touchmove", e => {
     container.scrollLeft = startScroll - (e.touches[0].pageX - startX);
   }, { passive: true });

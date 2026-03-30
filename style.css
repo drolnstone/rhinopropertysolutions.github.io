@@ -288,22 +288,6 @@ html {
   z-index: 10;
 }
 
-.gallery-pause-btn {
-  background: #2e7d32;
-  color: white;
-  border: none;
-  padding: 8px 20px;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-bottom: 10px;
-}
-
-.gallery-pause-btn:hover {
-  background: #1b5e20;
-}
-
 .lightbox {
   display: none;
   position: fixed;

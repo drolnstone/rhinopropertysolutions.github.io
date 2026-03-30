@@ -162,6 +162,12 @@ html {
   transform: translateY(-1px);
 }
 
+#passwordInput {
+  max-width: 280px;
+  width: 100%;
+  text-align: center;
+}
+
 .section {
   padding: 60px 20px;
   text-align: center;
@@ -215,36 +221,36 @@ html {
 .gallery-container {
   overflow-x: auto;
   width: 100%;
-  position: relative;
   padding: 10px 0;
+  cursor: grab;
+  scrollbar-width: none;
+}
+
+.gallery-container::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery-container:active {
+  cursor: grabbing;
 }
 
 .gallery-marquee {
   display: flex;
   gap: 20px;
-  animation: marquee 12s linear infinite;
-}
-
-.gallery-marquee:hover {
-  animation-play-state: paused;
-}
-
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  width: max-content;
 }
 
 .album {
   position: relative;
-  min-width: 300px;
+  width: 300px;
+  flex-shrink: 0;
   cursor: pointer;
 }
 
-.album img {
+.album > img {
   width: 100%;
   border-radius: 6px;
   display: block;
-  will-change: transform;
 }
 
 .album-label {
@@ -256,6 +262,7 @@ html {
   color: #fff;
   font-size: 0.9rem;
   border-radius: 4px;
+  pointer-events: none;
 }
 
 .album-content {
@@ -278,7 +285,6 @@ html {
 }
 
 .album.expanded {
-  transform: scale(1.05);
   z-index: 10;
 }
 

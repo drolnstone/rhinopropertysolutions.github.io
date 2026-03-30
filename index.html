@@ -165,6 +165,20 @@
       <input type="email" name="email" placeholder="Your Email" required>
       <input type="tel" name="phone" placeholder="Your Phone Number (Preferred Contact)" required pattern="[0-9]{11}" title="Enter an 11-digit phone number">
       <p style="font-size:0.9em; color:#555;"><strong>Service(s) Required</strong></p>
+      <select name="customer_type" required>
+  <option value="">Are You a...</option>
+  <option value="Landlord">Landlord</option>
+  <option value="Homeowner">Homeowner</option>
+  <option value="Investor">Investor</option>
+</select>
+
+<select name="property_type" required>
+  <option value="">Property Type</option>
+  <option value="Residential">Residential</option>
+  <option value="HMO">HMO</option>
+  <option value="Commercial">Commercial</option>
+</select>
+<input type="text" name="postcode" placeholder="Property Postcode or Area" required>
       <div class="services-grid">
         <label><input type="checkbox" name="services[]" value="Cleaning Services"> Cleaning Services</label>
         <label><input type="checkbox" name="services[]" value="Building Maintenance"> Building Maintenance</label>

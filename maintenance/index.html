@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Report Maintenance Issue | Rhino Property Solutions</title>
-  <link rel="stylesheet" href="/style.css?v=1.0.5">
+  <link rel="stylesheet" href="/style.css?v=1.0.6">
   <link rel="icon" href="/favicon.png">
   <style>
     #formSectionContent { display:none; }
@@ -49,16 +49,18 @@
 
   <section class="section" id="formSection">
 
+```
 <form id="maintenanceForm" action="https://api.web3forms.com/submit" method="POST">
 
   <input type="hidden" name="access_key" value="91fdb16f-fb5c-4f85-9fbd-576811b31599">
   <input type="hidden" name="subject" value="New Maintenance Issue">
   <input type="checkbox" name="botcheck" style="display:none;">
+
   <input type="text" name="name" placeholder="Full Name" required>
   <input type="email" name="email" placeholder="Email Address" required>
   <input type="tel" name="phone" placeholder="Your Phone Number (Preferred Contact)" required pattern="[0-9]{11}" title="Enter an 11-digit phone number">
 
-<select name="property" id="propertySelect" required>
+  <select name="property" id="propertySelect" required>
     <option value="">Select Property</option>
     <option value="80 Dewsbury Road, L4 2XE">80 Dewsbury Road, L4 2XE</option>
     <option value="23 Helena Street, L9 1BH">23 Helena Street, L9 1BH</option>
@@ -66,7 +68,7 @@
     <option value="9 Scorton Street, L6 4AS">9 Scorton Street, L6 4AS</option>
   </select>
 
-<select name="issue_type" id="issueSelect" required>
+  <select name="issue_type" id="issueSelect" required>
     <option value="">Select Issue Type</option>
     <option value="Plumbing">Plumbing</option>
     <option value="Electrical">Electrical</option>
@@ -91,6 +93,7 @@
   </div>
 
 </form>
+```
 
   </section>
 

@@ -346,7 +346,6 @@ select {
 input::placeholder,
 textarea::placeholder {
   color: #777;
-  font-size: 14px;
 }
 
 input:focus,

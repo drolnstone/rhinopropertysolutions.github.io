@@ -219,6 +219,13 @@
 </div>
 
 <script>
+window.addEventListener("load", () => {
+  if (window.location.hash) {
+    const el = document.querySelector(window.location.hash);
+    if (el) setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 100);
+  }
+});
+
 window.onscroll = function () {
   document.getElementById("topBtn").classList.toggle("show", document.documentElement.scrollTop > 200);
 };

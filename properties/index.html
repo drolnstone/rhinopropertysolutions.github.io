@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Properties to Rent | Rhino Property Solutions</title>
+  <meta name="description" content="Properties available to rent through Rhino Property Solutions in Liverpool and Bootle.">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="/style.css?v=1.0.8">
+  <link rel="icon" href="/favicon.png">
+  <style>
+    .property-card {
+      max-width: 780px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-align: left;
+    }
+
+.property-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto;
+  gap: 4px;
+}
+
+.property-photo-grid img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  cursor: pointer;
+  display: block;
+  transition: opacity 0.2s ease;
+}
+
+.property-photo-grid img:hover {
+  opacity: 0.85;
+}
+
+.property-photo-grid img:first-child {
+  grid-column: span 2;
+  grid-row: span 2;
+  height: 324px;
+}
+
+.property-details {
+  padding: 25px;
+}
+
+.property-address {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #1b5e20;
+  margin: 0 0 5px;
+}
+
+.property-price {
+  font-size: 1.6em;
+  font-weight: bold;
+  color: #2e7d32;
+  margin: 0 0 15px;
+}
+
+.property-price span {
+  font-size: 0.6em;
+  color: #777;
+  font-weight: normal;
+}
+
+.property-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.tag {
+  background: #f0f7f0;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+  border-radius: 20px;
+  padding: 5px 13px;
+  font-size: 0.82em;
+  font-weight: 600;
+}
+
+.tag.red {
+  background: #fff0f0;
+  color: #c62828;
+  border-color: #ffcdd2;
+}
+
+.property-availability {
+  display: inline-block;
+  background: #4CAF50;
+  color: white;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.82em;
+  font-weight: bold;
+  margin-bottom: 18px;
+}
+
+.property-description {
+  color: #444;
+  font-size: 0.95em;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  border-top: 1px solid #eee;
+  padding-top: 18px;
+}
+
+.platform-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+.btn-openrent {
+  background: #e8425a;
+}
+
+.btn-openrent:hover {
+  background: #c73249;
+}
+
+.btn-otm {
+  background: #004B87;
+}
+
+.btn-otm:hover {
+  background: #003a6a;
+}
+
+.no-listings {
+  max-width: 600px;
+  margin: 0 auto;
+  color: #555;
+}
+
+@media (max-width: 600px) {
+  .property-photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .property-photo-grid img:first-child {
+    height: 180px;
+  }
+
+  .property-photo-grid img {
+    height: 90px;
+  }
+
+  .platform-buttons {
+    flex-direction: column;
+  }
+
+  .platform-buttons .btn {
+    text-align: center;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+
+<header class="hero small">
+  <div class="hero-content">
+    <a href="/">
+      <img src="/logo.png" alt="Rhino Property Solutions" class="logo">
+    </a>
+    <h1>Properties to Rent</h1>
+    <p>Available properties managed by Rhino Property Solutions</p>
+  </div>
+</header>
+
+<main>
+
+  <section class="section grey">
+    <p class="intro">
+      <strong>All properties are personally managed by Rhino Property Solutions.</strong>
+      Viewings can be arranged directly — contact us via WhatsApp or phone to book.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>Available Now</h2>
+
+<div class="property-card">
+
+  <div class="property-photo-grid" id="photoGrid">
+    <img src="prop-1.webp" alt="36 Kipling Street - Main view" data-index="0">
+    <img src="prop-2.webp" alt="36 Kipling Street - Photo 2" data-index="1">
+    <img src="prop-3.webp" alt="36 Kipling Street - Photo 3" data-index="2">
+    <img src="prop-4.webp" alt="36 Kipling Street - Photo 4" data-index="3">
+    <img src="prop-5.webp" alt="36 Kipling Street - Photo 5" data-index="4">
+    <img src="prop-6.webp" alt="36 Kipling Street - Photo 6" data-index="5">
+    <img src="prop-7.webp" alt="36 Kipling Street - Photo 7" data-index="6">
+    <img src="prop-8.webp" alt="36 Kipling Street - Photo 8" data-index="7">
+  </div>
+
+  <div class="property-details">
+
+    <p class="property-address">36 Kipling Street, Bootle, L20 4QE</p>
+    <p class="property-price">£800 <span>/ month</span></p>
+
+    <div class="property-availability">&#10003; Available Immediately</div>
+
+    <div class="property-tags">
+      <span class="tag">2 Bedrooms</span>
+      <span class="tag">Terraced House</span>
+      <span class="tag">Furnished</span>
+      <span class="tag">Garden</span>
+      <span class="tag">Street Parking</span>
+      <span class="tag red">No Pets</span>
+      <span class="tag red">No Smoking</span>
+      <span class="tag red">Bills Not Included</span>
+    </div>
+
+    <p class="property-description">
+      A well-presented 2-bedroom furnished terraced house in Bootle, available for immediate occupancy.
+      The property benefits from a private garden and street parking nearby.
+      Conveniently located close to local amenities, transport links, and schools.
+      Bills are not included. No pets or smoking permitted. Suitable for individuals, couples, or small families.
+    </p>
+
+    <div class="platform-buttons">
+      <a href="https://www.openrent.co.uk/property-to-rent/bootle/2-bed-terraced-house-kipling-st-l20/2847126" target="_blank" class="btn btn-openrent">View on OpenRent</a>
+      <a href="#" target="_blank" class="btn btn-otm">View on OnTheMarket</a>
+      <a href="https://wa.me/447832017376?text=Hi%2C%20I%27m%20interested%20in%20the%20property%20at%2036%20Kipling%20Street%2C%20Bootle%2C%20L20%204QE.%20Could%20you%20please%20arrange%20a%20viewing%3F%20Thank%20you." target="_blank" class="btn btn-whatsapp">Enquire on WhatsApp</a>
+    </div>
+
+  </div>
+</div>
+
+  </section>
+
+  <section class="section grey">
+    <h2>No Longer Available?</h2>
+    <p class="no-listings">
+      Properties let quickly. If this one is gone, more may be coming soon.<br>
+      Get in touch and we'll let you know as soon as something suitable becomes available.
+    </p>
+    <a href="/#contact" class="btn" style="margin-top: 10px;">Register Your Interest</a>
+  </section>
+
+  <section class="section">
+    <a href="/" class="btn">Back to Home</a>
+  </section>
+
+</main>
+
+<a href="https://wa.me/447832017376?text=Hi%2C%20I%20found%20your%20website%20and%20I%27d%20like%20to%20enquire%20about%20your%20property%20services.%20Could%20you%20please%20get%20back%20to%20me%3F%20Thank%20you." class="btn btn-whatsapp whatsapp" target="_blank" aria-label="Chat on WhatsApp">
+  Chat on WhatsApp
+</a>
+
+<button onclick="scrollToTop()" id="topBtn">↑</button>
+
+<footer>
+  <p>Clean. Fixed. Ready. Always.</p>
+  <p>© 2026 Rhino Property Solutions. All rights reserved.</p>
+</footer>
+
+<!-- Lightbox (matches main site) -->
+
+<div class="lightbox" id="lightbox">
+  <img id="lightboxImg" src="" alt="Enlarged view">
+</div>
+
+<script>
+window.onscroll = function () {
+  document.getElementById("topBtn").classList.toggle("show", document.documentElement.scrollTop > 200);
+};
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+// Lightbox
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+const allPhotos = Array.from(document.querySelectorAll("#photoGrid img"));
+
+allPhotos.forEach(img => {
+  img.addEventListener("click", () => {
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightbox.classList.add("active");
+  });
+});
+
+lightbox.addEventListener("click", () => {
+  lightbox.classList.remove("active");
+});
+
+// Keyboard navigation through lightbox
+document.addEventListener("keydown", (e) => {
+  if (!lightbox.classList.contains("active")) return;
+  const current = allPhotos.findIndex(img => img.src === lightboxImg.src);
+  if (e.key === "ArrowRight") {
+    const next = allPhotos[(current + 1) % allPhotos.length];
+    lightboxImg.src = next.src;
+    lightboxImg.alt = next.alt;
+  }
+  if (e.key === "ArrowLeft") {
+    const prev = allPhotos[(current - 1 + allPhotos.length) % allPhotos.length];
+    lightboxImg.src = prev.src;
+    lightboxImg.alt = prev.alt;
+  }
+  if (e.key === "Escape") {
+    lightbox.classList.remove("active");
+  }
+});
+</script>
+
+</body>
+</html>

@@ -140,6 +140,15 @@ const photoGrid = document.getElementById("photoGrid");
 const allSubPhotos = Array.from(photoGrid.querySelectorAll("img"));
 let expanded = false;
 
+document.addEventListener("click", (e) => {
+  if (!expanded) return;
+  if (!cover.contains(e.target) && !photoGrid.contains(e.target)) {
+    expanded = false;
+    photoGrid.classList.remove("expanded");
+    coverHint.classList.remove("hidden");
+  }
+});
+
 cover.addEventListener("click", () => {
   if (!expanded) {
     expanded = true;

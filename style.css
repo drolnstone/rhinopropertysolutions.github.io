@@ -2,11 +2,15 @@
   box-sizing: border-box;
 }
 
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  overflow-x: hidden;
 }
 
 img {
@@ -74,7 +78,7 @@ html {
 }
 
 .hero h1 {
-  font-size: 3em;
+  font-size: clamp(1.8rem, 5vw, 3rem);
   color: #4CAF50;
 }
 
@@ -176,8 +180,6 @@ html {
 #gate {
   padding: 0 20px;
   box-sizing: border-box;
-  max-width: 100%;
-  overflow-x: hidden;
 }
 
 .section {
@@ -250,7 +252,7 @@ html {
 .gallery-marquee {
   display: flex;
   gap: 20px;
-  width: max-content;
+  min-width: 100%;
 }
 
 .album {
@@ -445,7 +447,8 @@ form button[type="reset"]:hover {
 .call-float {
   position: fixed;
   bottom: 20px;
-  right: 20px;
+  right: 10px;
+  max-width: calc(100vw - 20px);
   background: orange;
   color: white;
   padding: 15px 20px;
@@ -483,7 +486,7 @@ footer {
 
 @media (max-width: 768px) {
   .hero h1 {
-    font-size: 2em;
+    font-size: clamp(1.5rem, 6vw, 2rem);
   }
 
   .services {

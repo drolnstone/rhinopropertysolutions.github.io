@@ -170,6 +170,12 @@ html {
   max-width: 280px;
   width: 100%;
   text-align: center;
+  box-sizing: border-box;
+}
+
+#gate {
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
 .section {

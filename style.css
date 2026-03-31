@@ -80,6 +80,9 @@ html {
 
 .hero p {
   font-size: 1.2em;
+  max-width: 500px;
+  margin: 0 auto;
+  font-weight: 600;
 }
 
 .hero.small {

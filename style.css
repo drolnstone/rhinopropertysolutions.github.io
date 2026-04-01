@@ -31,6 +31,10 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+/* ========================= */
+/*          HERO             */
+/* ========================= */
+
 .hero {
   position: relative;
   height: 90vh;
@@ -115,10 +119,23 @@ html {
   }
 }
 
+/* Hero CTA group — replaces inline flex wrapper */
+.hero-cta-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
 .logo {
   width: 180px;
   margin-bottom: 20px;
 }
+
+/* ========================= */
+/*         BUTTONS           */
+/* ========================= */
 
 .btn {
   display: inline-block;
@@ -144,6 +161,10 @@ html {
   background: #999;
 }
 
+.btn-secondary:hover {
+  background: #777;
+}
+
 .btn-whatsapp {
   background: #25D366;
   color: white;
@@ -152,6 +173,51 @@ html {
 
 .btn-whatsapp:hover {
   background: #1ebe5d;
+}
+
+/* Outline orange — hero "View Properties" */
+.btn-outline-orange {
+  background: transparent;
+  border: 2px solid orange;
+  color: orange;
+  margin-top: 0;
+}
+
+.btn-outline-orange:hover {
+  background: rgba(255, 165, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Outline — "Register Your Interest" on properties page */
+.btn-outline {
+  background: transparent;
+  border: 2px solid orange;
+  color: #222;
+  margin-top: 10px;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 165, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* ========================= */
+/*     GATE / PASSWORD       */
+/* ========================= */
+
+#gate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  height: auto;
+  overflow-x: hidden;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .gate-btn {
@@ -170,6 +236,11 @@ html {
   transform: translateY(-1px);
 }
 
+.gate-error {
+  color: red;
+  display: none;
+}
+
 #passwordInput {
   max-width: 280px;
   width: 100%;
@@ -177,12 +248,16 @@ html {
   box-sizing: border-box;
 }
 
-#gate {
-  padding: 0 20px;
-  box-sizing: border-box;
-  min-height: 100vh;
-  min-height: 100dvh;
+/* Form section content — hidden by default; JS sets display:block */
+#formSectionContent {
+  display: none;
+  max-width: 100%;
+  overflow-x: hidden;
 }
+
+/* ========================= */
+/*         SECTIONS          */
+/* ========================= */
 
 .section {
   padding: 60px 20px;
@@ -211,6 +286,17 @@ html {
   font-style: italic;
 }
 
+/* Centred content box — replaces inline div wrappers */
+.section-centered {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ========================= */
+/*      SERVICES / CARDS     */
+/* ========================= */
+
 .services {
   display: flex;
   flex-wrap: wrap;
@@ -233,6 +319,66 @@ html {
 .card h3 {
   color: #2e7d32;
 }
+
+/* ========================= */
+/*       SELL SECTION        */
+/* ========================= */
+
+.sell-inner {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.sell-features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.sell-feature {
+  text-align: left;
+  max-width: 180px;
+}
+
+.sell-icon {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.sell-feature-title {
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.sell-feature-desc {
+  font-size: 0.9em;
+  color: #555;
+  margin: 0;
+}
+
+.sell-note {
+  font-style: italic;
+  color: #555;
+  font-size: 0.95em;
+}
+
+.sell-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.sell-buttons .btn {
+  margin-top: 0;
+}
+
+/* ========================= */
+/*         GALLERY           */
+/* ========================= */
 
 .gallery-container {
   overflow-x: auto;
@@ -305,6 +451,10 @@ html {
   z-index: 10;
 }
 
+/* ========================= */
+/*         LIGHTBOX          */
+/* ========================= */
+
 .lightbox {
   display: none;
   position: fixed;
@@ -325,6 +475,10 @@ html {
   border-radius: 8px;
   box-shadow: 0 0 30px rgba(0,0,0,0.5);
 }
+
+/* ========================= */
+/*           FORMS           */
+/* ========================= */
 
 form {
   max-width: 500px;
@@ -406,6 +560,10 @@ form button[type="reset"]:hover {
   font-size: 14px;
 }
 
+/* ========================= */
+/*      SCROLL / FLOAT       */
+/* ========================= */
+
 #topBtn {
   display: none;
   position: fixed;
@@ -463,12 +621,20 @@ form button[type="reset"]:hover {
   background: darkorange;
 }
 
+/* ========================= */
+/*          FOOTER           */
+/* ========================= */
+
 footer {
   background: #1b5e20;
   color: white;
   text-align: center;
   padding: 20px;
 }
+
+/* ========================= */
+/*        UTILITIES          */
+/* ========================= */
 
 .cta-stack {
   display: flex;
@@ -485,51 +651,23 @@ footer {
   margin-top: 10px;
 }
 
-@media (max-width: 768px) {
-  .hero h1 {
-    font-size: clamp(1.5rem, 6vw, 2rem);
-  }
-
-  .services {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  #topBtn {
-    bottom: 80px;
-    right: 15px;
-    width: 44px;
-    height: 44px;
-    font-size: 18px;
-  }
-
-  .whatsapp,
-  .call-float {
-    bottom: 15px;
-    right: 15px;
-    padding: 12px 16px;
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 500px) {
-  .services-grid {
-    gap: 8px;
-  }
-
-  .services-grid label {
-    font-size: 13px;
-  }
-}
-
 .hidden {
   display: none;
 }
 
+/* ========================= */
+/*   MAINTENANCE THANK YOU   */
+/* ========================= */
 
-/* =========================
-   PROPERTY LISTING STYLES
-   ========================= */
+#confirmProperty {
+  font-weight: bold;
+  font-size: 2em;
+  color: #4CAF50;
+}
+
+/* ========================= */
+/*    PROPERTY LISTING       */
+/* ========================= */
 
 .property-card {
   max-width: 780px;
@@ -597,14 +735,6 @@ footer {
 .property-photo-grid img:hover {
   opacity: 0.85;
 }
-
-@media (max-width: 600px) {
-  .property-photo-grid img {
-    width: calc(50% - 2px);
-    height: 90px;
-  }
-}
-
 
 .property-details {
   padding: 25px;
@@ -703,20 +833,40 @@ footer {
   color: #555;
 }
 
-/* =========================
-   MOBILE OPTIMISATION
-   ========================= */
+/* ========================= */
+/*     RESPONSIVE / MOBILE   */
+/* ========================= */
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+
+  .services {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #topBtn {
+    bottom: 80px;
+    right: 15px;
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
+
+  .whatsapp,
+  .call-float {
+    bottom: 15px;
+    right: 15px;
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+}
 
 @media (max-width: 600px) {
-  .property-photo-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .property-photo-grid img:first-child {
-    height: 180px;
-  }
-
   .property-photo-grid img {
+    width: calc(50% - 2px);
     height: 90px;
   }
 
@@ -729,3 +879,12 @@ footer {
   }
 }
 
+@media (max-width: 500px) {
+  .services-grid {
+    gap: 8px;
+  }
+
+  .services-grid label {
+    font-size: 13px;
+  }
+}

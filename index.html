@@ -53,7 +53,7 @@
     <p>Serving Landlords, Homeowners & Property Investors Across Liverpool</p>
     <div style="display:flex; flex-direction:column; align-items:center; gap:12px; margin-top:20px;">
       <a href="#contact" class="btn"><strong>Get a Free Quote</strong></a>
-      <a href="/properties/" class="btn" style="background:transparent; border:2px solid orange; color:white;"><strong>View Properties</strong></a>
+      <a href="/properties/" class="btn" style="background:transparent; border:2px solid white; color:white;"><strong>View Properties</strong></a>
     </div>
   </div>
 </header>
@@ -113,6 +113,41 @@
     </div>
   </section>
 
+  <section class="section" id="sell">
+    <div style="max-width:650px; margin:0 auto;">
+      <h2>Looking to Sell Quickly?</h2>
+      <p class="about">
+        We work with a network of <strong>ready, committed buyers</strong>. If you own a property
+        and need a fast, private sale — no estate agents, no lengthy chains, no delays —
+        we want to hear from you.
+      </p>
+      <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:30px; margin:30px 0;">
+        <div style="text-align:left; max-width:180px;">
+          <p style="font-size:1.5em; margin:0;">⚡</p>
+          <p style="font-weight:bold; margin:5px 0;">Fast Process</p>
+          <p style="font-size:0.9em; color:#555; margin:0;">Move quickly without the usual delays of traditional sales.</p>
+        </div>
+        <div style="text-align:left; max-width:180px;">
+          <p style="font-size:1.5em; margin:0;">🔒</p>
+          <p style="font-weight:bold; margin:5px 0;">Private & Discreet</p>
+          <p style="font-size:0.9em; color:#555; margin:0;">No public listings. No estate agent boards. Just a direct conversation.</p>
+        </div>
+        <div style="text-align:left; max-width:180px;">
+          <p style="font-size:1.5em; margin:0;">✅</p>
+          <p style="font-weight:bold; margin:5px 0;">No Obligation</p>
+          <p style="font-size:0.9em; color:#555; margin:0;">Get an offer. No pressure. You decide if it works for you.</p>
+        </div>
+      </div>
+      <p style="font-style:italic; color:#555; font-size:0.95em;">
+        Suitable for landlords exiting, inherited properties, relocations, or anyone needing a quick, clean sale.
+      </p>
+      <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:10px;">
+        <a href="#contact" class="btn"><strong>Register Your Property</strong></a>
+        <a href="https://wa.me/447832017376?text=Hi%2C%20I%27m%20looking%20to%20sell%20a%20property%20quickly%20and%20I%27d%20like%20to%20find%20out%20more%20about%20your%20buyer%20network.%20Could%20you%20please%20get%20back%20to%20me%3F%20Thank%20you." target="_blank" class="btn btn-whatsapp" style="margin-top:0;">Chat on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
   <section class="section grey">
     <h2>Our Work</h2>
     <div class="gallery-container" id="galleryContainer">
@@ -167,14 +202,16 @@
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
       <input type="tel" name="phone" placeholder="Your Phone Number (Preferred Contact)" required pattern="[0-9]{11}" title="Enter an 11-digit phone number">
-  <select name="customer_type" required>
-    <option value="">I am a...</option>
-    <option value="Landlord">Landlord</option>
-    <option value="Homeowner">Homeowner</option>
-    <option value="Investor">Investor</option>
+      <select name="customer_type" required>
+        <option value="">I am a...</option>
+        <option value="Landlord">Landlord</option>
+        <option value="Homeowner">Homeowner</option>
+        <option value="Investor">Investor</option>
         <option value="Tenant">Looking to Rent</option>
-  </select>
+        <option value="Motivated Seller">Looking to Sell Quickly</option>
+      </select>
 
+```
   <select name="property_type" required>
     <option value="">Property Type</option>
     <option value="Residential">Residential</option>
@@ -191,7 +228,7 @@
     <label><input type="checkbox" name="services[]" value="Snagging Inspection"> Snagging Inspection</label>
     <label><input type="checkbox" name="services[]" value="Property Sourcing"> Property Sourcing</label>
     <label><input type="checkbox" name="services[]" value="Property Management"> Property Management</label>
-    <label><input type="checkbox" name="services[]" value="Tenancy Interest">Tenancy Interest</label>
+    <label><input type="checkbox" name="services[]" value="Tenancy Interest"> Tenancy Interest</label>
     <label><input type="checkbox" name="services[]" value="General Enquiry"> General Enquiry</label>
   </div>
   <textarea name="message" placeholder="Provide more details about your request..." required></textarea>
@@ -200,6 +237,8 @@
     <button type="reset">Clear Form</button>
   </div>
 </form>
+```
+
   </section>
 
 </main>

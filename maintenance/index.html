@@ -5,11 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Report Maintenance Issue | Rhino Property Solutions</title>
-  <link rel="stylesheet" href="/style.css?v=1.0.8">
+  <link rel="stylesheet" href="/style.css?v=1.0.9">
   <link rel="icon" href="/favicon.png">
-  <style>
-    #formSectionContent { display:none; }
-  </style>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
@@ -17,12 +14,11 @@
 
 <body>
 
-<div id="gate" style="display:flex; justify-content:center; align-items:center; min-height:100vh; height:auto; flex-direction:column; gap:10px; width:100%; max-width:100%; overflow:hidden; padding:20px; box-sizing:border-box;">
-
+<div id="gate">
   <p><strong>Enter Password to Access Maintenance</strong></p>
   <input type="password" id="passwordInput" maxlength="5" placeholder="Enter Landlord/Tenant Password" autofocus>
   <button id="gateSubmit" class="gate-btn">Submit</button>
-  <p id="errorMsg" style="color:red; display:none;">Incorrect password. Try again.</p>
+  <p id="errorMsg" class="gate-error">Incorrect password. Try again.</p>
 </div>
 
 <div id="formSectionContent">
@@ -50,10 +46,11 @@
 
   <section class="section" id="formSection">
 
+```
 <form id="maintenanceForm" action="https://api.web3forms.com/submit" method="POST">
 
   <input type="hidden" name="access_key" value="91fdb16f-fb5c-4f85-9fbd-576811b31599">
-    <input type="hidden" name="redirect" value="https://www.rhinopropertysolutions.co.uk/maintenance-thank-you/">
+  <input type="hidden" name="redirect" value="https://www.rhinopropertysolutions.co.uk/maintenance-thank-you/">
   <input type="hidden" name="subject" value="New Maintenance Issue">
   <input type="checkbox" name="botcheck" style="display:none;">
 
@@ -94,6 +91,7 @@
   </div>
 
 </form>
+```
 
   </section>
 

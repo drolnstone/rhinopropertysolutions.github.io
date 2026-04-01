@@ -7,7 +7,7 @@
   <title>Properties to Rent | Rhino Property Solutions</title>
   <meta name="description" content="Properties available to rent through Rhino Property Solutions in Liverpool and Bootle.">
   <meta name="robots" content="index, follow">
-  <link rel="stylesheet" href="/style.css?v=1.0.8">
+  <link rel="stylesheet" href="/style.css?v=1.0.9">
   <link rel="icon" href="/favicon.png">
 </head>
 
@@ -26,32 +26,32 @@
 <main>
 
   <section class="section grey">
-  <p class="intro">
-    <strong>All properties are directly managed by us.</strong>
-    <br>Viewings can be arranged via our property portals, or directly through WhatsApp or phone.
-  </p>
-</section>
+    <p class="intro">
+      <strong>All properties are directly managed by us.</strong>
+      <br>Viewings can be arranged via our property portals, or directly through WhatsApp or phone.
+    </p>
+  </section>
 
   <section class="section">
     <h2>Available Now</h2>
 
+```
 <div class="property-card">
 
   <div class="property-cover" id="propertyCover">
-  <img src="prop-1.webp" alt="Exterior front">
-  <div class="property-cover-hint" id="coverHint">Tap to view all photos</div>
-</div>
+    <img src="/properties/kipling/prop-1.webp" alt="Exterior front">
+    <div class="property-cover-hint" id="coverHint">Tap to view all photos</div>
+  </div>
 
-<div class="property-photo-grid" id="photoGrid">
-  <img src="prop-2.webp" alt="Living room">
-  <img src="prop-3.webp" alt="Kitchen">
-  <img src="prop-4.webp" alt="Bedroom 1">
-  <img src="prop-5.webp" alt="Bedroom 2">
-  <img src="prop-6.webp" alt="Bedroom 3">
-  <img src="prop-7.webp" alt="Bathroom">
-  <img src="prop-8.webp" alt="Garden">
-</div>
-
+  <div class="property-photo-grid" id="photoGrid">
+    <img src="/properties/kipling/prop-2.webp" alt="Living room">
+    <img src="/properties/kipling/prop-3.webp" alt="Kitchen">
+    <img src="/properties/kipling/prop-4.webp" alt="Bedroom 1">
+    <img src="/properties/kipling/prop-5.webp" alt="Bedroom 2">
+    <img src="/properties/kipling/prop-6.webp" alt="Bedroom 3">
+    <img src="/properties/kipling/prop-7.webp" alt="Bathroom">
+    <img src="/properties/kipling/prop-8.webp" alt="Garden">
+  </div>
 
   <div class="property-details">
 
@@ -86,6 +86,7 @@
 
   </div>
 </div>
+```
 
   </section>
 
@@ -95,7 +96,7 @@
       Properties let quickly. If this one is gone, more may be coming soon.<br>
       Get in touch and we'll let you know as soon as something suitable becomes available.
     </p>
-    <a href="/#contact/" class="btn" style="background:transparent; border:2px solid orange; color:#222; margin-top: 10px;">Register Your Interest</a>
+    <a href="/#contact" class="btn btn-outline">Register Your Interest</a>
   </section>
 
   <section class="section">
@@ -110,8 +111,6 @@
   <p>Clean. Fixed. Ready. Always.</p>
   <p>© 2026 Rhino Property Solutions. All rights reserved.</p>
 </footer>
-
-<!-- Lightbox (matches main site) -->
 
 <div class="lightbox" id="lightbox">
   <img id="lightboxImg" src="" alt="Enlarged view">
@@ -170,6 +169,7 @@ allSubPhotos.forEach(img => {
 });
 
 const allPhotos = [coverImg, ...allSubPhotos];
+
 document.addEventListener("keydown", (e) => {
   if (!lightbox.classList.contains("active")) return;
   const current = allPhotos.findIndex(img => img.src === lightboxImg.src);
@@ -182,25 +182,6 @@ document.addEventListener("keydown", (e) => {
     lightboxImg.src = prev.src; lightboxImg.alt = prev.alt;
   }
   if (e.key === "Escape") lightbox.classList.remove("active");
-});
-
-// Keyboard navigation through lightbox
-document.addEventListener("keydown", (e) => {
-  if (!lightbox.classList.contains("active")) return;
-  const current = allPhotos.findIndex(img => img.src === lightboxImg.src);
-  if (e.key === "ArrowRight") {
-    const next = allPhotos[(current + 1) % allPhotos.length];
-    lightboxImg.src = next.src;
-    lightboxImg.alt = next.alt;
-  }
-  if (e.key === "ArrowLeft") {
-    const prev = allPhotos[(current - 1 + allPhotos.length) % allPhotos.length];
-    lightboxImg.src = prev.src;
-    lightboxImg.alt = prev.alt;
-  }
-  if (e.key === "Escape") {
-    lightbox.classList.remove("active");
-  }
 });
 </script>
 

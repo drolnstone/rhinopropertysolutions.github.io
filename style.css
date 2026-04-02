@@ -218,6 +218,7 @@ html {
   overflow-x: hidden;
   padding: 20px;
   box-sizing: border-box;
+  word-wrap: break-word;
 }
 
 .gate-btn {

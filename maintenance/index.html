@@ -7,174 +7,118 @@
   <title>Report Maintenance Issue | Rhino Property Solutions</title>
   <link rel="stylesheet" href="/style.css?v=1.0.9">
   <link rel="icon" href="/favicon.png">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-  <style>
-    * { box-sizing: border-box; }
-
-```
-#gate-screen {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 14px;
-  padding: 20px;
-  background: #fff;
-  z-index: 9999;
-}
-
-#gate-screen p {
-  text-align: center;
-  max-width: 280px;
-  margin: 0;
-  word-wrap: break-word;
-}
-
-#gate-screen input {
-  width: 200px;
-  max-width: 100%;
-  text-align: center;
-  padding: 12px;
-  font-size: 18px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
-
-#gate-screen input:focus {
-  outline: none;
-  border-color: #2e7d32;
-  box-shadow: 0 0 0 2px rgba(46,125,50,0.15);
-}
-
-#gate-error {
-  color: red;
-  display: none;
-  margin: 0;
-}
-
-#page-content {
-  display: none;
-}
-
-#page-content.visible {
-  display: block;
-}
-```
-
-  </style>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
 </head>
 
 <body>
 
-<!-- PASSWORD GATE -->
-
-<div id="gate-screen">
+<div id="gate">
   <p><strong>Enter Password to Access Maintenance</strong></p>
   <input type="password" id="passwordInput" maxlength="5" placeholder="Landlord/Tenant password" autofocus>
   <button id="gateSubmit" class="gate-btn">Submit</button>
-  <p id="gate-error" class="gate-error">Incorrect password. Try again.</p>
+  <p id="errorMsg" class="gate-error">Incorrect password. Try again.</p>
 </div>
 
-<!-- PAGE CONTENT (shown after correct password) -->
+<div id="formSectionContent">
 
-<div id="page-content">
+<header class="hero small">
+  <div class="hero-content">
+    <a href="/">
+      <img src="/logo.png" alt="Rhino Property Solutions" class="logo">
+    </a>
+    <h1>Report a Maintenance Issue</h1>
+    <p>Please complete the <a href="#formSection">form</a> below.<br>Urgent issues should also be reported via<br>phone.</p>
+  </div>
+</header>
 
-  <header class="hero small">
-    <div class="hero-content">
-      <a href="/"><img src="/logo.png" alt="Rhino Property Solutions" class="logo"></a>
-      <h1>Report a Maintenance Issue</h1>
-      <p>Please complete the <a href="#formSection">form</a> below.<br>Urgent issues should also be reported via<br>phone.</p>
-    </div>
-  </header>
+<main>
 
-  <main>
+  <section class="section grey">
+    <p class="intro advisory-title">
+      <strong>TENANT GUIDANCE:</strong>
+    </p>
+    <p class="advisory-text">
+      Please use this form to report a single issue at the property. Submit <strong>one form per issue</strong> to help us respond efficiently. For multiple issues, complete a separate form for each.
+    </p>
+  </section>
 
-```
-<section class="section grey">
-  <p class="intro advisory-title"><strong>TENANT GUIDANCE:</strong></p>
-  <p class="advisory-text">
-    Please use this form to report a single issue at the property. Submit <strong>one form per issue</strong> to help us respond efficiently. For multiple issues, complete a separate form for each.
-  </p>
-</section>
+  <section class="section" id="formSection">
 
-<section class="section" id="formSection">
+<form id="maintenanceForm" action="https://api.web3forms.com/submit" method="POST">
 
-  <form id="maintenanceForm" action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value="91fdb16f-fb5c-4f85-9fbd-576811b31599">
+  <input type="hidden" name="redirect" value="https://www.rhinopropertysolutions.co.uk/maintenance-thank-you/">
+  <input type="hidden" name="subject" value="New Maintenance Issue">
+  <input type="checkbox" name="botcheck" style="display:none;">
 
-    <input type="hidden" name="access_key" value="91fdb16f-fb5c-4f85-9fbd-576811b31599">
-    <input type="hidden" name="redirect" value="https://www.rhinopropertysolutions.co.uk/maintenance-thank-you/">
-    <input type="hidden" name="subject" value="New Maintenance Issue">
-    <input type="checkbox" name="botcheck" style="display:none;">
+  <input type="text" name="name" placeholder="Full Name" required>
+  <input type="email" name="email" placeholder="Email Address" required>
+  <input type="tel" name="phone" placeholder="Your Phone Number (Preferred Contact)" required pattern="[0-9]{11}" title="Enter an 11-digit phone number">
 
-    <input type="text" name="name" placeholder="Full Name" required>
-    <input type="email" name="email" placeholder="Email Address" required>
-    <input type="tel" name="phone" placeholder="Your Phone Number (Preferred Contact)" required pattern="[0-9]{11}" title="Enter an 11-digit phone number">
+  <select name="property" id="propertySelect" required>
+    <option value="">Select Property</option>
+    <option value="80 Dewsbury Road, L4 2XE">80 Dewsbury Road, L4 2XE</option>
+    <option value="23 Helena Street, L9 1BH">23 Helena Street, L9 1BH</option>
+    <option value="36 Kipling Street, L20 4QE">36 Kipling Street, L20 4QE</option>
+    <option value="9 Scorton Street, L6 4AS">9 Scorton Street, L6 4AS</option>
+  </select>
 
-    <select name="property" id="propertySelect" required>
-      <option value="">Select Property</option>
-      <option value="80 Dewsbury Road, L4 2XE">80 Dewsbury Road, L4 2XE</option>
-      <option value="23 Helena Street, L9 1BH">23 Helena Street, L9 1BH</option>
-      <option value="36 Kipling Street, L20 4QE">36 Kipling Street, L20 4QE</option>
-      <option value="9 Scorton Street, L6 4AS">9 Scorton Street, L6 4AS</option>
-    </select>
+  <select name="issue_type" id="issueSelect" required>
+    <option value="">Select Issue Type</option>
+    <option value="Plumbing">Plumbing</option>
+    <option value="Electrical">Electrical</option>
+    <option value="Heating">Heating</option>
+    <option value="Structural">Structural</option>
+    <option value="Cleaning">Cleaning</option>
+    <option value="Other">Other</option>
+  </select>
 
-    <select name="issue_type" id="issueSelect" required>
-      <option value="">Select Issue Type</option>
-      <option value="Plumbing">Plumbing</option>
-      <option value="Electrical">Electrical</option>
-      <option value="Heating">Heating</option>
-      <option value="Structural">Structural</option>
-      <option value="Cleaning">Cleaning</option>
-      <option value="Other">Other</option>
-    </select>
+  <select name="priority" required>
+    <option value="">Priority Level</option>
+    <option value="Low">Low</option>
+    <option value="Medium">Medium</option>
+    <option value="Urgent">Urgent</option>
+  </select>
 
-    <select name="priority" required>
-      <option value="">Priority Level</option>
-      <option value="Low">Low</option>
-      <option value="Medium">Medium</option>
-      <option value="Urgent">Urgent</option>
-    </select>
+  <textarea name="message" placeholder="Describe the issue in detail..." required></textarea>
 
-    <textarea name="message" placeholder="Describe the issue in detail..." required></textarea>
+  <div class="form-buttons">
+    <button type="submit">Submit Report</button>
+    <button type="reset" class="btn-secondary">Clear Form</button>
+  </div>
 
-    <div class="form-buttons">
-      <button type="submit">Submit Report</button>
-      <button type="reset" class="btn-secondary">Clear Form</button>
-    </div>
+</form>
 
-  </form>
+  </section>
 
-</section>
+  <section class="section grey">
+    <h2>Important Information</h2>
+    <p>
+      Please ensure all details are accurate.<br>
+      For urgent issues such as <strong>leaks, electrical faults, or security concerns,</strong> contact us immediately via phone.
+    </p>
+  </section>
 
-<section class="section grey">
-  <h2>Important Information</h2>
-  <p>
-    Please ensure all details are accurate.<br>
-    For urgent issues such as <strong>leaks, electrical faults, or security concerns,</strong> contact us immediately via phone.
-  </p>
-</section>
+  <section class="section">
+    <a href="/" class="btn">Home</a>
+  </section>
 
-<section class="section">
-  <a href="/" class="btn">Home</a>
-</section>
-```
-
-  </main>
+</main>
 
 <button onclick="scrollToTop()" id="topBtn">↑</button>
 
-<a href="tel:07832017376" class="call-float" aria-label="Call Rhino Property Solutions">Call Now</a>
+<a href="tel:07832017376" class="call-float" aria-label="Call Rhino Property Solutions">
+  Call Now
+</a>
 
-  <footer>
-    <p>Clean. Fixed. Ready. Always.</p>
-    <p>© 2026 Rhino Property Solutions. All rights reserved.</p>
-  </footer>
+<footer>
+  <p>Clean. Fixed. Ready. Always.</p>
+  <p>© 2026 Rhino Property Solutions. All rights reserved.</p>
+</footer>
 
-</div><!-- end #page-content -->
+</div>
 
 <script>
 const validHashes = [
@@ -185,65 +129,63 @@ const validHashes = [
 
 async function hashInput(value) {
   const encoded = new TextEncoder().encode(value);
-  const buffer = await crypto.subtle.digest("SHA-256", encoded);
-  return Array.from(new Uint8Array(buffer))
+  const hashBuffer = await crypto.subtle.digest("SHA-256", encoded);
+  return Array.from(new Uint8Array(hashBuffer))
     .map(b => b.toString(16).padStart(2, "0"))
     .join("");
 }
 
-function showPage() {
-  document.getElementById("gate-screen").style.display = "none";
-  document.getElementById("page-content").classList.add("visible");
-}
-
-function showError() {
-  document.getElementById("passwordInput").value = "";
-  document.getElementById("passwordInput").focus();
-  document.getElementById("gate-error").style.display = "block";
-}
-
-async function checkPassword() {
-  const input = document.getElementById("passwordInput").value.trim();
-  if (!/^7[0-9]{3}[A-Z]$/.test(input)) { showError(); return; }
-  const hashed = await hashInput(input);
-  if (validHashes.includes(hashed)) {
-    showPage();
-  } else {
-    showError();
-  }
-}
-
-window.addEventListener("load", () => {
-  const forceGate = sessionStorage.getItem("forceGate");
-  sessionStorage.removeItem("forceGate");
-  if (!forceGate && window.location.hash === "#formSection") {
-    showPage();
-    setTimeout(() => {
-      document.getElementById("formSection").scrollIntoView({ behavior: "smooth" });
-    }, 100);
-  }
-});
-
-window.addEventListener("pageshow", (e) => {
-  if (e.persisted) {
+window.addEventListener("pageshow", function (event) {
+  if (event.persisted) {
     sessionStorage.setItem("forceGate", "true");
     location.reload();
   }
 });
 
-document.getElementById("gateSubmit").addEventListener("click", checkPassword);
+window.onload = function () {
+  const forceGate = sessionStorage.getItem("forceGate");
+  sessionStorage.removeItem("forceGate");
+  if (!forceGate && window.location.hash === "#formSection") {
+    document.getElementById("gate").style.display = "none";
+    document.getElementById("formSectionContent").style.display = "block";
+  } else {
+    document.getElementById("gate").style.display = "flex";
+    document.getElementById("formSectionContent").style.display = "none";
+  }
+};
 
-document.getElementById("passwordInput").addEventListener("keydown", (e) => {
+async function checkPassword() {
+  const input = document.getElementById("passwordInput").value.trim();
+  const pattern = /^7[0-9]{3}[A-Z]$/;
+  if (!pattern.test(input)) { showError(); return; }
+  const hashed = await hashInput(input);
+  if (validHashes.includes(hashed)) {
+    document.getElementById("gate").style.display = "none";
+    document.getElementById("formSectionContent").style.display = "block";
+  } else {
+    showError();
+  }
+}
+
+function showError() {
+  const input = document.getElementById("passwordInput");
+  input.value = "";
+  input.focus();
+  document.getElementById("errorMsg").style.display = "block";
+}
+
+document.getElementById("passwordInput").addEventListener("keydown", function (e) {
   if (e.key === "Enter") checkPassword();
 });
 
-document.getElementById("passwordInput").addEventListener("input", () => {
-  document.getElementById("gate-error").style.display = "none";
+document.getElementById("gateSubmit").addEventListener("click", checkPassword);
+
+document.getElementById("passwordInput").addEventListener("input", function () {
+  document.getElementById("errorMsg").style.display = "none";
 });
 
 window.onscroll = function () {
-  const btn = document.getElementById("topBtn");
-  if (btn) btn.classList.toggle("show", document.documentElement.scrollTop > 200);
+  document.getElementById("topBtn").classList.toggle("show", document.documentElement.scrollTop > 200);
 };
 
 function scrollToTop() {

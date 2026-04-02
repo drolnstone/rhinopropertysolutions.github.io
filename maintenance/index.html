@@ -7,9 +7,9 @@
   <title>Report Maintenance Issue | Rhino Property Solutions</title>
   <link rel="stylesheet" href="/style.css?v=1.0.9">
   <link rel="icon" href="/favicon.png">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
 </head>
 
 <body>
@@ -23,100 +23,96 @@
 
 <div id="formSectionContent">
 
-<header class="hero small">
-  <div class="hero-content">
-    <a href="/">
-      <img src="/logo.png" alt="Rhino Property Solutions" class="logo">
-    </a>
-    <h1>Report a Maintenance Issue</h1>
-    <p>Please complete the <a href="#formSection">form</a> below.<br>Urgent issues should also be reported via<br>phone.</p>
-  </div>
-</header>
+  <header class="hero small">
+    <div class="hero-content">
+      <a href="/"><img src="/logo.png" alt="Rhino Property Solutions" class="logo"></a>
+      <h1>Report a Maintenance Issue</h1>
+      <p>Please complete the <a href="#formSection">form</a> below.<br>Urgent issues should also be reported via<br>phone.</p>
+    </div>
+  </header>
 
-<main>
+  <main>
 
-  <section class="section grey">
-    <p class="intro advisory-title">
-      <strong>TENANT GUIDANCE:</strong>
-    </p>
-    <p class="advisory-text">
-      Please use this form to report a single issue at the property. Submit <strong>one form per issue</strong> to help us respond efficiently. For multiple issues, complete a separate form for each.
-    </p>
-  </section>
+```
+<section class="section grey">
+  <p class="intro advisory-title"><strong>TENANT GUIDANCE:</strong></p>
+  <p class="advisory-text">
+    Please use this form to report a single issue at the property. Submit <strong>one form per issue</strong> to help us respond efficiently. For multiple issues, complete a separate form for each.
+  </p>
+</section>
 
-  <section class="section" id="formSection">
+<section class="section" id="formSection">
 
-<form id="maintenanceForm" action="https://api.web3forms.com/submit" method="POST">
+  <form id="maintenanceForm" action="https://api.web3forms.com/submit" method="POST">
 
-  <input type="hidden" name="access_key" value="91fdb16f-fb5c-4f85-9fbd-576811b31599">
-  <input type="hidden" name="redirect" value="https://www.rhinopropertysolutions.co.uk/maintenance-thank-you/">
-  <input type="hidden" name="subject" value="New Maintenance Issue">
-  <input type="checkbox" name="botcheck" style="display:none;">
+    <input type="hidden" name="access_key" value="91fdb16f-fb5c-4f85-9fbd-576811b31599">
+    <input type="hidden" name="redirect" value="https://www.rhinopropertysolutions.co.uk/maintenance-thank-you/">
+    <input type="hidden" name="subject" value="New Maintenance Issue">
+    <input type="checkbox" name="botcheck" style="display:none;">
 
-  <input type="text" name="name" placeholder="Full Name" required>
-  <input type="email" name="email" placeholder="Email Address" required>
-  <input type="tel" name="phone" placeholder="Your Phone Number (Preferred Contact)" required pattern="[0-9]{11}" title="Enter an 11-digit phone number">
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="email" name="email" placeholder="Email Address" required>
+    <input type="tel" name="phone" placeholder="Your Phone Number (Preferred Contact)" required pattern="[0-9]{11}" title="Enter an 11-digit phone number">
 
-  <select name="property" id="propertySelect" required>
-    <option value="">Select Property</option>
-    <option value="80 Dewsbury Road, L4 2XE">80 Dewsbury Road, L4 2XE</option>
-    <option value="23 Helena Street, L9 1BH">23 Helena Street, L9 1BH</option>
-    <option value="36 Kipling Street, L20 4QE">36 Kipling Street, L20 4QE</option>
-    <option value="9 Scorton Street, L6 4AS">9 Scorton Street, L6 4AS</option>
-  </select>
+    <select name="property" id="propertySelect" required>
+      <option value="">Select Property</option>
+      <option value="80 Dewsbury Road, L4 2XE">80 Dewsbury Road, L4 2XE</option>
+      <option value="23 Helena Street, L9 1BH">23 Helena Street, L9 1BH</option>
+      <option value="36 Kipling Street, L20 4QE">36 Kipling Street, L20 4QE</option>
+      <option value="9 Scorton Street, L6 4AS">9 Scorton Street, L6 4AS</option>
+    </select>
 
-  <select name="issue_type" id="issueSelect" required>
-    <option value="">Select Issue Type</option>
-    <option value="Plumbing">Plumbing</option>
-    <option value="Electrical">Electrical</option>
-    <option value="Heating">Heating</option>
-    <option value="Structural">Structural</option>
-    <option value="Cleaning">Cleaning</option>
-    <option value="Other">Other</option>
-  </select>
+    <select name="issue_type" id="issueSelect" required>
+      <option value="">Select Issue Type</option>
+      <option value="Plumbing">Plumbing</option>
+      <option value="Electrical">Electrical</option>
+      <option value="Heating">Heating</option>
+      <option value="Structural">Structural</option>
+      <option value="Cleaning">Cleaning</option>
+      <option value="Other">Other</option>
+    </select>
 
-  <select name="priority" required>
-    <option value="">Priority Level</option>
-    <option value="Low">Low</option>
-    <option value="Medium">Medium</option>
-    <option value="Urgent">Urgent</option>
-  </select>
+    <select name="priority" required>
+      <option value="">Priority Level</option>
+      <option value="Low">Low</option>
+      <option value="Medium">Medium</option>
+      <option value="Urgent">Urgent</option>
+    </select>
 
-  <textarea name="message" placeholder="Describe the issue in detail..." required></textarea>
+    <textarea name="message" placeholder="Describe the issue in detail..." required></textarea>
 
-  <div class="form-buttons">
-    <button type="submit">Submit Report</button>
-    <button type="reset" class="btn-secondary">Clear Form</button>
-  </div>
+    <div class="form-buttons">
+      <button type="submit">Submit Report</button>
+      <button type="reset" class="btn-secondary">Clear Form</button>
+    </div>
 
-</form>
+  </form>
 
-  </section>
+</section>
 
-  <section class="section grey">
-    <h2>Important Information</h2>
-    <p>
-      Please ensure all details are accurate.<br>
-      For urgent issues such as <strong>leaks, electrical faults, or security concerns,</strong> contact us immediately via phone.
-    </p>
-  </section>
+<section class="section grey">
+  <h2>Important Information</h2>
+  <p>
+    Please ensure all details are accurate.<br>
+    For urgent issues such as <strong>leaks, electrical faults, or security concerns,</strong> contact us immediately via phone.
+  </p>
+</section>
 
-  <section class="section">
-    <a href="/" class="btn">Home</a>
-  </section>
+<section class="section">
+  <a href="/" class="btn">Home</a>
+</section>
+```
 
-</main>
+  </main>
 
 <button onclick="scrollToTop()" id="topBtn">↑</button>
 
-<a href="tel:07832017376" class="call-float" aria-label="Call Rhino Property Solutions">
-  Call Now
-</a>
+<a href="tel:07832017376" class="call-float" aria-label="Call Rhino Property Solutions">Call Now</a>
 
-<footer>
-  <p>Clean. Fixed. Ready. Always.</p>
-  <p>© 2026 Rhino Property Solutions. All rights reserved.</p>
-</footer>
+  <footer>
+    <p>Clean. Fixed. Ready. Always.</p>
+    <p>© 2026 Rhino Property Solutions. All rights reserved.</p>
+  </footer>
 
 </div>
 

@@ -205,20 +205,18 @@ html {
 /*     GATE / PASSWORD       */
 /* ========================= */
 
-#gate {
+/* ADD THIS */
+#gate-screen {
+  position: fixed;
+  inset: 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  max-width: 100%;
-  min-height: 100vh;
-  height: auto;
-  overflow-x: hidden;
+  gap: 14px;
   padding: 20px;
-  box-sizing: border-box;
-  word-wrap: break-word;
+  background: #fff;
+  z-index: 9999;
 }
 
 .gate-btn {
@@ -240,21 +238,6 @@ html {
 .gate-error {
   color: red;
   display: none;
-}
-
-#passwordInput {
-  max-width: 280px;
-  width: 100%;
-  text-align: center;
-  box-sizing: border-box;
-}
-
-/* Form section content — hidden by default; JS sets display:block */
-#formSectionContent {
-  display: none;
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
 }
 
 /* ========================= */

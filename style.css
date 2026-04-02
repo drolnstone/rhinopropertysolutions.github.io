@@ -240,6 +240,12 @@ html {
   display: none;
 }
 
+#passwordInput {
+  max-width: 280px;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
 /* ========================= */
 /*         SECTIONS          */
 /* ========================= */

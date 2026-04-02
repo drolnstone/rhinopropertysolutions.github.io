@@ -146,10 +146,10 @@ window.onload = function () {
   const forceGate = sessionStorage.getItem("forceGate");
   sessionStorage.removeItem("forceGate");
   if (!forceGate && window.location.hash === "#formSection") {
-    document.getElementById("gate").style.display = "none";
+    document.getElementById("gate-screen").style.display = "none";
     document.getElementById("formSectionContent").style.display = "block";
   } else {
-    document.getElementById("gate").style.display = "flex";
+    document.getElementById("gate-screen").style.display = "flex";
     document.getElementById("formSectionContent").style.display = "none";
   }
 };
@@ -160,7 +160,7 @@ async function checkPassword() {
   if (!pattern.test(input)) { showError(); return; }
   const hashed = await hashInput(input);
   if (validHashes.includes(hashed)) {
-    document.getElementById("gate").style.display = "none";
+    document.getElementById("gate-screen").style.display = "none";
     document.getElementById("formSectionContent").style.display = "block";
   } else {
     showError();

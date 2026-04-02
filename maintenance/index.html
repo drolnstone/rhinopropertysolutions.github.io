@@ -73,10 +73,10 @@
 <!-- PASSWORD GATE -->
 
 <div id="gate-screen">
-  <p><strong>Enter your password to access the maintenance page</strong></p>
-  <input type="password" id="passwordInput" maxlength="5" placeholder="Password" autofocus>
-  <button class="gate-btn" id="gateSubmit">Submit</button>
-  <p id="gate-error">Incorrect password. Please try again.</p>
+  <p><strong>Enter Password to Access Maintenance</strong></p>
+  <input type="password" id="passwordInput" maxlength="5" placeholder="Landlord/Tenant password" autofocus>
+  <button id="gateSubmit" class="gate-btn">Submit</button>
+  <p id="gate-error" class="gate-error">Incorrect password. Try again.</p>
 </div>
 
 <!-- PAGE CONTENT (shown after correct password) -->
@@ -87,7 +87,7 @@
     <div class="hero-content">
       <a href="/"><img src="/logo.png" alt="Rhino Property Solutions" class="logo"></a>
       <h1>Report a Maintenance Issue</h1>
-      <p>Complete the form below. Urgent issues should also be reported by phone.</p>
+      <p>Please complete the <a href="#formSection">form</a> below.<br>Urgent issues should also be reported via<br>phone.</p>
     </div>
   </header>
 
@@ -97,13 +97,12 @@
 <section class="section grey">
   <p class="intro advisory-title"><strong>TENANT GUIDANCE:</strong></p>
   <p class="advisory-text">
-    Please use this form to report a single issue at the property.
-    Submit <strong>one form per issue</strong> to help us respond efficiently.
-    For multiple issues, complete a separate form for each.
+    Please use this form to report a single issue at the property. Submit <strong>one form per issue</strong> to help us respond efficiently. For multiple issues, complete a separate form for each.
   </p>
 </section>
 
 <section class="section" id="formSection">
+
   <form id="maintenanceForm" action="https://api.web3forms.com/submit" method="POST">
 
     <input type="hidden" name="access_key" value="91fdb16f-fb5c-4f85-9fbd-576811b31599">
@@ -113,7 +112,7 @@
 
     <input type="text" name="name" placeholder="Full Name" required>
     <input type="email" name="email" placeholder="Email Address" required>
-    <input type="tel" name="phone" placeholder="Phone Number (Preferred Contact)" required pattern="[0-9]{11}" title="Enter an 11-digit phone number">
+    <input type="tel" name="phone" placeholder="Your Phone Number (Preferred Contact)" required pattern="[0-9]{11}" title="Enter an 11-digit phone number">
 
     <select name="property" id="propertySelect" required>
       <option value="">Select Property</option>
@@ -144,18 +143,18 @@
 
     <div class="form-buttons">
       <button type="submit">Submit Report</button>
-      <button type="reset">Clear Form</button>
+      <button type="reset" class="btn-secondary">Clear Form</button>
     </div>
 
   </form>
+
 </section>
 
 <section class="section grey">
   <h2>Important Information</h2>
   <p>
     Please ensure all details are accurate.<br>
-    For urgent issues such as <strong>leaks, electrical faults, or security concerns</strong>,
-    contact us immediately via phone.
+    For urgent issues such as <strong>leaks, electrical faults, or security concerns,</strong> contact us immediately via phone.
   </p>
 </section>
 
@@ -214,9 +213,10 @@ async function checkPassword() {
   }
 }
 
-// Auto-unlock if arriving from maintenance-thank-you "Submit Another Issue" link
 window.addEventListener("load", () => {
-  if (window.location.hash === "#formSection") {
+  const forceGate = sessionStorage.getItem("forceGate");
+  sessionStorage.removeItem("forceGate");
+  if (!forceGate && window.location.hash === "#formSection") {
     showPage();
     setTimeout(() => {
       document.getElementById("formSection").scrollIntoView({ behavior: "smooth" });
@@ -225,7 +225,10 @@ window.addEventListener("load", () => {
 });
 
 window.addEventListener("pageshow", (e) => {
-  if (e.persisted) location.reload();
+  if (e.persisted) {
+    sessionStorage.setItem("forceGate", "true");
+    location.reload();
+  }
 });
 
 document.getElementById("gateSubmit").addEventListener("click", checkPassword);

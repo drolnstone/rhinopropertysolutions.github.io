@@ -217,9 +217,6 @@ html {
   padding: 20px;
   background: #fff;
   z-index: 9999;
-  width: 200px;
-  max-width: 100%;
-  text-align: center;
 }
 
 .gate-btn {

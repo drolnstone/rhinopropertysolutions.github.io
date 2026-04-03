@@ -9,15 +9,6 @@
   <meta name="robots" content="index, follow">
   <link rel="stylesheet" href="/style.css?v=1.0.9">
   <link rel="icon" href="/favicon.png">
-    
-    <style>
-  .lightbox { flex-direction: column; }
-  .lightbox-inner { display: flex; align-items: center; justify-content: center; gap: 16px; }
-  .lightbox-arrow { background: rgba(255,255,255,0.15); border: none; color: white; font-size: 2rem; width: 48px; height: 48px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.2s; }
-  .lightbox-arrow:hover { background: rgba(255,255,255,0.3); }
-  .lightbox-counter { color: rgba(255,255,255,0.7); font-size: 0.9em; margin-top: 12px; }
-  .lightbox-close { position: absolute; top: 16px; right: 20px; background: none; border: none; color: white; font-size: 2rem; cursor: pointer; }
-</style>
 
 </head>
 
@@ -167,7 +158,12 @@ function showPrev() {
 
 document.getElementById("lightboxNext").addEventListener("click", (e) => { e.stopPropagation(); showNext(); });
 document.getElementById("lightboxPrev").addEventListener("click", (e) => { e.stopPropagation(); showPrev(); });
-document.getElementById("lightboxClose").addEventListener("click", (e) => { e.stopPropagation(); lightbox.classList.remove("active"); });
+let touchStartX = 0;
+lightbox.addEventListener("touchstart", (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+lightbox.addEventListener("touchend", (e) => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 40) { diff > 0 ? showNext() : showPrev(); }
+});
 
 lightbox.addEventListener("click", () => {
   lightbox.classList.remove("active");

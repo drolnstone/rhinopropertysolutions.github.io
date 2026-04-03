@@ -245,7 +245,13 @@
 <button onclick="scrollToTop()" id="topBtn">↑</button>
 
 <div class="lightbox" id="lightbox">
-  <img id="lightboxImg" src="" alt="Enlarged view">
+  <button class="lightbox-close" id="lightboxClose">&times;</button>
+  <div class="lightbox-inner">
+    <button class="lightbox-arrow" id="lightboxPrev">&#8249;</button>
+    <img id="lightboxImg" src="" alt="Enlarged view">
+    <button class="lightbox-arrow" id="lightboxNext">&#8250;</button>
+  </div>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
 </div>
 
 <footer>
@@ -315,29 +321,71 @@ document.querySelector("form").addEventListener("submit", function (e) {
 
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightboxImg");
+const lightboxCounter = document.getElementById("lightboxCounter");
+let currentIndex = 0;
+let currentPhotos = [];
+
+function openLightbox(photos, index) {
+  currentPhotos = photos;
+  currentIndex = index;
+  lightboxImg.src = currentPhotos[currentIndex].src;
+  lightboxImg.alt = currentPhotos[currentIndex].alt;
+  lightboxCounter.textContent = `${currentIndex + 1} / ${currentPhotos.length}`;
+  lightbox.classList.add("active");
+}
+
+function showNext() {
+  currentIndex = (currentIndex + 1) % currentPhotos.length;
+  lightboxImg.src = currentPhotos[currentIndex].src;
+  lightboxImg.alt = currentPhotos[currentIndex].alt;
+  lightboxCounter.textContent = `${currentIndex + 1} / ${currentPhotos.length}`;
+}
+
+function showPrev() {
+  currentIndex = (currentIndex - 1 + currentPhotos.length) % currentPhotos.length;
+  lightboxImg.src = currentPhotos[currentIndex].src;
+  lightboxImg.alt = currentPhotos[currentIndex].alt;
+  lightboxCounter.textContent = `${currentIndex + 1} / ${currentPhotos.length}`;
+}
+
+document.getElementById("lightboxNext").addEventListener("click", (e) => { e.stopPropagation(); showNext(); });
+document.getElementById("lightboxPrev").addEventListener("click", (e) => { e.stopPropagation(); showPrev(); });
+document.getElementById("lightboxClose").addEventListener("click", (e) => { e.stopPropagation(); lightbox.classList.remove("active"); });
+
+let touchStartX = 0;
+lightbox.addEventListener("touchstart", (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+lightbox.addEventListener("touchend", (e) => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 40) { diff > 0 ? showNext() : showPrev(); }
+});
+
+lightbox.addEventListener("click", () => {
+  lightbox.classList.remove("active");
+});
 
 document.getElementById("galleryMarquee").addEventListener("click", (e) => {
   const album = e.target.closest(".album");
   if (!album) return;
 
+  const coverImg = album.querySelector(":scope > img");
+  const contentImgs = Array.from(album.querySelectorAll(".album-content img"));
+  const albumPhotos = [coverImg, ...contentImgs];
+
   const isContentImg = e.target.closest(".album-content img");
 
   if (isContentImg) {
-    lightboxImg.src = e.target.src;
-    lightboxImg.alt = e.target.alt;
-    lightbox.classList.add("active");
+    const index = contentImgs.indexOf(e.target) + 1;
+    openLightbox(albumPhotos, index);
     return;
   }
 
-  const isCoverImg = e.target === album.querySelector(":scope > img");
+  const isCoverImg = e.target === coverImg;
 
   if (isCoverImg) {
     if (!album.classList.contains("expanded")) {
       album.classList.add("expanded");
     } else {
-      lightboxImg.src = e.target.src;
-      lightboxImg.alt = e.target.alt;
-      lightbox.classList.add("active");
+      openLightbox(albumPhotos, 0);
     }
     return;
   }
@@ -345,10 +393,6 @@ document.getElementById("galleryMarquee").addEventListener("click", (e) => {
   if (album.classList.contains("expanded")) {
     album.classList.remove("expanded");
   }
-});
-
-lightbox.addEventListener("click", () => {
-  lightbox.classList.remove("active");
 });
 
 (function () {

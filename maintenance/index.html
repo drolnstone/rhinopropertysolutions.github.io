@@ -115,20 +115,7 @@
 </div>
 
 <script>
-const validHashes = [
-  "3ee6624b3e41b3cb14b471f1bd986fdf5f34857bd7e2a3fd54eb2dc1c81e3b63",
-  "49365c486263091b7fc79291d56b6bc2b2a76965ae456eb2c12011a02bfa294f",
-  "4f0dc872570761385ba952f421d7c5216b9158390f4296aa7c8af57a191c5c4d",
-  "c03bfe8e97fabc29a5321051540da11ab993698f344606d70b33f7f35e33472d"
-];
-
-async function hashInput(value) {
-  const encoded = new TextEncoder().encode(value);
-  const hashBuffer = await crypto.subtle.digest("SHA-256", encoded);
-  return Array.from(new Uint8Array(hashBuffer))
-    .map(b => b.toString(16).padStart(2, "0"))
-    .join("");
-}
+const GATE_URL = "https://script.google.com/macros/s/YOUR_NEW_RHINO_DEPLOYMENT_ID/exec";
 
 window.addEventListener("pageshow", function (event) {
   if (event.persisted) {
@@ -141,32 +128,64 @@ window.onload = function () {
   const forceGate = sessionStorage.getItem("forceGate");
   sessionStorage.removeItem("forceGate");
   if (!forceGate && window.location.hash === "#formSection") {
-    document.getElementById("gate-screen").style.display = "none";
-    document.getElementById("formSectionContent").style.display = "block";
+    showForm();
   } else {
-    document.getElementById("gate-screen").style.display = "flex";
-    document.getElementById("formSectionContent").style.display = "none";
+    showGate();
   }
 };
+
+function showGate() {
+  document.getElementById("gate-screen").style.display = "flex";
+  document.getElementById("formSectionContent").style.display = "none";
+}
+
+function showForm() {
+  document.getElementById("gate-screen").style.display = "none";
+  document.getElementById("formSectionContent").style.display = "block";
+}
 
 async function checkPassword() {
   const input = document.getElementById("passwordInput").value.trim();
   const pattern = /^7[0-9]{3}[A-Z]$/;
-  if (!pattern.test(input)) { showError(); return; }
-  const hashed = await hashInput(input);
-  if (validHashes.includes(hashed)) {
-    document.getElementById("gate-screen").style.display = "none";
-    document.getElementById("formSectionContent").style.display = "block";
-  } else {
-    showError();
+
+  if (!pattern.test(input)) {
+    showError("Incorrect password. Try again.");
+    return;
   }
+
+  const submitBtn = document.getElementById("gateSubmit");
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Checking...";
+
+  try {
+    const res = await fetch(GATE_URL, {
+      method: "POST",
+      body: JSON.stringify({ type: "validateGate", password: input })
+    });
+    const json = await res.json();
+
+    if (json.valid) {
+      showForm();
+    } else if (json.reason === "suspended") {
+      showError("This password has been deactivated. Contact your landlord.");
+    } else {
+      showError("Incorrect password. Try again.");
+    }
+  } catch (err) {
+    showError("⚠ Could not reach server. Check your connection.");
+  }
+
+  submitBtn.disabled = false;
+  submitBtn.textContent = "Submit";
 }
 
-function showError() {
+function showError(msg) {
   const input = document.getElementById("passwordInput");
   input.value = "";
   input.focus();
-  document.getElementById("errorMsg").style.display = "block";
+  const errorEl = document.getElementById("errorMsg");
+  errorEl.textContent = msg;
+  errorEl.style.display = "block";
 }
 
 document.getElementById("passwordInput").addEventListener("keydown", function (e) {
@@ -192,6 +211,7 @@ document.getElementById("maintenanceForm").addEventListener("submit", function (
   sessionStorage.setItem("maint_issue", document.getElementById("issueSelect").value);
 });
 </script>
+
 
 </body>
 </html>

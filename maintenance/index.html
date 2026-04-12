@@ -115,6 +115,10 @@
 </div>
 
 <script>
+  document.getElementById("passwordInput").addEventListener("paste", function (e) {
+  e.preventDefault();
+});
+
 const GATE_URL = "https://script.google.com/macros/s/AKfycbwEjrRQBtMdTFrSbbMONF9GxSRhe6J8Po4driUigFAdTRdr_-C5hFWcoDeltLYIhBSz/exec";
 
 window.addEventListener("pageshow", function (event) {

@@ -167,7 +167,7 @@ async function checkPassword() {
     if (json.valid) {
       showForm();
     } else if (json.reason === "suspended") {
-      showError("This password has been deactivated. Contact your landlord.");
+      showError("This password has been deactivated!");
     } else {
       showError("Incorrect password. Try again.");
     }

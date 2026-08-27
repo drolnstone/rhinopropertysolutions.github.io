@@ -152,33 +152,32 @@ select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{
    ============================================================ */
 
 .section{
-  padding:clamp(3rem,6.5vw,5.8rem) var(--gutter);
+  padding:clamp(2.4rem,5vw,4.2rem) var(--gutter);
   scroll-margin-top:80px;
   text-align:left;
+  /* distance from the section edge to the shared content rail */
+  --rail:max(0px,(100% - var(--wrap)) / 2);
 }
 /* legacy pages put content straight into .section with no container,
    so every direct child gets the reading column by default */
-.section > *{max-width:var(--measure);margin-inline:auto}
-.section > .wrap{max-width:var(--wrap);width:100%}
-.section > .services{max-width:1080px}
+.section > *{max-width:var(--measure);margin-left:var(--rail);margin-right:auto}
+.section > .wrap{max-width:var(--wrap);width:100%;margin-inline:auto}
+.section > .services{max-width:var(--wrap)}
 .section > .property-card{max-width:var(--measure)}
 .section > .gallery-container{max-width:none}
 /* a bare button dropped straight into a section still lines up with the
    reading column above it, instead of drifting to the page edge */
-.section > .btn{
-  display:flex;width:max-content;max-width:100%;
-  margin-left:max(0px,(100% - var(--measure)) / 2);margin-right:auto;
-}
+.section > .btn{display:flex;width:max-content;max-width:100%}
 
 /* the old stylesheet banded sections with .grey; keep the hook */
 .grey{background:var(--paper-2)}
 .section + .section:not(.grey),
 .grey + .section:not(.grey){border-top:1px solid var(--line)}
 
-.intro,.about{max-width:var(--measure);margin-inline:auto}
+.intro,.about{max-width:var(--measure)}
 .intro{font-size:1.1rem}
 
-.section-centered{max-width:640px;margin-inline:auto}
+.section-centered{max-width:640px}
 
 .advisory-title,.advisory-text{color:var(--text-soft);font-style:normal}
 .advisory-title{
@@ -365,7 +364,10 @@ select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{
   background:var(--ink);color:var(--on-ink);
   padding:clamp(2.6rem,7vw,4.5rem) var(--gutter);
   text-align:left;
+  display:flex;align-items:center;
 }
+/* the homepage slideshow hero carries photographs, so it needs real height */
+.hero:not(.small){min-height:clamp(440px,72vh,660px)}
 .hero-slides{position:absolute;inset:0;z-index:0}
 .hero-slide{
   position:absolute;inset:0;
@@ -952,7 +954,7 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:.5rem}
 #confirmProperty{
   font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 94,'wght' 750;
   font-size:clamp(1.5rem,4vw,2.2rem);letter-spacing:-.02em;line-height:1.1;
-  color:var(--text);margin:0 auto 1.2rem;max-width:var(--measure);
+  color:var(--text);margin:0 0 1.2rem;max-width:var(--measure);
 }
 
 /* scroll reveal — added by script, so it degrades to visible without JS */
